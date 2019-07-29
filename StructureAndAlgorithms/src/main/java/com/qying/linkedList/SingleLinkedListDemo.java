@@ -1,5 +1,7 @@
 package com.qying.linkedList;
 
+import java.util.Stack;
+
 public class SingleLinkedListDemo {
 
     public static void main(String[] args) {
@@ -29,6 +31,7 @@ class HeroNode{
     public String name;
     public String  nickName;
     public HeroNode next;
+    public HeroNode pre;
 
     public HeroNode(int no, String name, String nickName) {
         this.no = no;
@@ -146,4 +149,77 @@ class SingleLinkedList{
             temp = temp.next;
         }
     }
+
+    /**
+     * 求有效链表的个数
+     */
+    public int getLength(HeroNode heroNode){
+        if (heroNode.next == null){
+            return 0;
+        }
+        int length = 0;
+        HeroNode cur  = heroNode.next;
+        while (cur != null){
+            length ++;
+            cur =cur.next;
+        }
+        return length;
+    }
+
+    /**
+     * 查找链表中的倒数第k结点
+     */
+    public HeroNode findLastIndexNode(HeroNode head , int index){
+        if (head.next == null){
+            return null;
+        }
+
+        int size = getLength(head);
+        if (index <= 0 || index > size){
+            return null;
+        }
+        HeroNode cur = head.next;
+        for (int i = 0; i< size -index;i++){
+            cur = cur.next;
+        }
+        return cur;
+    }
+    /**
+     * 单链表的反转
+     */
+    public void reverseList(HeroNode head){
+        if (head.next == null || head.next.next == null){
+            return;
+        }
+
+        HeroNode cur = head.next;
+        HeroNode next = null;
+        HeroNode reverseHead = new HeroNode(0,"","");
+        while (true){
+            next = cur.next;
+            cur.next = reverseHead.next;
+            reverseHead.next = cur;
+            cur = next;
+        }
+    }
+
+    /**
+     * 从尾到头打印链表
+     */
+    public void resversePrint(HeroNode head){
+        if (head.next == null){
+            return;
+        }
+
+        Stack<HeroNode> stack = new Stack<HeroNode>();
+        HeroNode cur = head.next;
+        while (cur !=null){
+            stack.push(cur);
+            cur = cur.next;
+        }
+        while (stack.size() > 0){
+            System.out.println(stack.pop());
+        }
+    }
+
 }

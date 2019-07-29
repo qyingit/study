@@ -14,8 +14,8 @@ public class BubbleSort {
         bubbleSort(arr);
         Long endTime = System.currentTimeMillis();
         System.out.println("耗费时间："+(endTime-startTime));
-
-        for (int i= 0 ;i< arr.length;i++){
+//        耗费时间：13980
+    for (int i= 0 ;i< arr.length;i++){
             System.out.println(arr[i]);
         }
         
