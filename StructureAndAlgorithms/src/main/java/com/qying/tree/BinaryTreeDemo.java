@@ -76,6 +76,7 @@ class HeroNode{
     private String name;
     private HeroNode left;
     private HeroNode right;
+    private int leftType;
 
     public HeroNode(int no, String name) {
         this.no = no;
