@@ -77,6 +77,23 @@ class HeroNode{
     private HeroNode left;
     private HeroNode right;
     private int leftType;
+    private int rightType;
+
+    public int getLeftType() {
+        return leftType;
+    }
+
+    public void setLeftType(int leftType) {
+        this.leftType = leftType;
+    }
+
+    public int getRightType() {
+        return rightType;
+    }
+
+    public void setRightType(int rightType) {
+        this.rightType = rightType;
+    }
 
     public HeroNode(int no, String name) {
         this.no = no;
