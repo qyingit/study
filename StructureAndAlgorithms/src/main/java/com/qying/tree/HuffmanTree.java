@@ -45,9 +45,16 @@ public class HuffmanTree {
     }
 }
 class Node implements Comparable<Node>{
+    Byte data;
+    int weight;
     int value ;
     Node left;
     Node right;
+
+    public Node(Byte data, int weight) {
+        this.data = data;
+        this.weight = weight;
+    }
 
     public void preOrder(){
         System.out.println(this);
@@ -66,12 +73,13 @@ class Node implements Comparable<Node>{
     @Override
     public String toString() {
         return "Node{" +
-                "value=" + value +
+                "data=" + data +
+                ", weight=" + weight +
                 '}';
     }
 
     @Override
     public int compareTo(Node o) {
-        return this.value-o.value;
+        return this.weight-o.weight;
     }
 }
