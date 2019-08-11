@@ -5,7 +5,21 @@ import javafx.scene.chart.ValueAxis;
 public class AVLTreeDemo {
 
     public static void main(String[] args) {
+        int[]  arr = {10,11,7,6,8,9};
 
+        AVLTree avlTree = new AVLTree();
+        for (int i =0 ;i< arr.length; i++){
+            avlTree.add(new Node(arr[i]));
+        }
+
+        System.out.println("中序遍历");
+        avlTree.infixOrder();
+
+        System.out.println("平衡处理");
+        System.out.println("书高度:"+avlTree.getRoot().height());
+        System.out.println("树左边高度:"+avlTree.getRoot().leftHeight());
+        System.out.println("树右边高度:"+avlTree.getRoot().rightHeight());
+        System.out.println("根节点:"+avlTree.getRoot());
     }
 }
 
@@ -223,7 +237,7 @@ class Node{
             return;
         }
 
-        if (leftHeight()-right.rightHeight()>1){
+        if ((leftHeight()-rightHeight())>1){
             if (left != null && left.rightHeight() >left.leftHeight()){
                 left.leftRotate();
                 rightRotate();
