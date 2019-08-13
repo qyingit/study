@@ -1,3 +1,4 @@
+/*
 package com.qying.tree;
 
 import java.util.ArrayList;
@@ -82,4 +83,4 @@ class Node implements Comparable<Node>{
     public int compareTo(Node o) {
         return this.weight-o.weight;
     }
-}
+}*/

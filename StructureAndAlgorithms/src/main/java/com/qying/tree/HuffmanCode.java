@@ -1,3 +1,4 @@
+/*
 package com.qying.tree;
 
 import java.io.*;
@@ -236,3 +237,4 @@ public class HuffmanCode {
     }
 
  }
+*/
