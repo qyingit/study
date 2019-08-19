@@ -1,0 +1,83 @@
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+
+## suggested format
+
+# 全局白名单
+# 空  不设置白名单.默认返回false
+#"*"  表示全部匹配,直接返回true,会阻断其它规则判断
+#192.168.0.{100,101}
+#多地址配置模式，ip地址的最后一组，使用{}，大括号中多个ip地址，用英文逗号(,)隔开。
+#192.168.1.100,192.168.2.100
+#直接使用,分隔，配置多个ip地址。
+#192.168.*.或192.168.100-200.10-20
+#每个IP段使用 "" 或"-"表示范围。
+globalWhiteRemoteAddresses:
+- 10.10.103.*
+- 192.168.0.*
+
+#配置用户信息，该类型为数组类型
+#accessKey 登录用户名,必须大于6个字符
+#secretKey 登录密码,长度大于6个字符
+#whiteRemoteAddress 用户级别ip地址白名单,只能配置一条规则
+#admin 设置是否为admin
+#以下权限只有admin = true才有权限执行
+#UPDATE_AND_CREATE_TOPIC
+#更新或创建主题。
+#UPDATE_BROKER_CONFIG
+#更新Broker配置。
+#DELETE_TOPIC_IN_BROKER
+#删除主题。
+#UPDATE_AND_CREATE_SUBSCRIPTIONGROUP
+#更新或创建订阅组信息。
+#DELETE_SUBSCRIPTIONGROUP
+#删除订阅组信息。
+#defaultTopicPerm 默认topic权限，该值默认DENY
+#defaultGroupPerm 默认消费组权限，该值默认为DENY(拒绝)，建议值为SUB
+#topicPerms
+#设置topic的权限。其类型为数组，其可选择值在下节介绍。
+#groupPerms
+#设置消费组的权限。其类型为数组，其可选择值在下节介绍。可以为每一消费组配置不一样的权限
+
+#权限值
+#DENY 拒绝
+#PUB 发送权限
+#SUB 订阅权限
+
+
+
+accounts:
+- accessKey: RocketMQ
+  secretKey: 12345678
+  whiteRemoteAddress: 192.168.0.*
+  admin: false
+  defaultTopicPerm: DENY
+  defaultGroupPerm: SUB
+  topicPerms:
+  - topicA=DENY
+  - topicB=PUB|SUB
+  - topicC=SUB
+  groupPerms:
+  # the group should convert to retry topic
+  - groupA=DENY
+  - groupB=SUB
+  - groupC=SUB
+
+- accessKey: rocketmq2
+  secretKey: 12345678
+  whiteRemoteAddress: 192.168.1.*
+  # if it is admin, it could access all resources
+  admin: true
+
