@@ -6,7 +6,7 @@ public class KMPAlgorithm {
 
     public static void main(String[] args) {
         String str1 = "BBC ABCDAB ABCDABCDABDE";
-        String str2 = "ABCDABD";
+        String str2 = "ABCABCABDA";
         int[] next = kmpNext(str2);
         System.out.println("next = "+ Arrays.toString(next));
 
@@ -32,7 +32,7 @@ public class KMPAlgorithm {
     }
 
     public static int[] kmpNext(String dest){
-        ///"ABCA"
+        ///"ABCABCABC"
         int[] next = new int[dest.length()];
         next[0] = 0;
         for (int i =1, j = 0; i<dest.length();i++){
