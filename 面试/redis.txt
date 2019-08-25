@@ -1,0 +1,82 @@
+五种数据结构:
+    string,list,hash,set,zet
+部分命令:
+
+配置:
+    tcp-backlog 三次握手的连接总数
+    timeout 超时(断开连接)时间
+    tck-keeplive 心跳检测时间
+    daemonize  守护启动
+    pidfile 进程号
+    loglevel 日志输出水平
+    logfile 日志文件位置
+    databases  数据库的数量
+    maxmemory  最大内存限制
+        内存满策略：
+          volitile-lru  过期时间最近最少使用
+          allkey-lru     所有最近最少使用
+          volatile-random 随机
+          all-random
+          ttl 移除所有
+          noevition 报错
+        maxmemory-sample  从几个中取样
+redis的持久化
+    rdb:
+        将内存快照写入
+        通过fork一个子进程进行备份，等持久化结束了用临时问价替换上次持久化的文件
+        该备份属于全盘备份，容易丢失最近一次的数据
+
+        配置为SNAPSHOPING  dbfilename db的文件
+        备份配置  900 1   900秒有一条数据改变
+
+    aof:
+        以日志追加方式持久化
+        增量备份，备份的压力进行了分摊，其回复速度比较慢，同时占用磁盘比较多
+        /APPEND ONLY
+        appendonly  yes  打开
+        appendsync 同步  aof  同步频率设置
+        使用 rewrite 会让文件进行重写，减少文件大小  可以设置多大文件开始重写
+
+    如果aof与rdb不一致,优先使用aof
+    不用开始aof配置，可以使用 bgrewriteaof  写入aof文件
+
+    最好两个都启用，如果对数据不敏感使用rdb
+
+redis的主从复制
+     slaveof master  使用读写分离,扩展性能  slaveof  no  one
+     info replication 查看服务器信息
+      使用哨兵模式进行主从切换
+      切换的新主机选择条件：1优先级靠前的 2偏移量最大的 3 runid最小的
+redis的事务
+     multi
+     set exec
+     如果某个命令爆出来错误，则只有报错的命令不会执行，其它命令会执行，不会回滚
+     如果执行时报错，则整个都会报错
+
+     multi  watch   exec  使用redis的乐观锁
+
+redis的集群:
+     集群配置:
+       cluster-enable  yes 集群模式打开
+       cluster-config-file  设定节点的配置文件
+       cluster-node-timeout  设定节点失联时间
+       --replicas  为集群中的每个著界定创建一个从节点
+       保证主库不再同一个机器上，从库与主库不在同一个机器上
+     集群时slots
+         一个redis集群包含16384个槽 通过key取余放入指定的槽
+         如果批量放入同一个槽需在key指定{}用于hash
+         cluster keyslot user 查看指定到哪个槽
+      增加一个节点
+         随便找节点cluster meet <新节点> <port> 增加新节点
+         老节点邀请新节点，新节点使用gossip协议
+         需要给新节点重新分配插槽，转移老节点插槽数据到新的节点
+     故障恢复
+         cluster-require-full-coverage  在redis.conf中进行配置
+         多建的redis不支持
+
+
+
+
+
+
+

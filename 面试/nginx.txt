@@ -1,0 +1,48 @@
+nginx:
+     master-worker工作模式:
+     配置文件：连接数->每次连接占4个连接
+     配置文件结构:
+            user  -> nobody  为了安全,防止获得服务器权限
+            worker_procress  worker与procersses数量
+             error_log  日志级别
+      events:
+             work_connections  连接数
+             use     epoll   多路io服用
+             multi_accept  是否获得更多的连接
+            accept_mutex   是否开启worker抢占
+      http:
+             include    mine.type  媒体类型 在conf下面
+             default_type  默认返回文件说明
+             access_log  访问日志
+             log_format  请求的格式
+             sendfile   开启文件传送  性能的调优  用于大文件传输
+             keeplive_timeout  连接超时时间
+             gzip  开启或关闭gzip模块
+             gzip_min_length 允许压缩的页面最小字节数
+             gzip_comp_level  压缩级别
+             gzip_type  压缩的文件类型
+
+             动静分离:
+             open_file_cache 开启文件缓存  max 最大缓存文件  inactive  不活跃期限
+             open_file_cache_min_use  活跃期间的最少使用次数，否则为不活跃
+              open_file_cache_valid  验证缓存是否活跃的时间间隔
+
+              反向代理模块
+              upstream myserver:
+              几种模式  1 轮询 2.权重 3.ip绑定  4.备机方式   5.fair响应时间  6.url_hash
+
+              server
+                    listener 监听的端口号
+                    server_name   服务名
+                    charset  字符集
+                    location  用于分析路径
+                         /  兜底匹配
+                         匹配两个阶段：
+                                1.普通匹配阶段  /abc/images
+                                2.~正则匹配   ~*.(gif|jpg)
+                                3.^~ 不做正则表达式判断
+                        匹配完成会找寻对应的路径
+                             root 文件夹路径 +匹配路径+  index 索引文件
+                        expires  定义用户的浏览器缓存时间
+                    proxy_pass 反向代理的文件路
+

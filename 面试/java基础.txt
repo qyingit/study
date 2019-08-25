@@ -1,0 +1,5 @@
+java基础:
+      arraylist   数组, 初始长度10,扩容1.5倍
+      linkedlist  链表,通过指针相连,插入容易,但是查询不能通过下标访问
+      Set   底层是一个HashMap,其value为null
+      HashMap 底层是个entrySet数组   长度16 加载因子0.75 扩容一倍  因为需要减少hsah碰撞
