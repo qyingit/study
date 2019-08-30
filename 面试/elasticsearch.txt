@@ -1,0 +1,113 @@
+Elasticsearch:
+          是一个分布式,高性能，高可用，可伸缩的搜索与分析系统
+          lucene是一个jar包，里面包含封装好的各种建立倒排索引,以及进行搜索的代码,包含各种算法
+
+          功能:
+                1.分布式搜索引擎和数据分析引擎
+                2.全文检索,结构化检索,数据分析
+                3.海量数据实时处理    es可以将海量数据分散到各个服务器进行存储与检索，提供近实时的查询功能
+          特点:
+                1.可搭建集群用于大公司,也可以单机运行用于小公司
+                2.将全文检索,数据分析，与分布式集于一生
+                3. 开箱即用,几分钟部署es,
+                4.作为数据库功能不足,如事务,但又有特殊的功能,全文检索，同义词处理，相关度排名
+         核心概念:
+                 cluster  集群  包含多个节点，每个节点属于哪个集群需要配置
+                 node   节点集群中提供服务的机器
+                 document&field 文档 es中最小的数据单元，一个document可以是一条客户数据,用json数据结构表示，每个index下的type可以存储多个document，一个document里面又有多个field，每个field就是一个数据字段
+                inde 索引   一堆又像是结构的文档数据
+                type  类型 一个索引的逻辑数据分类
+                shard  es将每个索引切分为多个shard，分布在服务器上面存储。有了shard可以横向扩展，提高吞吐量与性能
+                replication shard的副本
+
+index 相当于数据库
+type  相当于表
+document 相当于行
+
+
+查询语法:
+get  /_cat/{healthy，indices,}?v
+创建索引: put /index
+删除索引：delete /index
+添加数据:   put/index/type/id{"json数据"}
+查询数据:   get /index/type/id
+修改数据：post  /index/type/id/_update{"doc":{}}
+删除数据:  delete  /index/type/id
+
+查询的DSL语法:
+GET /ecommerce/product/_search
+{
+    "query" : {#查询
+        "bool" : {
+            "must" : {#bool组合查询
+                "match" : {
+                    "name" : "yagao"
+                }
+            },
+            "filter" : {#过滤
+                "range" : {
+                    "price" : { "gt" : 25 }
+                }
+            }
+        }
+    },
+    "sort": [
+        { "price": "desc" }
+    ], #排序
+    "from": 1,
+    "size": 1, #分页
+    "_source":["name","price"] #指定显示
+}
+
+全文检索
+GET /ecommerce/product/_search
+{
+    "query" : {
+        "match" : {
+            "producer" : "yagao producer"
+        }
+    }
+}
+phrase search（短语搜索）  #必须完全包含
+GET /ecommerce/product/_search
+{
+    "query" : {
+        "match_phrase" : {
+            "producer" : "yagao producer"
+        }
+    }
+}
+
+统计分析:
+GET /ecommerce/product/_search
+{
+  "size": 0,
+   "query": {#查询
+         "match": {
+         "name": "yagao"
+        }
+      },
+   "aggs": {#分组
+    "group_by_tags": {
+      "terms": { "field": "tags", "order": { "avg_price": "desc" } #排序 },
+          "aggs" : {#统计
+                "avg_price" : {
+                    "avg" : { "field" : "price" }
+                }
+            }
+    }
+  }
+}
+
+elasticsearch的分布式架构:
+       elasticsearch隐藏了复杂的分布式机制： 分片机制， cluster discovery 集群发现机制 ， shard  负载均衡机制,shard 副本,请求路由，集群扩容，shard重新分配
+       特别注意增减节点时候数据的reblance 保证负载均衡
+       master节点  创建删除索引   增加或删除节点
+       节点平等的分布式架构:
+               节点对等,每个节点都能接受所有的请求
+               自动请求路由
+               响应收集
+       shard与repication机制
+             index包含多个shard,每个shard都是最小的工作单元，承载部分数据,lucenue实例，完整的建立索引与处理请求得能力，增减节点,shard会在nodes中负载均衡,primary shard和replica shard，每个document肯定只存在于某一个primary shard以及其对应的replica shard中，不可能存在于多个primary shard，replica shard是primary shard的副本，负责容错，以及承担读请求负载，primary shard的数量在创建索引的时候就固定了，replica shard的数量可以随时修改,primary shard的默认数量是5，replica默认是1，默认有10个shard，5个primary shard，5个replica shard，primary shard不能和自己的replica shard放在同一个节点上（否则节点宕机，primary shard和副本都丢失，起不到容错的作用），但是可以和其他primary shard的replica shard放在同一个节点上
+
+11
