@@ -109,6 +109,278 @@ CyclicBarrier 集齐七颗龙族召唤神龙
 
 
 Semaphore 信号量
+       eg：抢车位
+       两个目的,一个用于共享资源的互斥，另一个用以并发线程数的控制
+
+阻塞队列:
+      BlockingQueue
+          eg:吃火锅人多，不得不阻塞
+          阻塞队列好的一面
+              不需要关心什么时候阻塞线程,什么时候唤醒线程,因为这一切blockQueue包办了
+          不得不组赛，如何管理
+              当阻塞队列是空的时候,从队列获取元素会阻塞,当队列是满的时候,往队列里面添加元素会阻塞
+
+      BlockingQueue
+          ArrayBlock... 由数组组成的有界阻塞队列
+
+          LinkedBlock... 由链表组成的有界队列 Integer.MAX_VALUE
+
+          Priority... 优先级的无界阻塞队列
+          DelayQueue   优先级队列实现的延迟无界阻塞队列
+          Synchronized... 不存储元素的阻塞队列,也即单个元素队列
+
+          LinkedTransfer... 链表组成的无界
+          Linked....Dequeue 链表组成的双向阻塞队列
+
+          核心方法:
+              add(e) 当队列满add抛异常
+              remove() 从队列取数据,为空时抛异常
+              element() 检查队列空不空,队首元素是谁
+
+              offer() 满是offer返回false
+              peek()  队列空peek返回null
+
+              put()  队列满时阻塞
+              take() 队列空时阻塞
+
+              offer(e,time,unit) 队列满时,超时取消进队列
+              poll(e,time,unit) 获取数据
+SynchronousQueue 是一个不存储元素的BlockQueue
+      一个put操作必须等待一个take操作
+
+Synchronized与lock的区别
+      Synchronized是关键字JVM层面,使用的是同步监视器,Lock是api层面的锁,是一个对象
+      Synchronized不需要用于手动释放,lock需要手动释放
+      Synchronized等待是不可中断,lock等待是可以中断的 1.tryLock()2.LockInteruptibly
+      加锁是否是公平的 sync不公平  lock是可选的
+      sync锁不能绑定某个条件，lock可以绑定多个条件condition,可以选择性唤醒
+
+      //todo  循环A-B-C打印代码
+      //todo  blockqueue 实现消费者与生产者模式
+
+线程池:
+     超过最大线程排队等候
+     优势:线程复用,控制最大并发数，管理线程
+     特点;
+     架构:
+         Executors 创建线程工具类
+         线程池底层是ThreadPoolExecutor
+         四种线程池:
+             newFixedThreadPool()  固定大小线程池   执行长期任务
+             newsingleThreadExecutor()  单一的线程池
+             newCachedThreadPool()  缓存线程池  短期异步小程序
+             pool.submit()方法提交一个runnable任务  execute()执行
+     几个重要参数:
+         maxsize  最大线程数   队列满了线程扩容到maxsize
+         coresize  核心线程数  达到coresize会将任务放到缓存队列中
+         blockqueue  阻塞队列
+         threadfactory 线程工厂
+         time  存活时间   队列阻塞了，线程空闲时间达到了就会回收线程到核心线程数
+         unit  存活时间单位
+         reject  拒绝策略
+             四种拒绝策略:
+                  AboutPolicy:默认 直接抛异常
+                  CallerRunsPolicy:将任务回退到调用线程处理
+                  DiscardOldestPolicy: 抛弃队列中等待最久的任务，然后把当前任务加入队列中再尝试提交
+                  Discard:直接丢弃任务,不处理也不抛出异常,如果任务可丢失,最好解决方案
+         工作中不用executors创建对象:
+              fix与single线程池的队列长度为Integer.MAX_VALUE 可能会有请求堆积，导致OOM
+              Cached与schedule允许创建的线程数为Integer.MAX_VALUE 可能会创建大量线程,导致OOM
+         如何配置参数
+             cpu密集型
+                  需要知道线程数几核,如果有大量任务,cpu全速运行，cpu核数+1个线程池配置
+             io密集型
+                  1.并不是一直再执行任务,一般 cpu核数 * 2
+                  2.io大量阻塞，cpu核数/1-阻塞系数  阻塞系数再在0.8~0.9
+          死锁编码及定位分析
+             原因:
+                 两个或两个以上的进程因争夺资源造成的相互等待的现象,如果无外力干涉，它们都将无法推进下去
+
+             使用java工具查看
+                 jps定位进程号
+                 jstack pid  查看线程信息
+
+JVM与GC
+    线程共享: 堆（form,to,eden,old），原空间
+    线程独占区域 寄存器，栈
+
+类的加载器:
+    父类加载机制,双亲委派机制,沙箱安全机制
+垃圾回收算法:
+    复制： from->to
+    标记清除：磁盘碎片
+    标记整理：碎片整理，耗时多
+    分代收集：
+minorGC  form->to->交换
+
+GCRoots:
+      虚拟机栈中引用的对象
+      方法区中类静态属性引用的对象
+      方法区中常量引用对象
+      本地方法栈引用的对象
+  什么是垃圾:内存中不需要使用的对象就是垃圾
+  判断垃圾:
+      引用计数:循环引用问题
+      可达性分析:根搜索路径算法
+
+JVM的参数
+  标配参数:
+    -version  -help
+  X参数:
+    -Xint 解释执行  -Xcomp  第一次使用就编译为本地代码  -Xmixed 混合模式
+  XX参数:
+    Boolean类型
+        -XX:(+_) +开启 -关闭  eg:-XX
+
+
+jinfo  查看参数信息
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Callable 与 Runnable的区别
+        一个返回值,一个没有返回值
+        一个抛异常,一个不抛异常
+        方法名不一样,一个run,一个call
+        RunnableFuture<V> ->FutureTask(Callable callable) 适配器模式
+        建议callable的放在最后
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
