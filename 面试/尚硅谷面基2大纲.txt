@@ -230,10 +230,184 @@ JVM的参数
     -Xint 解释执行  -Xcomp  第一次使用就编译为本地代码  -Xmixed 混合模式
   XX参数:
     Boolean类型
-        -XX:(+_) +开启 -关闭  eg:-XX
+        -XX:(+_) +开启 -关闭  eg:-XX : +PrintGCDetails
+            :KV设值的类型   -XX:MetaspaceSize=200M  元空间设置  -XX:MaxTenuringThreshold =15 对象的存活年龄
+            -Xms 等价与 -XX:iNitialHeapSize -Xmx等价于-XX:MaxHeapSize
+  JVM的默认值:
+      java -XX:+PrintFlagsInitial  查看所有参数的值
+           -XX:+PrintFlagsFinal  查看修改于更新的内容  :=被JVM加载时修改或者程序修改
+           -XX:+PrintFlagsFinal -XX:MetaspaceSize = 512m T(java类)
+           -XX:+PrintFlagsFinal  -version
+           -XX:+PrintCommandLineFlags -version 打印命令行参数
+
+  JVM基本配置的参数
+      -Xms  -Xss（ThreadStackSize） 栈大小默认1024  -Xmx  -Xmn  年轻代的大小
+      -XX:MetaspaceSize 默认大小(21M)原空间受制于本地内存，原空间受本地内存限制
+      -XX:UseSerialGC -XX:SurivorRation to区比例   -XX:NewRatio 年轻代占新生代的比例
+      -XX:MaxTenuringThreshold =15 对象进入老年代的存活年龄
+
+jinfo  查看参数信息    jinfo  -flag PrintGCDetails（不指定显示全部参数） pid
 
 
-jinfo  查看参数信息
+引用类型
+     强引用:出现了OOM异常也不回收
+     软引用:内存不足够就回收,比如高速缓存就用软引用
+            SoftReference<Object> softReference
+     弱引用:不管内存是否够用都回收
+            WakeReference<Object>
+            WakeHashMap 当key不存在时,其value就会被回收
+     虚引用:不会决定对象的生命周期
+            ReferenceQueue 使用get方法总是返回null ,监控对象的回收状态，就是对象被回收前可以作进一步处理
+
+            ReferenceQueue<Object> queue
+            new  WakeReference<Object>(object,ReferenceQueue)
+            在GC回收的时候有值   queue.poll();
+            //todo 于phantomreference 结合使用  用于后置通知
+
+异常:
+    StackOverflowError
+    OutofMemoryError : java heap size
+                     : GC overhead limit exceeded  gc的时间过长，性能较低
+                     : Director buffer memory 直接内存爆掉
+                     : unable to create new native thread 一个应用创建多个线程  ，如果需要超过线程需要配置
+                     非root用户创建线程比较实在
+                     /etc/security/limits.d/90-nproc.conf
+                     //todo
+                     : Metaspace 虚拟机加载类过多, eg:使用 Enhancer 反射生成新的类
+
+垃圾回收器:
+    serial：串行垃圾回收器 暂停用户线程
+    paraller: 并行垃圾收集器 暂停用户线程
+    cms: 并发垃圾清楚,用户线程于垃圾收集器同时执行，适用于对响应时间有要求的场景
+    G1: 将对堆内存分为多个区域,并发的进行回收,优点在于,能够最有效的回收,控制垃圾回收的吞吐量1222222
+垃圾回收器选择:
+    单CPU或者小内存,单机程序
+        -XX:UseSerialGC
+    多CPU,需要最大吞吐量,如后台计算性应用
+       -XX：UseParallelGC 或者-XX:+UseParallelOldGC
+    多cpu,追求低停顿时间,需要快速响应如互联网应用
+       -XX:+UseConcMarkSweepGC
+       -XX:+ParNewGC
+
+     G1 采用标记整理算法  不会有内存碎片  并发执行回收  整理空闲空间快  预测GC停顿时间 小范围区分年轻代于老年代  只有逻辑分代概念
+         只有两个区
+             garbage  横跨 old eden两个区
+             metaspace
+         区域内存划片
+              G1只要求逻辑上连续即可
+              标记示意图:
+                  初始标记-》并发标记-》最终标记-》筛选回收
+         参数:
+             -XX:G1HeapRegionSize = n 指定分区的大小  Humangous大对象区
+             -XX:MaxGCPauseMills = n 最大的gc停顿时间，软目标
+             -XX:InitiatingHeapOccupancyPercent = n  堆占用多少出发GC 默认45
+             -XX:ConcgcThreads = n 并发GC使用的线程数
+             -XX:G1ReservePercent = n 设置空闲空间的预留百分比,以降低目标空间溢出的风险，默认值10%
+     G1与CMS 没有空闲碎片  有精确的停顿时间
+
+Springboot的部署
+
+linux的性能查看
+       整机性能 ：top
+       cpu:  vmstat
+       内存:  free
+       磁盘:  df
+       磁盘IO: iostat
+       网络IO: ifstat
+       查寻CPU过高:
+           top  找到java程序
+           ps -ef|grep java 找到Java程序
+           定位到线程:  ps -mp pid  -o THREAD,tid,time 查询pid下的线程  -m 线程
+           将tid 转为 16进制
+           jstack pid | grep tid(16进制) -A60  查看线程信息
+
+
+异常排查:
+    jconsole
+    visualvm
+    jmap  输出堆栈信息
+    jhat  分析堆栈信息
+    jstack  栈信息
+    jps -l
+
+生产上的问题:
+    导出excel,会出现垃圾回收时间过长
+    内存溢出,就是没有注意heap butebuffer
+    连接中断，系统处理不过来,可以用消息队列做缓冲s
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
