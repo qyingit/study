@@ -1,0 +1,77 @@
+定义全局配置
+layui.config({
+  dir: '/res/layui/' //layui.js 所在路径（注意，如果是script单独引入layui.js，无需设定该参数。），一般情况下可以无视
+  ,version: false //一般用于更新模块缓存，默认不开启。设为true即让浏览器不缓存。也可以设为一个固定的值，如：201610
+  ,debug: false //用于开启调试模式，默认false，如果设为true，则JS模块的节点会保留在页面
+  ,base: '' //设定扩展的Layui模块的所在目录，一般用于外部模块扩展
+});
+
+
+定义模块
+layui.define(['layer', 'laypage'], function(exports){
+  //do something
+  
+  exports('demo', function(){
+    alert('Hello World!');
+  });
+});
+exports为定义得模块加载完成得回调函数
+export得第一个参数为模块名,第二个参数为接口,当模块声明后,模块会注册到layui对象中
+可以通过layui.demo()执行该模块接口
+['layer', 'laypage']为本模块依赖的模块,它并非只能是一个数组，
+你也可以直接传一个字符型的模块名，但是这样只能依赖一个模块。
+
+加载所需模块
+layui.use(['laypage', 'layedit'], function(){
+  var laypage = layui.laypage
+  ,layedit = layui.layedit;
+  
+  //do something
+});
+
+layui.config({
+        base: "/static/lay/"
+    }).extend({
+        index: "lib/index",
+        zmn_plat_activity_list: "activity/zmn.plat.activity.list",
+    }).use(['index', 'zmn_plat_activity_list']);
+extend为建立别名
+
+layui.link(href) 加载css文件
+
+本地存储
+localStorage 持久化存储：layui.data(table, settings)，数据会永久存在，除非物理删除。
+sessionStorage 会话性存储：layui.sessionData(table, settings)，页面关闭后即失效。注：layui 2.2.5 新增
+//【增】：向test表插入一个nickname字段，如果该表不存在，则自动建立。
+layui.data('test', {
+  key: 'nickname'
+  ,value: '贤心'
+});
+//【删】：删除test表的nickname字段
+layui.data('test', {
+  key: 'nickname'
+  ,remove: true
+});
+layui.data('test', null); //删除test表
+//【改】：同【增】，会覆盖已经存储的数据
+//【查】：向test表读取全部的数据
+var localTest = layui.data('test');
+console.log(localTest.nickname); //获得“贤心”
+
+获取设备信息 
+方法：layui.device(key)，参数key是可选的
+var device = layui.device();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
