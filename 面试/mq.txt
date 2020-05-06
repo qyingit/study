@@ -1,0 +1,188 @@
+ra:::
+ro:::
+ka:::
+特点：
+    ra:::
+         开源,性能稳定,可靠的消息投递模式,返回模式,API丰富,集群模式丰富,表达式配置,HA(High Available)模式
+    ,镜像队列模型,保证数据不丢失的前提下做到高可靠性,可用性
+    ro:::
+         支持发布/订阅和点对点模式,在一个队列中有可靠的FIFO和严格的顺序传递,支持pull与push两种模式,push即
+    在消费端设置回调,pull控制权在应用,减小broker的性能开销,提供单一队列百万消息堆积能力,支持多种消息协议,如JMS,
+    分布式高可用的部署架构,满足至少一次消息传递语义
+    ka:::
+         高吞吐,低延迟，每个topic可以区分多个partition,consumer group对partition进行consumer操作,可扩展性,
+    kafka集群支持热扩展,持久性,可靠性,消息持久化到本地磁盘,并且支持数据备份防止数据丢失,容错性，允许集群中的
+    节点失败,高并发：允许数千个客户端同时读写
+那些场景选择mq:
+    ra:::
+        1:单发送单接收,单发送多接收,2:一个发送端,多个接收端,如分布式的任务派发.为了保证消息发送的可靠性,
+        不丢失消息,使消息持久化了.同时为了防止接收端在处理消息时down掉,只有在消息处理完成后才发送ack消息;
+        3:使用场景：发布、订阅模式，发送端发送广播消息，多个接收端接收;4:使用场景：发送端按routing key
+        发送消息，不同的接收端按不同的routing key接收消息。5：发送端不只按固定的routing key发送消息,
+        而是按字符串“匹配”发送，接收端同样如此。
+    ro:::
+         1:异步解耦,分布式事务的数据一致性,消息的顺序收发,削峰填谷,大规模机器的缓存同步
+    ka:::
+         日志收集,消息系统：解耦生产者与消费者,缓存消息,用户活动跟踪,用于做实时分析,运营指标,流式处理
+架构设计:
+    ra:::
+         broker 消息队列服务器实体, exchange 消息交换机，它指定消息按什么规则，路由到哪个队列,
+          queue 消息队列载体,binding 把exchange和queue按照路由规则绑定起来,routing key路由关键字,exchange
+          根据这个关键字进行消息投递,vhost 虚拟主机，一个broker里可以开设多个vhost，用作不同用户的权限分离,
+          producer 消息生产者，就是投递消息的程序,consumer 消息消费者，就是接受消息的程序,channel 消息通
+          道,在客户端的每个连接里，可建立多个channel，每个channel代表一个会话任务
+    ro:::
+         Producer 消息发布的角色,Consumer 消息消费的角色,NameServer Topic路由注册中心,BrokerServer 负责消息的存储、投递和
+         查询以及服务高可用保证,Remoting Module：整个Broker的实体，负责处理来自clients端的请求 2.Client Manager：负责管理客
+         户端(Producer/Consumer)和维护Consumer的Topic订阅信息3.Store Service：提供方便简单的API接口处理消息存储到物理硬盘
+         和查询功能4.HA Service：高可用服务，提供Master Broker 和 Slave Broker之间的数据同步功能5.Index Service：根据特定的
+         Message key对投递到Broker的消息进行索引服务，以提供消息的快速查询
+    ka:::
+         producer 生产,consumer 消费,topic 队列,下属分区,consumer group 消费者组-实现topic消息广播与单播,
+         broker服务器容纳topic, partition有序队列,partition中每条消息分配一个有序Id, offset是kafka存储文件位置
+
+分区的目的:
+   ra:::
+   ro:::
+        分区对于 Kafka 集群的好处是：实现负载均衡。分区对于消费者来说，可以提高并发度，提高效率。
+   ka:::
+        分区对于 Kafka 集群的好处是：实现负载均衡。分区对于消费者来说，可以提高并发度，提高效率。
+
+消息的有序性:
+   ra:::
+        拆分多个 queue,每个 queue 一个 consumer,就是多一些 queue 而已,确实是麻烦点;或者就
+        一个 queue 但是对应一个 consumer,然后这个 consumer 内部用内存队列做排队,然后分发给底层不同的 worker 来处理。
+   ro:::
+        消息发送的时候保持顺序,消息存储的时候保持顺序,消息消费的时候保持顺序
+   ka:::
+        每个消息在写入partition都是有序的,单独的partiton只能有一个消费者消费，
+        就可以在里面保证消息的顺序,分区之间是不能保证有序性的
+
+MQ的高可用:
+   ra:::
+        1.producer段通过事务保证消息成功发送到RabbitMQ,会消耗性能,另一种通过confirm发送方确认机制,如果rocketmq内部错误导致消息
+        丢失,会收到nack命令,生产者可以处理nack命令
+        2.消息路由到队列的可靠性,消息发送到交换器,如果没有和它匹配队列的话,消息也会丢失,mandatory或者AE可以让消息在路由到队列之
+        前得到极大的可靠性保障,mandatory为true找不到队列会将消息返回生产者,为false会丢弃,如果不想让消息丢失,使用AE备份交换器,
+        过在声明交换器（调用channel.exchangeDeclare方法）的时候添加alternate-exchange参数来实现,也可以通过策略的方式实现.
+        如果两者同时使用的话,前者的优先级更高,会覆盖掉Policy的设置.
+        3.消息在队列中持久化,在声明队列时将durable参数置为true实现的,如果不持久化,元数据与数据都会丢失,消息的持久化,通过将消息
+        的投递模式（BasicProperties中的deliveryMode属性）设置为2即可实现消息的持久化
+        3-1.集群系统
+          集群：RabbitMQ会始终记录四种类型的内部元数据:队列元数据,交换器元数据,绑定元数据,vhost元数据
+          镜像队列:对主队列进行从拷贝
+          Shovel是RabbitMQ的一个插件,用于生产者与消费者之间的拷贝
+        4.消息消费阶段的可靠性,消费者指定autoAck,当autoAck等于false时RabbitMQ会等待消费者显式地回复确认信号后才从内存（或者磁盘
+        ）中移去消息,当autoAck等于true时,RabbitMQ会自动把发送出去的消息置为确认,然后从内存（或者磁盘）中删除,RabbitMQ不会为未
+        确认的消息设置过期时间,消息消费失败,调用Basic.Reject或者Basic.Nack来拒绝当前消息,如果拒绝消息会丢失,需要设置requeue参数
+        为true,消息会重入队列,而不是发送给消费者,但requeue的消息是存入队列头部的,如果不能正确消费,会进入死循环,此时可以重入其他队列
+        或者死信队列进行消费分析
+   ro:::
+        1.Name Server 是一个几乎无状态节点，可集群部署，节点之间无任何信息同步。
+        2.Broker 部署相对复杂，Broker 分为 Master 与 Slave模式,还有刷盘配置保证消息可用性
+        3.Producer 与 Name Server 集群中的其中一个节点（随机选择）建立长连接,如果broker不可用会有重试与Broker规避策略,
+        sendOneway单项发送,sendAsync异步发送,sendSync同步发送
+        4.Consumer 与 Name Server 集群中的其中一个节点（随机选择）建立长连接，pullconsumer需要自己实现ACK,pushconsumer需要
+        返回broker的ack信息,才能说明消息已经消费，不消费会进入重试队列,严重会进入死信队列
+   ka:::
+        1.topic的分区副本实现,所有读写操作通过leader实现,follower会定期同步leader数据,leader挂掉,follower会定期去leader
+        复制数据通过数据冗余实现可靠性,
+        2.producer往broker发送消息可靠性,由于kafka的副本过多,因此kafka提供了消息确认机制,可以在定义 Producer 时通过 acks
+        参数指定 acks = 0 消息发出去就代表发送成功,acks = 1 消息发送到达leader代表成功,也许会丢数据,acks = all消息发送到
+        分区所有副本才算成功,producer还可以选择同步跟异步配置,但异步配置可能会丢数据
+        3.leader选举可靠性 维持了一个isr列表
+        4.数据读取一致性,High Water Mark 机制,consumer能读到的最多数据为所有副本中偏移量最小的分区,通过参数 replica.lag.time.max.ms
+         参数配置，指定副本在复制消息时可允许的最大延迟时间
+
+ISR、OSR、AR 是什么？
+      AR = ISR+ OR 超过阈值leader会把ISR副本移除到OSR
+      假设replica.lag.max.messages设置为4,这意味着只要follower落后leader的消息不超过3条,它就不会从ISR中删除
+      把replica.lag.time.max.ms设置为500毫秒,这意味着只要follower每隔500毫秒或更早地向leader发送一个fetch 请求,它们就不会被标记为死亡并且不会从 ISR 中删除
+
+LEO、HW、LSO、LW等分别代表什么:
+      LEO：是 LogEndOffset 的简称，代表当前日志文件中下一条
+      HW：水位或水印（watermark）一词，也可称为高水位(high watermark)，通常被用在流式处理领域（比如Apache Flink、Apache Spark等），以表征元素或事件在基于时间层面上的进度。在Kafka中，水位的概念反而与时间无关，而是与位置信息相关。严格来说，它表示的就是位置信息，即位移（offset）。取 partition 对应的 ISR中 最小的 LEO 作为 HW，consumer 最多只能消费到 HW 所在的位置上一条信息。
+      LSO：是 LastStableOffset 的简称，对未完成的事务而言，LSO 的值等于事务中第一条消息的位置(firstUnstableOffset)，对已完成的事务而言，它的值同 HW 相同
+      LW：Low Watermark 低水位, 代表 AR 集合中最小的 logStartOffset 值。
+
+数据传输的事务:
+      ra:::
+      ro:::
+      ka:::
+      1.最多一次:消息不会被重复发送,最多被传输一次,但也有可能一次不传输
+      2.最少一次:消息不会被漏发送,最少被传输一次,但也有可能被重复传输.
+      3.精确的一次（Exactly once）:不会漏传输也不会重复传输,每个消息都传输被
+
+Kafka消费者是否可以消费指定分区消息
+      Kafa consumer消费消息时，向broker发出fetch请求去消费特定分区的消息，consumer指定消息在日志中的偏移量（offset），就可以消
+      费从这个位置开始的消息，customer拥有了offset的控制权，可以向后回滚去重新消费之前的消息，这是很有意义的
+Kafka消息是采用Pull模式，还是Push模式
+      pull模式,好处是提高broker处理能力压力,防止consumer崩溃,缺点是客户端容易出现空轮询,
+
+底层存储设计特点
+      ra:::
+      ro:::
+         MappedFile,使用mmap与磁盘文件映射,初始化使用mlock将内存锁定,防止pagecache被os交换到swap区域,数据顺序写,写满后
+         数据自动创建mappedFile顺序写入
+         mappedFileQueue封装了mappedFile实例
+         commitlog封装了写入消息和读取消息的实现,根据mappeFileQueue找到正在写的mappedFile,之后将消息写入到pagechahe
+         consumerQueue一个topic可以设置多个queue,每个consumerQueue对应topic下的queue,相当于kafka的partion概念,存储了
+         msg在commitlog的offset,size,tagsCode,固定长度20字节,consumer可以根据offset在commitlog找到具体消息
+         https://www.jianshu.com/p/771cce379994
+      ka:::
+      1.把topic中的partition大文件分成多个小文件段,通过小文件段，容易清楚或删除已经消费的文件段,减少磁盘占用
+      2.通过索引信息可以快速定位message和确定response的最大大小
+      3.通过index元数据全部映射到memory，可以避免segment file的IO磁盘操作
+      4.通过索引文件稀疏存储，可以大幅降低index文件元数据占用空间大小
+
+Kafka创建Topic时如何将分区放置到不同的Broker中:
+       1.副本因子不能大于 Broker 的个数,第一个分区（编号为0）的第一个副本放置位置是随机从 brokerList 选择的,
+       其他分区的第一个副本放置位置相对于第0个分区依次往后移.也就是如果我们有5个 Broker,5个分区,假设第一个
+       分区放在第四个 Broker 上,那么第二个分区将会放在第五个 Broker 上;第三个分区将会放在第一个 Broker 上;
+       第四个分区将会放在第二个 Broker 上,依次类推,剩余的副本相对于第一个副本放置位置其实是由 nextReplicaShift
+        决定的，而这个数也是随机产生的
+
+Kafka新建的分区会在哪个目录下创建
+      在启动 Kafka 集群之前，我们需要配置好 log.dirs 参数，其值是 Kafka 数据的存放目录，这个参数可以配置多个目录，
+      目录之间使用逗号分隔，通常这些目录是分布在不同的磁盘上用于提高读写性能。
+      如果单个目录,kafka只能在这个目录创建分区,如果多个目录,kafka会在分区目录最少的文件夹创建新的分区目录
+
+谈一谈 Kafka 的再均衡:
+      在Kafka中，当有新消费者加入或者订阅的topic数发生变化时，会触发Rebalance(再均衡：在同一个消费者组当中，分区的所有权从一个消费者转移到另外一个消费者)机制，Rebalance顾名思义就是重新均衡消费者消费。Rebalance的过程如下：
+      第一步：所有成员都向coordinator发送请求，请求入组。一旦所有成员都发送了请求，coordinator会从中选择一个consumer担任leader的角色，并把组成员信息以及订阅信息发给leader。
+      第二步：leader开始分配消费方案，指明具体哪个consumer负责消费哪些topic的哪些partition。一旦完成分配，leader会将这个方案发给coordinator。coordinator接收到分配方案之后会把方案发给各个consumer，这样组内的所有成员就都知道自己应该消费哪些分区了。
+      所以对于Rebalance来说，Coordinator起着至关重要的作用
+
+Kafka 是如何实现高吞吐率的
+      Kafka是分布式消息系统，需要处理海量的消息，Kafka的设计是把所有的消息都写入速度低容量大的硬盘，以此来换取更强的存储能力，
+      但实际上，使用硬盘并没有带来过多的性能损失。kafka主要使用了以下几个方式实现了超高的吞吐率：
+      顺序读写,零拷贝,文件分段,批量发送,数据压缩。
+
+Kafka 监控都有哪些:
+      雅虎开源的Kafka集群管理器(Kafka Manager)
+      Apache Kafka监控之Kafka Web Console
+      还有 JMX
+
+谈谈你对 Kafka 事务的了解
+      http://www.jasongj.com/kafka/transaction/
+谈谈你对 Kafka 幂等的了解
+      https://www.jianshu.com/p/b1599f46229b
+Kafka 缺点
+      由于是批量发送，数据并非真正的实时；
+      对于mqtt协议不支持；
+      不支持物联网传感数据直接接入；
+      仅支持统一分区内消息有序，无法实现全局消息有序；
+      监控不完善，需要安装插件；
+      依赖zookeeper进行元数据管理；
+
+Kafka 新旧消费者的区别
+      旧的 Kafka 消费者 API 主要包括：SimpleConsumer（简单消费者） 和 ZookeeperConsumerConnectir（高级消费者）。
+      SimpleConsumer 名字看起来是简单消费者，但是其实用起来很不简单，可以使用它从特定的分区和偏移量开始读取消息。
+      高级消费者和现在新的消费者有点像，有消费者群组，有分区再均衡，不过它使用 ZK 来管理消费者群组，并不具备偏移
+      量和再均衡的可操控性。 现在的消费者同时支持以上两种行为，所以为啥还用旧消费者 API 呢？
+
+Kafka 分区数可以增加或减少吗？为什么？
+      我们可以使用 bin/kafka-topics.sh 命令对 Kafka 增加 Kafka 的分区数据，但是 Kafka 不支持减少分区数。
+      Kafka 分区数据不支持减少是由很多原因的，比如减少的分区其数据放到哪里去？是删除，还是保留？删除的话，
+      那么这些没消费的消息不就丢了。如果保留这些消息如何放到其他分区里面？追加到其他分区后面的话那么就破坏了
+      Kafka 单个分区的有序性。如果要保证删除分区数据插入到其他分区保证有序性，那么实现起来逻辑就会非常复杂。
