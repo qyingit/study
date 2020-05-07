@@ -123,3 +123,39 @@ SpringCloud Stream（封装与Redis,Rabbit、
 
 消息总线
 Spring Cloud Bus
+
+
+注册中心consule:
+    分布式发现及配置管理中心,go语言开发
+
+
+网关gateWay:
+    spring5.0 springboot2.0  reactor等技术开发的网关
+    底层使用netty加webflux技术
+    1.能干嘛:
+        反向代理,鉴权,流量控制,熔断,日志监控
+    2.特性
+        动态路由：能够匹配任何请求属性
+        可以对路由指定predicate(断言)和filter(过滤器)
+        集成hystrix的断路器功能
+        集成SpringCloud服务发现功能
+        易于编写的predicate和Filter
+        请求限流功能及支持路径重写
+    3.核心概念
+        路由:
+            构建网关的基本模块,由ID,目标URI,一系列断言和过滤器组成,如果断言为True就匹配该路由
+        断言:
+            参考java8的java.util.function.Predicate开发人员可以匹配HTTP请求中的所有内容,如果请求头与断言匹配
+            则进行路由
+        过滤:
+            指spring框架中GateWayFilter实例,使用过滤器,可以在请求被路由前或者路由后对请求修改
+    4.核心逻辑
+        请求过来在Gateway handler Mapping 找到对应的匹配的路由,将其发送到Gateway Web Handler,handler再通过指定的
+        过滤器链将请求发送到实际的服务执行业务逻辑,然后再Filter中做处理
+
+消息总线cloudBus
+    springCloudBus 配置Spring cloud config可以实现配置的动态刷新
+    Bus 支持两种消息代理rabbitmq 与 kafka
+
+springcloudStream：
+    屏蔽底层中间件的差异,降低切换版本,统一消息的编程模型

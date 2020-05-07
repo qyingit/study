@@ -1,0 +1,15 @@
+sleuth：
+      1.术语
+       span:基本工作单元(摘要信息,时间戳事件,关键值注释,span的ID,以及进度ID(ip地址)),当创建了span你必须在某个时刻停止它
+       Trace:一系列spans组成的一个树状结构
+       Annotation:用来记录一个事件的存在,一些核心annotation用来定义一个请求的开始和结束
+           cs-Client Sent -客户端发起一个请求,这个annotation描述了span的开始
+           sr-Server Received-服务端获取请求并准备开始处理它,如果将其sr减去cs时间戳可得到网络延迟
+           ss-Server Sent-注解表明请求处理完成,ss-sr时间戳便可以得到服务端需要处理请求时间
+           cr-Client Received-表明span的结束,客户端收到服务端回复,如果cr-cs时间戳便可得到客户端从服务端获取回复所有所需时间
+Zipkin:
+
+
+SkyWalking:
+
+CAT:
