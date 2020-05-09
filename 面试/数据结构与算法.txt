@@ -267,3 +267,91 @@
     第n个元素的父节点为(n-1)/2 n表示二叉树中的第几个元素
 
     线索二叉树:
+    threadedList(){
+        HeroNode node = root;
+        while(node != null){
+            while(node.getLeftType() == 0){
+                node = node.getLeft()
+            }
+            sout(node);
+            while(node.getRightType() == 1){
+                node = node.getRight();
+                sout (node);
+            }
+            node = node.getRight();
+        }
+    }
+
+11.1树结构：
+    堆排序的基本思想:
+    1.将待排序序列构造成一个大顶堆
+    2.整个序列的最大值就是堆顶的根节点
+    3.将其与末尾元素进行交换,此时末尾就是最大值
+    4.将剩余n-1个元素重新构造成一个堆,这样就会得到n个元素的次小值,
+    反复执行就能得到一个有序序列
+
+    heapSort(int[] arr){
+       //1.构建大顶堆
+      for(int i=arr.length/2-1;i>=0;i--){
+          //从第一个非叶子结点从下至上，从右至左调整结构
+          adjustHeap(arr,i,arr.length);
+      }
+      //2.调整堆结构+交换堆顶元素与末尾元素
+      for(int j=arr.length-1;j>0;j--){
+          swap(arr,0,j);//将堆顶元素与末尾元素进行交换
+          adjustHeap(arr,0,j);//重新对堆进行调整
+      }
+    }
+        adjustHeap(int []arr,int i,int length){
+            int temp = arr[i];//先取出当前元素i
+            for(int k=i*2+1;k<length;k=k*2+1){//从i结点的左子结点开始，也就是2i+1处开始
+                if(k+1<length && arr[k]<arr[k+1]){//如果左子结点小于右子结点，k指向右子结点
+                    k++;
+                }
+                if(arr[k] >temp){//如果子节点大于父节点，将子节点值赋给父节点（不用进行交换）
+                    arr[i] = arr[k];
+                    i = k;
+                }else{
+                    break;
+                }
+            }
+            arr[i] = temp;//将temp值放到最终的位置
+        }
+        swap(int []arr,int a ,int b){
+            int temp=arr[a];
+            arr[a] = arr[b];
+            arr[b] = temp;
+        }
+
+
+    二叉排序树:
+         对任何一个非叶子节点,要求左子节点的值比当前节点的值小,右子节点的值比当前节点值大
+
+    平衡二叉树：
+
+    多路查找树：
+
+
+    图:
+
+
+    分治算法:
+
+
+    背包问题：
+
+    KPM算法:
+
+    贪心算法:
+
+
+    普利姆算法:
+
+    克鲁斯卡尔算法:
+
+
+    迪杰斯特拉算法:
+
+    弗洛伊德算法:
+
+    马踏棋盘算法:
