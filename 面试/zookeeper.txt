@@ -1,0 +1,53 @@
+1.是什么:
+    一个开源的分布式协调服务,是集群的管理者,监视集群的各个节点,根据节点的反馈进行下一步合理操作,最终将简单易用
+    的接口和性能搞笑,功能稳定的系统提供给用户
+    分布式程序可以基于zookeeper实现发布,订阅,负载均衡,命名服务,分布式协调/通知,集群管理,master选举,分布式锁和
+    分布式队列等功能
+
+2.zookeeper保证了分布式一致性的特性:
+    1.顺序一致性2.原子性,3.单一视图4.可靠性 5.实时性(最终一致性)
+    客户端读请求可以被集群中任意一台机器处理,如果读请求在节点上注册了监听器,这个监听器由所连接的zookeeper机器处理.
+    对于写请求,这个请求回同时发送给其它zookeeper机器,达成一致后,请求才会返回,随着zookeeper集群机器增多,读请求的吞吐
+    会下降
+    有序性是zookeeper的一个重要特性,所有的更新都是全局有序的,每个更新都有一个唯一的时间戳,这个时间戳成为zxid,而读请求
+    会相对于更新有序,也就是读请求返回的结果中带有zookeeper最新的zxid
+
+3.zookeeper文件系统
+    zookeeper提供一个多层级的节点命名空间.与文件系统不同的是,这些节点可以设置关联数据,而文件系统中只有文件节点可以存放数据而
+    目录节点不行
+    zookeeper为了保证高吞吐和低延迟,在内存中维护了树状目录结构,使得zookeeper不能用于存放大量数据,每个节点存放数据的上限为1M
+
+4.ZAB协议
+    ZAB是分布式协调服务,zookeeper专门设计的一种支持崩溃恢复的原子广播协议
+    ZAB包括两种基本模式:崩溃恢复和消息广播
+    集群刚刚启动或者leader服务器宕机,重启或者网络故障导致不能正常通信,进入崩溃恢复模式,选举出新leader,集群follower开始与新leader
+    进行数据同步,当集群中超过半数机器与leader完成数据同步后,退出恢复模式,进入消息广播模式,leader服务器接受客户端事务请求,生成事务
+    提案进行事务请求处理
+
+5.zookeeper的四个节点
+    持久化节点，临时节点,持久化顺序节点,临时顺序节点
+
+6.zookeeper的waracher机制
+    zookeeper允许客户端向服务端的znode注册一个watcher监听,当服务端指定事件触发了watcher,服务端会向指定的客户端发送一个事件通知
+    是西安分布式的通知功能,然后客户端根据watcher通知状态和事件类型做出业务上的改变
+    工作机制:
+        客户端注册watcher
+        服务端注册watcher
+        客户端回调watcher
+    特性:
+        一次性,一旦一个watcher触发,zookeeper会从响应的存储移除,减轻服务端压力,不然对于非常频繁的节点,服务端会像客户端发送事件通知
+        ,对于服务端压力大
+        客户端串行执行
+        轻量 watcher只告诉客户端发送事件,并不说明事件具体内容,客户端向服务端注册watcher,并不会把客户端真实的watcher对象传递到服务端
+        仅仅在客户端使用bool属性进行标记，watcherEvent通知从server发送到client是异步的,通过socket通信,由于zookeeper本身提供ordering
+        guarantee,客户端监听事件后,才会感知znode发生的变化,所有zookeeper不能期望监控每次节点的变化,而zookeeper只能保证最终一致性,
+        而无法保证强一致性
+    注册watcher getData,exists,getChildren
+    触发watcher create delete,setData
+
+7.watcher实现:
+   调用getData()/getChildren()/exist()三个API,传入watcher对象
+   2.封装请求request,封装watcher到watcherRegistration
+   3.封装成packet对象,发服务发送request
+   4.收到服务端响应后,将watcher注册到zkwatchermanager中进行管理
+   5.请求返回,完成注册
