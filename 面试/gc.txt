@@ -1,0 +1,367 @@
+JVM垃圾回收的时候如何确定垃圾？是否知道什么是GC Roots?
+1.什么是垃圾:
+    简单来说就是内存中已经不再被使用的空间
+2.要进行垃圾回收，如何判断一个对象是否可以被回收？
+    引用计数法:
+        Java中，引用和对象是有关联的，如果要操作对象就必须引用进行
+        因此，通过引用计数判断一个对象是否可以回收。给对象中添加一个引用计数器，每当有一个地方引用它，计数器值加1；每当有一个引用失效，计数器值减1
+        。任何时刻计数器值为零的对象就是不可能再被使用的，那么这个对象就是可回收的对象,但它很难解决对象之间互相循环引用的问题
+    枚举根节点做可达性分析（根搜索路径）：
+        为解决引用计数法的循环引用问题，Java使用了可达性分析的方法，GC Root就是一组必须活跃的引用，基本思路就是通过一系列名为GC Root的对象作为
+        起始点，从这个GC Root对象开始向下搜索，如果一个对象到GC Root没有任何引用链相连，则说明此对象不可用。也即给定一个集合的引用作为根触发，
+        通过引用关系遍历对象图，能被遍历到的（可达到的）对象就被判定为存活；没有被遍历到的被判定为死亡
+    哪些对象可以作为GC Root的对象：
+        虚拟机栈（栈帧中的局部变量区，也叫做局部变量表）中引用的对象
+        方法区中的类静态属性引用的对象
+        方法去中常量引用的对象（指final修饰的？）
+        本地方法栈中（Native方法）引用的对象
+
+如何盘点查看JVM系统默认值：
+    标配参数
+        -version,-help,-showversion,示例：java -version
+    X参数（了解）
+        -Xint 解释执行,-Xcomp 第一次使用就编译成本地代码,-Xmixed 混合模式，先编译后执行，默认
+    XX参数
+        boolean类型
+        格式：-XX:+(或者-)参数名，其中+表示开启，-表示关闭
+        -XX:+PrintGCDetails -> 打印GC细节,-XX:-PrintGCDetails,-XX:+UseSerialGC -> 使用串行垃圾回收器,-XX:-UseSerialGC
+        K-V类型
+        格式：-XX:key=value,-XX:MetaspaceSize=128m -> 元空间大小,-XX:MaxTenuringThreshold=15 -> 经历过15次GC，能升到老年代
+    cmd命令：
+        jinfo -flag JVM参数名 进程编号 -> 查看某个参数是否使用（这里的JVM参数名不需要带前面的-XX）
+        jinfo -flags 进程编号 -> 显示所有参数，包括默认的和手动设置的
+    经典参数：
+        -Xms等价于-XX:InitialHeapSize -> 初始化堆内存，使用示例：-Xms128m
+        -Xmx等价于-XX:MaxHeapSzie -> 最大堆内存
+    通过JVM命令打印JVM参数：
+        -XX:+PrintFlagsInitial -> 查看初始默认值，打印信息中如果是:=表示这个参数被修改过
+        格式：java -XX:+PrintFlagsInitial -version或java -XX:+PrintFlagsInitial
+        -XX:+PrintFlagsFinal -> 查看修改过的JVM参数
+        -XX:+PrintCommandLineFlags
+    运行的时候修改JVM参数：
+
+工作中用过的JVM常用基本配置参数有哪些:
+    //返回JVM中的内存总量，对应-Xms，默认是系统内存的1/64
+    Runtime.getRuntime().totalMemory();
+    //返回JVM试图使用的最大内存量，对应-Xmx，默认是系统内存的1/4
+    Runtime.getRuntime().maxMemory();
+    JVM参数在IDEA的run -> Edit configuration -> VM options中设置
+        -Xms：默认是系统内存的1/64，等价于-XX:InitialHeapSize
+        -Xmx：默认是系统内存的1/4，等价于-XX:MaxHeapSzie
+        -Xss：设置单个线程栈的大小，一般默认512k到1024k，等价于-XX:ThreadStackSizze。使用命令打印出来发现居然取值是0，0表示使用默认值，这个
+        默认值取决于不同的系统，而不是0Mb
+        -Xmn：设置年轻代的大小，一般不用调整
+        -XX:MetaspaceSize：设置元空间的大小
+        元空间的本质和永久代类似，都是对JVM规范中方法区的实现。不过元空间与永久代之间最大的区别在于：元空间并不在虚拟机内存中，而是使用本地内存。
+        因此，默认情况下，元空间的带线啊哦仅受本地内存限制
+        -XX:+PrintGCDetails：打印GC日志信息
+    格式：GC前该区的内存占用->GC后该区的内存占用（该区总内存大小）
+        -XX:SurvivorRatio：设置新生代中eden区和s0/s1空间的比例，默认是8：1：1。如果这个值设为4，比例就是eden：s0：s1=4：1：1
+        -XX:NewRatio：设置老年代和新生代的空间比例，默认是2：1。设置为4，就是老年代：新生代=4：1
+        -XX:MaxTenuringThreshold：设置垃圾最大年龄，就是一个对象在新生代的from区和to区来回的次数，超过这个次数就能升到老年代的GC次数，
+        默认值是15。取值必须在0到15之间
+
+强引用、软引用弱引用、虚引用:
+    强引用：
+        当内存不足，JVM开始垃圾回收，对于强引用的对象，就算是出现了OOM，也不会对该对象进行回收，死都不回收
+        强引用是最常见的普通对象引用，只要还有一个强引用指向一个对象，就能表明对象还活着，垃圾回收器就不会回收这个对象。在Java中最常见的就是强引用
+        ，把一个对象赋给一个引用变量，这个引用变量就是强引用。当一个对象被强引用变量引用时，它处于可达状态，是不可能被垃圾回收的，即使该对象以后永
+        远都不会被用到，JVM也不会回收。因此强引用是造成Java内存泄漏的主要原因
+        对于一个普通的对象，如果没有其他的引用关系，只要超过了引用的作用域或者显式地将相应强引用赋值为null，一般认为就是可以被垃圾回收的（具体回
+        收时机要看垃圾收集策略）
+    软引用:
+        需要java.lang.reg.WeakReference类来实现，只要垃圾回收机制一运行，不管JVM的内存空间是否足够，都会回收该对象占用的内存
+    软引用和弱引用的使用场景：
+        图片缓存，键是图片路径，值是图片对象的软引用
+        Map<String, SoftReference<Bitmap>>
+    WeakHashMap类:
+        如果主键被置为null，只要gc，就会回收map里这条entry（即主键为空）的内容
+    虚引用：
+        需要java.lang.reg.PhantomReference类来实现。虚引用并不会决定对象的生命周期。如果一个对象仅持有虚引用，那么它就和没有任何引用一样，
+        在任何时候都可能被垃圾回收器回收，它不能单独使用也不能通过它访问对象，虚引用必须和**引用队列（ReferenceQueue）**联合使用。
+        虚引用的主要作用是跟踪对象被垃圾回收的状态。仅仅是提供了一种确保对象被finilize以后，做某些事情的机制。PhathomRegerence的get方法总是
+        返回null，因此无法访问对应的引用对象。其意义在于说明一个对象已经进入finalization阶段，可以被gc回收，用来实现比finalization机制更灵活
+        的回收操作。
+        设置虚引用关联的唯一目的，就是在这个对象被收集器回收的时候收到一个系统通知或者后续添加进一步的处理。Java允许使用finilize()方法在垃圾收
+        集器将对象从内存中清除出去之前做必要的清理工作。
+
+谈谈对OOM的认识:
+    StackOverflowError：
+        常见错误原因：方法深度调用，多是递归引起，方法调用次数太多导致超出栈内存
+    OutOfMemoryError: Java heap space
+        堆内存溢出,主要是对象占用空间超过堆内存空间
+    OutOfMemoryError: GC overhead limit exceeded：
+        这个错误表示大量资源被拿去做GC了，而GC的效果却不怎么好。具体定义是超过98%的时间用来做GC，却回收了不到2%的堆内存，并且连续多次出现这种情
+        况，就会抛出这个异常
+    OutOfMemoryError: Direct buffer memory
+        原因：NIO（指new IO，而不是网络的那个NIO）中常使用ByteBuffer来读取或者写入数据，这是一种基于通道（channel）与缓冲区（buffer）的IO
+        方式。它可以使用native函数库直接分配堆外内存。然后通过一个存储在Java堆里面的DirectByteBuffer对象作为这块内存的引用进行操作。这样能在
+        一些场景中显著提高性能，因为避免了在Java堆和native堆中来回赋值数据。
+        ByteBuffer.allocate()：分配JVM堆内存，属于GC管辖范围，由于需要拷贝所以速度相对较慢
+        ByteBuffer.allocteDirect()：分配操作系统本地内存，不属于GC管辖范围，由于不需要内存拷贝所以速度相对较快
+        但如果不断分配本地内存，堆内存很少使用，那么JVM就不需要执行GC，DirectByteBuffer对象们就不会被回收，这时候堆内存充足，但本地内存可能已
+        经使用光了，再次尝试分配本地内存就会出现OutOfMemoryError
+    OutOfMemoryError: unable to create new native thread
+        原因：常发生在高并发请求服务器的时候，准确的讲与平台、系统有关
+            应用创建了太多线程，一个应用进程创建多个线程，超过系统承载极限
+            服务器并不允许你的应用程序创建这么多线程，Linux默认允许单个进程可以创建的线程数是1024个，如果超过这个数量，就会报错
+        解决方法：
+            降低创建线程的数量
+            修改Linux服务器配置，扩大默认限制
+            vim /etc/security/limits.d/90-nproc.conf可以查看，也可以修改
+    OutOfMemoryError: Metaspace
+        JDK8以后用元空间替代永久代，元空间使用本地内存，存放了以下信息：
+        虚拟机加载的类信息，常量池，静态变量，即时编译后的代码
+
+GC算法和垃圾回收期是什么，有什么关系
+    GC算法：引用计数，复制，标记清除，标记整理
+        GC算法是内存回收的理论方法，垃圾收集器是算法的具体实现,没有万能的垃圾收集器，只有针对具体场景最合适的垃圾收集器
+    垃圾收集器：
+        serial 串行，parallel 并行，CMS 并发标记清除，G1
+    串行垃圾回收器:
+        为单线程环境设计，且只是用一个个线程进行垃圾回收，会暂停所有用户线程，不适合服务器使用
+    并行垃圾回收器：
+        多个垃圾收集线程并行工作，此时用户线程是暂停的
+    并发垃圾回收器:
+        用户线程和垃圾回收线程同时执行（比一定是并行，可能是交替执行），不需要停止用户线程。适用于对响应时间有要求的场景
+    serial与parallel比较：
+        一半来说parallel更快，但是单核CPU下parallel可能更慢
+    stop the world和并发比较:
+        stw会暂停整个应用，时间较长。并发更为复杂，GC可能会抢占应用的CPU
+    G1垃圾回收器：
+        将堆内存分割成不同的区域，然后并发地对其进行垃圾回收
+
+JVM里的7种垃圾收集器:
+    怎么查看默认的垃圾收集器:java -XX:+PrintCommandLineFlags -version
+    打印出Java的一些初始参数：
+        -XX:InitialHeapSize=265936448
+        -XX:MaxHeapSize=4254983168
+        -XX:+PrintCommandLineFlags
+        -XX:+UseCompressedClassPointers
+        -XX:+UseCompressedOops
+        -XX:-Use LargePagesIndividualAllocation
+        -XX:+UseParallelGC
+        java version "1.8.0_181"
+        Java(TM) SE Runtime Environment (build 1.8.0_181-b13)
+        Java HotSpot(TM) 64-Bit Server VM (build 25.181-b13, mixed mode)
+        其中有一个-XX:+UseParallelGC
+    Java的GC回收类型主要有几种：
+        UseSerialGC，UseParallelGC，UseConcMarkSweepGC，UseParNewGC，UseParallelOldGC，UseG1GC,还有一种serial old gc，已经被淘汰
+    server/client模式
+        32位windows，不论硬件如何都默认使用Client的JVM模式,32位其他操作系统，2G内存且有2个CPU以上时用Server模式，低于该配置还是Client模式
+        64位系统，只有Server模式,只需掌握Server模式，Client模式基本不会用
+    新生代：
+        串行GC（Serial）/（Serial Copying），并行GC（ParNew），并行回收GC（Parallel）/（Parallel Scavenge）
+    串行收集器：Serial收集器
+        是一个单线程的收集器，在进行垃圾收集的时候，必须暂停其他所有的工作线程知道它收集结束
+        串行收集器是最古老、最稳定、效率高（应该指的是垃圾回收的效率）的收集器，只使用一个线程去回收但其在进行垃圾收集过程中可能会产生较长的停顿。虽然
+        在收集垃圾过程中需要暂停其他所有的工作线程，但它简单高效，对于单个CPU的环境来说，没有县城交互的开销可以使它获得最高的单线程垃圾收集效率，因此
+        Serial垃圾收集器依然是JVM运行在Client模式下默认的新生代垃圾收集器
+        对应的JVM参数是-XX:+UseSerialGC
+        开启后会使用：Serial（新生代）+Serial Old（老年代）的收集器组合
+        表示：新生代、老年代都会使用串行垃圾收集器，新生代使用复制算法，老年代使用标记整理算法
+    并行收集器：ParNew收集器
+        ParNew收集器起始就是Serial收集器的新生代并行多线程版本，最常见的应用场景是配合老年代CMS GC工作，企业的行为和Serial收集器完全一样，
+        ParNew垃圾收集器在垃圾手机过程中同样也要暂停所有其他的工作线程，是很多JVM运行在Server模式下新生代的默认垃圾收集器
+        JVM参数：-XX:+UseParNewGC启用，只影响新生代，不影响老年代
+        开启上述参数后，会使用ParNew（新生代）+Serial Old的收集器组合，新生代使用复制算法，老年代使用标记整理算法
+        JVM参数：-XX:ParallelGCThreads -> 限制线程数量，默认开启和CPU数目相同的线程数
+    并行收集器：Parallel Scanvenge/Parallel
+        Parallel Scanvenge垃圾收集器类似ParNew也是一个新生代的垃圾收集器，使用复制算法，也是一个并行的多线程的垃圾收集器，俗称吞吐量优先收集器。
+        一句话：串行收集器在新生代和老年代并行化
+        它关注的重点是：
+            可控制的吞吐量（吞吐量thoughput=运行用户代码的时间/(运行用户代码的时间+垃圾收集时间)）。高吞吐量意味着高效里用CPU的时间，它用于在后台
+            运算而不需要太多的交互任务
+            自适应调节策略也是Parallel Scavenge收集器与ParNew收集器的一个重要区别。自适应调节策略指虚拟机会根据当前系统的运行情况收集性能监控信
+            息，动态调整这些参数以提供最合适的停顿时间（-XX:MaxGCPauseMillis）或最大吞吐量
+            JVM参数：-XX:+UseParallelGC或-XX:UseParallelOldGC（可互相激活），使用Parallel Scanvenge垃圾收集器
+        开启该参数后：新生代使用复制算法，老年代使用标记整理算法
+    Parallel Old收集器(也就是Parallel MSC)
+        是Parallel Scavenge的老年代版本，使用多线程的标记整理算法，Parallel Old在JDK1.6才开始提供
+        Parallel Old正是为了在老年代通用提供吞吐量优先的垃圾收集器
+        JVM参数：-XX:+UseParallelOldGC
+        设置该参数后，新生代Parallel+老年代Parallel Old
+    并发标记清除 CMS
+        CMS收集器（concurrent mark sweep，并发标记清除）是一种以获取最短的回收停顿时间为目标的垃圾收集器
+        适合应用在B/S系统的服务器上，这类系统尤其重视响应速度，希望系统停顿时间最短
+        CMS非常适合堆内存大、CPU核数多的服务器端应用，也是G1出现之前大型应用的首选收集器
+        JVM参数：-XX:UseConcMarkSweepGC 开启该参数后会自动将-XX:+UseParNewGC打开
+        开启该参数后，使用ParNew（新生代）+CMS（老年代）的收集器组合，Serial Old将作为CMS出错时的后备收集器
+        四个步骤:
+            初始标记（CMS initial mark）：只是标记一下GC Root能直接关联的对象，速度很快，但仍然需要暂停所有的工作线程
+            并发标记（CMS concurrent mark）：进行GC Root跟踪的过程，和用户线程一起工作，不需要暂停工作线程。是主要标记过程，标记全部对象
+            重新标记（CMS remark）：为了修正在并发标记初期，阴用户程序继续运行而导致标记产生变动的那一部分对象的标记记录，仍然需要暂停所有的工作线
+            程。由于并发标记时，用户线程依然运行，因此在正式清理前，再做一次修正
+            并发清除（CMS concurrent sweep）：清除GC Root不可达对象，和用户线程一起工作，不需要暂停工作线程。基于标记结果，直接清理对象。由于
+            好事醉成的并发标记和并发清除过程中，垃圾收集线程和用户线程可以一起并发工作，所以总体来看CMS的内存回收和用户线程是并发执行的
+        优点：并发停顿低
+        缺点：并发执行，对CPU资源压力大
+            由于并发进行，CMS在收集时与应用线程会同时增加对堆内存的占用，也就是说，CMS必须要在老年代堆内存用完之前完成垃圾回收，否则CMS回收失败时将
+            触发担保机制，串行老年代收集器将会以STW的方式进行一次GC，从而造成较大停顿时间
+            采用的标记清除算法会导致大量的碎片
+            标记清除算法无法整理空间碎片，老年代空间会随着应用时长备逐步耗尽，最后将不得不通过担保机制对堆内存进行压缩。JVM参数：
+            -XX:CMSFullGCsBeForeCompaction（默认0，即每次都进行内存整理）来指定多少次CMS收集之后，进行一次压缩的Full GC
+    Serial Old/Serial MSC：
+        Serial Old时Serial收集器老年代版本，它同样是单个线程的收集器，使用标记整理算法，这个收集器也主要是运行在Client默认JVM的老年代垃圾收集器
+        在Server模式下，主要有两个用途（了解）
+            在JDK5之前版本中与新生代Parallel Scavenge收集器搭配使用（Parallel Scavenge+Serial Old）
+            作为老年代中使用CMS收集器的后备方案
+    如何选择垃圾收集器:
+        单CPU或小内存，单机程序
+            -XX:+UseSerialGC
+        多CPU，需要最大吞吐量，如后台计算型应用
+            -XX:+UseParallelGC或者-XX:+UseParallelOldGC
+
+G1（Garbage First）垃圾收集器：
+    参数：-XX:+UseG1GC
+    G1将新生代和老年代合并为了garbage-first heap
+    是一款面向服务端应用的收集器，应用在多处理器和大容量内存环境种，在实现高吞吐量的同时，尽可能地满足垃圾收集暂停时间地要求。
+    另外它还具有一下特性：
+        像CMS收集器一样，能与应用线程并发执行
+        整理空闲空间更快
+        需要更多地时间来预测GC停顿时间
+        不希望牺牲大量的吞吐性能
+        不需要更大的Java Heap
+    G1收集器的设计目标是取代CMS收集器，与CMS相比，在一下方面表现更出色
+        G1是一个由整理内存过程的垃圾收集器，不会产生很多内存碎片
+        G1的STW更可控，G1在停顿时间上添加了预测机制，用户可以指定期望的停顿时间
+    在JDK9中G1变成默认垃圾收集器以替代CMS
+    主要的改变时以前的Eden、Survivor、Tenured等内存区域不再是连续的了，而是变成了一个个大小一样得region
+    G1特点:
+        G1充分里用多CPU、多核环境硬件的优势，尽量缩短STW时间
+        G1整体上采用标记整理算法，局部是通过复制算法，不会产生内存碎片
+        宏观上看G1之中不再区分新生代和老年代，把内存划分成多个独立的子区域（region）
+        G1收集器里将整个内存区都混合在一起了，但其本身依然在小范围内要进行新生代和老年代的区分，保留了新生代和老年代，但他们不再是物理隔离的，而是一部
+        分region的集合，且不要求region是连续的，也就是说依然会采用不同的GC算法来处理不同的区域
+        G1虽然也是分代收集器，但整个内存不存在物理上的新生代与老年代的区别，也不需要完全独立的survivor堆做复制准备。G1只有逻辑上的分代概念，或者说
+        每个分区都可能随G1的运行在不同的代之间切换
+    其他收集器的特点：
+        老年代和年轻代是各自独立且连续的内存块
+        年轻代收集使用eden+s0+s1进行复制算法
+        老年代收集必须扫描整个老年代区域
+        以尽可能少而快地执行GC为设计原则
+    region:
+        区域化内存划片region，整体编为了一些不连续的内存区域，避免了全内存区的GC
+        核心思想是将整个堆内存区域分成大小相同的子区域（region），在JVM启动时会自动设置这些子区域的大小，在堆的使用上，G1并不要求对象的存储一定是物
+        理上连续的，只要逻辑上连续即可，每个分区也不会固定地为某个代服务，可以按需在新生代和老年代之间切换。启动时可以通过参数
+        -XX:G1HeapRegionSize=n可指定分区的大小（1到32M，必须是2的幂），默认将整堆划分为2048个
+        大小范围在1到32M，最好能设置2048个区域，也即能够支持的最大内存为64GB
+        逻辑上分为eden、survivor、old、humongous（超大对象区）
+        这些region的一部分包含新生代，新生代的垃圾收集依然采用暂停所有应用线程的方式，将存活对象拷贝到老年代或者survivor空间
+        这些region的一部分包含老年代，G1收集器通过将对象从一个区域废止到另外一个区域，完成了清理工作，这就意味着，在正常的处理过程中，G1完成了堆的压
+        缩（至少是部分堆的压缩），这样也就不会有CMS内存碎片问题的存在了
+    回收步骤：
+        针对eden区进行收集，eden区耗尽后会被触发，主要是小区域收集+形成连续的内存，避免内存碎片
+        eden区的数据移动道survivor区，加入出现Survivor区空间不够，eden区的部分数据会晋升到old区
+        survivor区的数据移动到新的survivor区，部分数据会晋升到old区
+        最后eden区收拾干净了，GC结束，用户的应用程序继续执行
+        初始标记、并发标记、最终标记、筛选回收
+    常用配置参数（了解）:
+        -XX:+UseG1GC
+        -XX:G1HeapRegionSize=n
+        -XX:MaxGCPauseMillis=n （JVM尽可能保证，但不一定能够达到，小于等于这个值）
+        -XX:InitiationgHeapOccupancyPercent=n 堆内存占用多少的时候就触发GC，默认为45
+        -XX:ConcGCThreads=n 并发GC使用的线程数
+        -XX:G1ReservePercent=n 设置作为空闲空间的预留内存百分比，以降低目标空间移除的风险，默认值没看到视频上是多少
+    G1和CMS相比的优势：
+        G1不会产生内存碎片
+        可以精确控制停顿。G1是吧整个堆划分成多个固定大小的区域，每次根据允许停顿的时间区收集垃圾最多的区域
+
+生产服务器变慢的诊断思路和性能评估
+    整机命令
+    ## top
+        看每个程序的CPU、MEM（内存）
+        还有load average表示系统的负载，一共有三个值，看的时候取平均
+        在这个命令下按1，可以查看每一个CPU的情况
+        小提示：进入top命令后，按q退出top命令,Ctrl+C也可以退出，按h获取帮助信息
+    uptime
+        top命令的精简版
+        09:51:43 up 103 days, 13:30,  1 user,  load average: 0.40, 0.08, 0.03
+    CPU命令，也会展示内存信息:
+        vmstat
+            示例：vmstat -n 2 3
+            每2秒采样一次，共计采样3次，所以下面的结果一共有3行
+            procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
+             r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
+             2  0   9692 139804 211396 1111224    0    0     0     4    2    0  1  1 98  0  0
+            proces：
+            r表示runtime，运行和等待CPU时间片的进程数，原则上1核的CPU的运行队列不要超过2，整个系统的运行队列不能超过总核数的2倍，否则就代表系统压力过大
+            b表示阻塞，等待资源的进程数，比如正在等待磁盘I/O，网络I/O
+            cpu:
+            us：用户进程消耗CPU时间百分比，us值高，用户进程消耗CPU时间多，如果长期大于50%，优化程序；
+            sy：内核进程消耗的CPU时间百分比
+            us+ys参考值为80%，如果大于80%，说明可能存在内存不足
+            id（了解）：处于空闲的CPU的百分比
+            wa（了解）：系统等待I/O的CPU时间百分比
+            st（了解）：来自于一个虚拟机偷取的CPU时间的百分比
+        mpstat：
+            查看所有CPU核的信息
+            示例：mpstat -P ALL 2
+            每两秒采样一次
+            Linux 4.15.0-48-generic (iZuf61fmfrfsi6wa6qszjnZ) 	02/22/2020 	_x86_64_	(1 CPU)
+            10:09:37 AM  CPU    %usr   %nice    %sys %iowait    %irq   %soft  %steal  %guest  %gnice   %idle
+            10:09:39 AM  all    0.51    0.00    0.51    0.00    0.00    0.00    0.00    0.00    0.00   98.97
+        pidstat -u 1 -p 进程编号：
+            每个进程使用cpu的用量分解信息
+            Linux 4.15.0-48-generic (iZuf61fmfrfsi6wa6qszjnZ) 	02/22/2020 	_x86_64_	(1 CPU)
+            10:12:09 AM   UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+            10:12:10 AM     0       421    0.00    0.00    0.00    0.00    0.00     0  exe
+    内存:
+        free
+        示例：free -m （free -g会四舍五入，一般不用）
+                      total        used        free      shared  buff/cache   available
+        Mem:           1993         565         136           5        1291        1239
+        经验值：
+            应用程序可用内存/系统物理内存>70%，内存充足
+            应用程序可用内存/系统物理内存<20%，内存不足，需要增加内存
+            20%<应用程序可用内存/系统物理内存<70%，内存基本够用
+        pidstat -r 采样间隔秒数 -p 进程编号
+            Linux 4.15.0-48-generic (iZuf61fmfrfsi6wa6qszjnZ) 	02/22/2020 	_x86_64_	(1 CPU)
+
+            10:37:04 AM   UID       PID  minflt/s  majflt/s     VSZ     RSS   %MEM  Command
+            10:37:06 AM     0       421      0.00      0.00  729044   18740   0.92  exe
+    硬盘：
+        df
+        查看磁盘剩余空间数，就是disk free的缩写
+        df -h  h表示human，用人类看得懂的方式展示信息
+        udev            976M     0  976M   0% /dev
+        tmpfs           200M  7.0M  193M   4% /run
+        /dev/vda1        40G  7.7G   30G  21% /
+    磁盘I/O:
+        iostat
+        示例：iostat -xdk 2 3
+        Linux 4.15.0-48-generic (iZuf61fmfrfsi6wa6qszjnZ) 	02/22/2020 	_x86_64_	(1 CPU)
+        Device            r/s     w/s     rkB/s     wkB/s   rrqm/s   wrqm/s  %rrqm  %wrqm r_await w_await aqu-sz rareq-sz wareq-sz  svctm  %util
+        vda              0.01    0.44      0.38      4.16     0.00     0.31   0.05  41.02    2.07    1.14   0.00    25.83     9.41   0.11   0.01
+        磁盘设备分布
+        rkB/s 每秒读取数据量kB
+        wkB/s 每秒写入数据量kB
+        svctm I/O请求的平均服务时间，单位毫秒
+        await I/O请求的平均等待时间，单位毫秒，值越小性能越好
+        util 1秒中用于I/O的时间的百分比，接近100%时，表示磁盘带宽跑满，需要优化程序或者增加磁盘
+        wkB/s、rkB/s根据系统应用的不同会有不同的值，但有规律可循：长期、超大数据独写，肯定不正常，需要优化程序读取
+        svctm与await的值很接近，表示几乎没有I/O等待，磁盘性能好
+        如果await的值远高于svctm的值，就表示I/O队列等待太长，需要优化城区活更滑更快的磁盘
+    pidstat -d 采样间隔秒数 -p 进程编号:
+        Linux 4.15.0-48-generic (iZuf61fmfrfsi6wa6qszjnZ) 	02/22/2020 	_x86_64_	(1 CPU)
+        10:36:36 AM   UID       PID   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
+        10:36:38 AM     0       421      0.00      0.00      0.00       0  exe
+    网络I/O：
+        ifstat命令
+        注意：这个功能需要先下载ifstat，本地没有自带
+        apt install ifstat安装，但是我安装的时候提示安装失败
+        Some packages could not be installed. This may mean that you have
+        requested an impossible situation or if you are using the unstable
+        distribution that some required packages have not yet been created
+        or been moved out of Incoming.
+        The following information may help to resolve the situation:
+        The following packages have unmet dependencies:
+         ifstat : Depends: libsnmp30 (>= 5.7.2~dfsg) but it is not going to be installed
+        E: Unable to correct problems, you have held broken packages.
+
+生产环境出现CPU占用过高，如何定位:
+    先用top命令找出CPU占用最高的
+    ps -ef或jps进一步定位，找到具体的后台程序
+    定位到具体的线程或代码。ps -map 进程 -o THREAD,tid,time，-m表示显示所有线程，-p表示pid进程使用的CPU时间，-o该参数后是用户自定义的显示内容的格式
+    将需要的线程ID转换成十六进制（字母小写）。printf "%x\n" 有问题的线程ID，转成十六进制
+    jstack 进程ID | grep tid(十六进制，英文小写) -A60 。-A60表示打印前60行
