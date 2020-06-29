@@ -1,3 +1,0 @@
-dubbo的分层:
-    接口服务层:根据provider和consumer的业务设计对应接口和实现
-    配置层:对外配置接口,以serviceConfig和ReferenceConfig
