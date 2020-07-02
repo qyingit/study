@@ -2519,8 +2519,8 @@ spring:
   datasource:
     username: root
     password: 123456
-    url: jdbc:mysql://192.168.15.22:3306/jdbc
-    driver-class-name: com.mysql.jdbc.Driver
+    url: mysql.txt
+    driver-class-name: mysql.txt
 ```
 效果：
 ?	默认是用org.apache.tomcat.jdbc.pool.DataSource作为数据源；
