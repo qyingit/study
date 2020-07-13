@@ -1,15 +1,15 @@
 /*
 
-package com.qying.rocketmq.acl.strategy;
+package com.qying.rocketmq.txt.acl.strategy;
 
 import java.util.HashSet;
 import java.util.Set;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.rocketmq.acl.common.AclException;
-import org.apache.rocketmq.acl.common.AclUtils;
-import org.apache.rocketmq.common.constant.LoggerName;
-import org.apache.rocketmq.logging.InternalLogger;
-import org.apache.rocketmq.logging.InternalLoggerFactory;
+import org.apache.rocketmq.txt.acl.common.AclException;
+import org.apache.rocketmq.txt.acl.common.AclUtils;
+import org.apache.rocketmq.txt.common.constant.LoggerName;
+import org.apache.rocketmq.txt.logging.InternalLogger;
+import org.apache.rocketmq.txt.logging.InternalLoggerFactory;
 
 public class RemoteAddressStrategyFactory {
 

@@ -8,22 +8,39 @@ java¶àÏß³ÌÃæÊÔÌâÕûÀí¼°´ð°¸
 ±ð°ÑËüºÍÕ»ÄÚ´æ¸ã»ì£¬Ã¿¸öÏß³Ì¶¼ÓµÓÐµ¥¶ÀµÄÕ»ÄÚ´æÓÃÀ´´æ´¢±¾µØÊý¾Ý¡£
 
 3) ÈçºÎÔÚJavaÖÐÊµÏÖÏß³Ì£¿
-ÔÚÓïÑÔ²ãÃæÓÐÁ½ÖÖ·½Ê½¡£java.lang.Thread ÀàµÄÊµÀý¾ÍÊÇÒ»¸öÏß³Ìµ«ÊÇËüÐèÒªµ÷ÓÃjava.lang.Runnable½Ó¿ÚÀ´Ö´ÐÐ£¬ÓÉÓÚÏß³ÌÀà±¾Éí¾ÍÊÇµ÷ÓÃµÄRunnable½Ó¿ÚËùÒÔÄã¿ÉÒÔ¼Ì³Ð java.lang.Thread Àà»òÕßÖ±½Óµ÷ÓÃRunnable½Ó¿ÚÀ´ÖØÐ´run()·½·¨ÊµÏÖÏß³Ì¡£
+ÔÚÓïÑÔ²ãÃæÓÐÁ½ÖÖ·½Ê½¡£java.lang.Thread ÀàµÄÊµÀý¾ÍÊÇÒ»¸öÏß³Ìµ«ÊÇËüÐèÒªµ÷ÓÃjava.lang.Runnable½Ó¿ÚÀ´Ö´ÐÐ£¬ÓÉÓÚÏß³ÌÀà±¾Éí¾ÍÊÇµ÷ÓÃµÄRunnable½Ó
+¿ÚËùÒÔÄã¿ÉÒÔ¼Ì³Ð java.lang.Thread Àà»òÕßÖ±½Óµ÷ÓÃRunnable½Ó¿ÚÀ´ÖØÐ´run()·½·¨ÊµÏÖÏß³Ì¡£
 
 4) ÓÃRunnable»¹ÊÇThread£¿
-Õâ¸öÎÊÌâÊÇÉÏÌâµÄºóÐø£¬´ó¼Ò¶¼ÖªµÀÎÒÃÇ¿ÉÒÔÍ¨¹ý¼Ì³ÐThreadÀà»òÕßµ÷ÓÃRunnable½Ó¿ÚÀ´ÊµÏÖÏß³Ì£¬ÎÊÌâÊÇ£¬ÄÇ¸ö·½·¨¸üºÃÄØ£¿Ê²Ã´Çé¿öÏÂÊ¹ ÓÃËü£¿Õâ¸öÎÊÌâºÜÈÝÒ×»Ø´ð£¬Èç¹ûÄãÖªµÀJava²»Ö§³ÖÀàµÄ¶àÖØ¼Ì³Ð£¬µ«ÔÊÐíÄãµ÷ÓÃ¶à¸ö½Ó¿Ú¡£ËùÒÔÈç¹ûÄãÒª¼Ì³ÐÆäËûÀà£¬µ±È»ÊÇµ÷ÓÃRunnable½Ó¿ÚºÃ ÁË¡£
+Õâ¸öÎÊÌâÊÇÉÏÌâµÄºóÐø£¬´ó¼Ò¶¼ÖªµÀÎÒÃÇ¿ÉÒÔÍ¨¹ý¼Ì³ÐThreadÀà»òÕßµ÷ÓÃRunnable½Ó¿ÚÀ´ÊµÏÖÏß³Ì£¬ÎÊÌâÊÇ£¬ÄÇ¸ö·½·¨¸üºÃÄØ£¿Ê²Ã´Çé¿öÏÂÊ¹ ÓÃËü£¿
+Õâ¸öÎÊÌâºÜÈÝÒ×»Ø´ð£¬Èç¹ûÄãÖªµÀJava²»Ö§³ÖÀàµÄ¶àÖØ¼Ì³Ð£¬µ«ÔÊÐíÄãµ÷ÓÃ¶à¸ö½Ó¿Ú¡£ËùÒÔÈç¹ûÄãÒª¼Ì³ÐÆäËûÀà£¬µ±È»ÊÇµ÷ÓÃRunnable½Ó¿ÚºÃ ÁË¡£
 
 6) Thread ÀàÖÐµÄstart() ºÍ run() ·½·¨ÓÐÊ²Ã´Çø±ð£¿
-Õâ¸öÎÊÌâ¾­³£±»ÎÊµ½£¬µ«»¹ÊÇÄÜ´Ó´ËÇø·Ö³öÃæÊÔÕß¶ÔJavaÏß³ÌÄ£ÐÍµÄÀí½â³Ì¶È¡£start()·½·¨±»ÓÃÀ´Æô¶¯ÐÂ´´½¨µÄÏß³Ì£¬¶øÇÒstart()ÄÚ²¿ µ÷ÓÃÁËrun()·½·¨£¬ÕâºÍÖ±½Óµ÷ÓÃrun()·½·¨µÄÐ§¹û²»Ò»Ñù¡£µ±Äãµ÷ÓÃrun()·½·¨µÄÊ±ºò£¬Ö»»áÊÇÔÚÔ­À´µÄÏß³ÌÖÐµ÷ÓÃ£¬Ã»ÓÐÐÂµÄÏß³ÌÆô ¶¯£¬start()·½·¨²Å»áÆô¶¯ÐÂÏß³Ì¡£
+Õâ¸öÎÊÌâ¾­³£±»ÎÊµ½£¬µ«»¹ÊÇÄÜ´Ó´ËÇø·Ö³öÃæÊÔÕß¶ÔJavaÏß³ÌÄ£ÐÍµÄÀí½â³Ì¶È¡£start()·½·¨±»ÓÃÀ´Æô¶¯ÐÂ´´½¨µÄÏß³Ì£¬¶øÇÒstart()ÄÚ²¿ µ÷ÓÃÁËrun()·½·¨£¬
+ÕâºÍÖ±½Óµ÷ÓÃrun()·½·¨µÄÐ§¹û²»Ò»Ñù¡£µ±Äãµ÷ÓÃrun()·½·¨µÄÊ±ºò£¬Ö»»áÊÇÔÚÔ­À´µÄÏß³ÌÖÐµ÷ÓÃ£¬Ã»ÓÐÐÂµÄÏß³ÌÆô ¶¯£¬start()·½·¨²Å»áÆô¶¯ÐÂÏß³Ì¡£
 
 7) JavaÖÐRunnableºÍCallableÓÐÊ²Ã´²»Í¬£¿
-RunnableºÍCallable¶¼´ú±íÄÇÐ©ÒªÔÚ²»Í¬µÄÏß³ÌÖÐÖ´ÐÐµÄÈÎÎñ¡£Runnable´ÓJDK1.0¿ªÊ¼¾ÍÓÐÁË£¬CallableÊÇÔÚ JDK1.5Ôö¼ÓµÄ¡£ËüÃÇµÄÖ÷ÒªÇø±ðÊÇCallableµÄ call() ·½·¨¿ÉÒÔ·µ»ØÖµºÍÅ×³öÒì³££¬¶øRunnableµÄrun()·½·¨Ã»ÓÐÕâÐ©¹¦ÄÜ¡£Callable¿ÉÒÔ·µ»Ø×°ÔØÓÐ¼ÆËã½á¹ûµÄFuture¶ÔÏó¡£
+RunnableºÍCallable¶¼´ú±íÄÇÐ©ÒªÔÚ²»Í¬µÄÏß³ÌÖÐÖ´ÐÐµÄÈÎÎñ¡£Runnable´ÓJDK1.0¿ªÊ¼¾ÍÓÐÁË£¬CallableÊÇÔÚ JDK1.5Ôö¼ÓµÄ¡£ËüÃÇµÄÖ÷ÒªÇø±ðÊÇCallable
+µÄ call() ·½·¨¿ÉÒÔ·µ»ØÖµºÍÅ×³öÒì³££¬¶øRunnableµÄrun()·½·¨Ã»ÓÐÕâÐ©¹¦ÄÜ¡£Callable¿ÉÒÔ·µ»Ø×°ÔØÓÐ¼ÆËã½á¹ûµÄFuture¶ÔÏó¡£
 
 8) JavaÖÐCyclicBarrier ºÍ CountDownLatchÓÐÊ²Ã´²»Í¬£¿
 CyclicBarrier ºÍ CountDownLatch ¶¼¿ÉÒÔÓÃÀ´ÈÃÒ»×éÏß³ÌµÈ´ýÆäËüÏß³Ì¡£Óë CyclicBarrier ²»Í¬µÄÊÇ£¬CountdownLatch ²»ÄÜÖØÐÂÊ¹ÓÃ¡£
 
-9) JavaÄÚ´æÄ£ÐÍÊÇÊ²Ã´£¿
-JavaÄÚ´æÄ£ÐÍ¹æ¶¨ºÍÖ¸ÒýJava³ÌÐòÔÚ²»Í¬µÄÄÚ´æ¼Ü¹¹¡¢CPUºÍ²Ù×÷ÏµÍ³¼äÓÐÈ·¶¨ÐÔµØÐÐÎª¡£ËüÔÚ¶àÏß³ÌµÄÇé¿öÏÂÓÈÆäÖØÒª¡£JavaÄÚ´æÄ£ÐÍ¶ÔÒ» ¸öÏß³ÌËù×öµÄ±ä¶¯ÄÜ±»ÆäËüÏß³Ì¿É¼ûÌá¹©ÁË±£Ö¤£¬ËüÃÇÖ®¼äÊÇÏÈÐÐ·¢Éú¹ØÏµ¡£Õâ¸ö¹ØÏµ¶¨ÒåÁËÒ»Ð©¹æÔòÈÃ³ÌÐòÔ±ÔÚ²¢·¢±à³ÌÊ±Ë¼Â·¸üÇåÎú¡£±ÈÈç£¬ÏÈÐÐ·¢Éú¹ØÏµÈ·±£ ÁË£º
+CountDownLatch¡¢CyclicBarrierºÍSemaphore:https://www.cnblogs.com/dolphin0520/p/3920397.html
+¡¡CountDownLatchÀàÎ»ÓÚjava.util.concurrent°üÏÂ£¬ÀûÓÃËü¿ÉÒÔÊµÏÖÀàËÆ¼ÆÊýÆ÷µÄ¹¦ÄÜ¡£±ÈÈçÓÐÒ»¸öÈÎÎñA£¬ËüÒªµÈ´ýÆäËû4¸öÈÎÎñÖ´ÐÐÍê±ÏÖ®ºó²ÅÄÜÖ´ÐÐ£¬
+´ËÊ±¾Í¿ÉÒÔÀûÓÃCountDownLatchÀ´ÊµÏÖÕâÖÖ¹¦ÄÜÁË¡£
+¡¡×ÖÃæÒâË¼»Ø»·Õ¤À¸£¬Í¨¹ýËü¿ÉÒÔÊµÏÖÈÃÒ»×éÏß³ÌµÈ´ýÖÁÄ³¸ö×´Ì¬Ö®ºóÔÙÈ«²¿Í¬Ê±Ö´ÐÐ¡£½Ð×ö»Ø»·ÊÇÒòÎªµ±ËùÓÐµÈ´ýÏß³Ì¶¼±»ÊÍ·ÅÒÔºó£¬CyclicBarrier¿ÉÒÔ±»ÖØÓÃ¡£
+ÎÒÃÇÔÝÇÒ°ÑÕâ¸ö×´Ì¬¾Í½Ð×öbarrier£¬µ±µ÷ÓÃawait()·½·¨Ö®ºó£¬Ïß³Ì¾Í´¦ÓÚbarrierÁË¡£
+Semaphore·­Òë³É×ÖÃæÒâË¼Îª ÐÅºÅÁ¿£¬Semaphore¿ÉÒÔ¿ØÍ¬Ê±·ÃÎÊµÄÏß³Ì¸öÊý£¬Í¨¹ý acquire() »ñÈ¡Ò»¸öÐí¿É£¬Èç¹ûÃ»ÓÐ¾ÍµÈ´ý£¬¶ø release() ÊÍ·ÅÒ»¸öÐí¿É¡£
+1£©CountDownLatchºÍCyclicBarrier¶¼ÄÜ¹»ÊµÏÖÏß³ÌÖ®¼äµÄµÈ´ý£¬Ö»²»¹ýËüÃÇ²àÖØµã²»Í¬£º
+    CountDownLatchÒ»°ãÓÃÓÚÄ³¸öÏß³ÌAµÈ´ýÈô¸É¸öÆäËûÏß³ÌÖ´ÐÐÍêÈÎÎñÖ®ºó£¬Ëü²ÅÖ´ÐÐ£»
+    ¶øCyclicBarrierÒ»°ãÓÃÓÚÒ»×éÏß³Ì»¥ÏàµÈ´ýÖÁÄ³¸ö×´Ì¬£¬È»ºóÕâÒ»×éÏß³ÌÔÙÍ¬Ê±Ö´ÐÐ£»
+    ÁíÍâ£¬CountDownLatchÊÇ²»ÄÜ¹»ÖØÓÃµÄ£¬¶øCyclicBarrierÊÇ¿ÉÒÔÖØÓÃµÄ¡£
+2£©SemaphoreÆäÊµºÍËøÓÐµãÀàËÆ£¬ËüÒ»°ãÓÃÓÚ¿ØÖÆ¶ÔÄ³×é×ÊÔ´µÄ·ÃÎÊÈ¨ÏÞ¡£
+
+9) JavaÄÚ´æÄ£ÐÍÊÇÊ²Ã´£¿Ô­×ÓÐÔ,¿É¼ûÐÔ,ÓÐÐòÐÔ
+JavaÄÚ´æÄ£ÐÍ¹æ¶¨ºÍÖ¸ÒýJava³ÌÐòÔÚ²»Í¬µÄÄÚ´æ¼Ü¹¹¡¢CPUºÍ²Ù×÷ÏµÍ³¼äÓÐÈ·¶¨ÐÔµØÐÐÎª¡£ËüÔÚ¶àÏß³ÌµÄÇé¿öÏÂÓÈÆäÖØÒª¡£JavaÄÚ´æÄ£ÐÍ¶ÔÒ» ¸öÏß³ÌËù×öµÄ±ä¶¯ÄÜ±»
+ÆäËüÏß³Ì¿É¼ûÌá¹©ÁË±£Ö¤£¬ËüÃÇÖ®¼äÊÇÏÈÐÐ·¢Éú¹ØÏµ¡£Õâ¸ö¹ØÏµ¶¨ÒåÁËÒ»Ð©¹æÔòÈÃ³ÌÐòÔ±ÔÚ²¢·¢±à³ÌÊ±Ë¼Â·¸üÇåÎú¡£±ÈÈç£¬ÏÈÐÐ·¢Éú¹ØÏµÈ·±£ ÁË£º
 
 Ïß³ÌÄÚµÄ´úÂëÄÜ¹»°´ÏÈºóË³ÐòÖ´ÐÐ£¬Õâ±»³ÆÎª³ÌÐò´ÎÐò¹æÔò¡£
 
@@ -42,60 +59,91 @@ JavaÄÚ´æÄ£ÐÍ¹æ¶¨ºÍÖ¸ÒýJava³ÌÐòÔÚ²»Í¬µÄÄÚ´æ¼Ü¹¹¡¢CPUºÍ²Ù×÷ÏµÍ³¼äÓÐÈ·¶¨ÐÔµØÐÐÎª¡£Ë
 ÎÒÇ¿ÁÒ½¨Òé´ó¼ÒÔÄ¶Á¡¶Java²¢·¢±à³ÌÊµ¼ù¡·µÚÊ®ÁùÕÂÀ´¼ÓÉî¶ÔJavaÄÚ´æÄ£ÐÍµÄÀí½â¡£
 
 10) JavaÖÐµÄvolatile ±äÁ¿ÊÇÊ²Ã´£¿
-volatileÊÇÒ»¸öÌØÊâµÄÐÞÊÎ·û£¬Ö»ÓÐ³ÉÔ±±äÁ¿²ÅÄÜÊ¹ÓÃËü¡£ÔÚJava²¢·¢³ÌÐòÈ±ÉÙÍ¬²½ÀàµÄÇé¿öÏÂ£¬¶àÏß³Ì¶Ô³ÉÔ±±äÁ¿µÄ²Ù×÷¶ÔÆäËüÏß³ÌÊÇÍ¸Ã÷µÄ¡£volatile±äÁ¿¿ÉÒÔ±£Ö¤ÏÂÒ»¸ö¶ÁÈ¡²Ù×÷»áÔÚÇ°Ò»¸öÐ´²Ù×÷Ö®ºó·¢Éú£¬¾ÍÊÇÉÏÒ»ÌâµÄvolatile±äÁ¿¹æÔò¡£
+volatileÊÇÒ»¸öÌØÊâµÄÐÞÊÎ·û£¬Ö»ÓÐ³ÉÔ±±äÁ¿²ÅÄÜÊ¹ÓÃËü¡£ÔÚJava²¢·¢³ÌÐòÈ±ÉÙÍ¬²½ÀàµÄÇé¿öÏÂ£¬¶àÏß³Ì¶Ô³ÉÔ±±äÁ¿µÄ²Ù×÷¶ÔÆäËüÏß³ÌÊÇÍ¸Ã÷µÄ¡£volatile±äÁ¿¿ÉÒÔ
+±£Ö¤ÏÂÒ»¸ö¶ÁÈ¡²Ù×÷»áÔÚÇ°Ò»¸öÐ´²Ù×÷Ö®ºó·¢Éú£¬¾ÍÊÇÉÏÒ»ÌâµÄvolatile±äÁ¿¹æÔò¡£
 
 11) Ê²Ã´ÊÇÏß³Ì°²È«£¿VectorÊÇÒ»¸öÏß³Ì°²È«ÀàÂð£¿
-Èç¹ûÄãµÄ´úÂëËùÔÚµÄ½ø³ÌÖÐÓÐ¶à¸öÏß³ÌÔÚÍ¬Ê±ÔËÐÐ£¬¶øÕâÐ©Ïß³Ì¿ÉÄÜ»áÍ¬Ê±ÔËÐÐÕâ¶Î´úÂë¡£Èç¹ûÃ¿´ÎÔËÐÐ½á¹ûºÍµ¥Ïß³ÌÔËÐÐµÄ½á¹ûÊÇÒ»ÑùµÄ£¬¶øÇÒÆäËûµÄ±äÁ¿ µÄÖµÒ²ºÍÔ¤ÆÚµÄÊÇÒ»ÑùµÄ£¬¾ÍÊÇÏß³Ì°²È«µÄ¡£Ò»¸öÏß³Ì°²È«µÄ¼ÆÊýÆ÷ÀàµÄÍ¬Ò»¸öÊµÀý¶ÔÏóÔÚ±»¶à¸öÏß³ÌÊ¹ÓÃµÄÇé¿öÏÂÒ²²»»á³öÏÖ¼ÆËãÊ§Îó¡£ºÜÏÔÈ»Äã¿ÉÒÔ½«¼¯ºÏÀà·Ö ³ÉÁ½×é£¬Ïß³Ì°²È«ºÍ·ÇÏß³Ì°²È«µÄ¡£Vector ÊÇÓÃÍ¬²½·½·¨À´ÊµÏÖÏß³Ì°²È«µÄ, ¶øºÍËüÏàËÆµÄArrayList²»ÊÇÏß³Ì°²È«µÄ¡£
+Èç¹ûÄãµÄ´úÂëËùÔÚµÄ½ø³ÌÖÐÓÐ¶à¸öÏß³ÌÔÚÍ¬Ê±ÔËÐÐ£¬¶øÕâÐ©Ïß³Ì¿ÉÄÜ»áÍ¬Ê±ÔËÐÐÕâ¶Î´úÂë¡£Èç¹ûÃ¿´ÎÔËÐÐ½á¹ûºÍµ¥Ïß³ÌÔËÐÐµÄ½á¹ûÊÇÒ»ÑùµÄ£¬¶øÇÒÆäËûµÄ±äÁ¿ µÄÖµÒ²ºÍ
+Ô¤ÆÚµÄÊÇÒ»ÑùµÄ£¬¾ÍÊÇÏß³Ì°²È«µÄ¡£Ò»¸öÏß³Ì°²È«µÄ¼ÆÊýÆ÷ÀàµÄÍ¬Ò»¸öÊµÀý¶ÔÏóÔÚ±»¶à¸öÏß³ÌÊ¹ÓÃµÄÇé¿öÏÂÒ²²»»á³öÏÖ¼ÆËãÊ§Îó¡£ºÜÏÔÈ»Äã¿ÉÒÔ½«¼¯ºÏÀà·Ö ³ÉÁ½×é£¬
+Ïß³Ì°²È«ºÍ·ÇÏß³Ì°²È«µÄ¡£Vector ÊÇÓÃÍ¬²½·½·¨À´ÊµÏÖÏß³Ì°²È«µÄ, ¶øºÍËüÏàËÆµÄArrayList²»ÊÇÏß³Ì°²È«µÄ¡£
 
 12) JavaÖÐÊ²Ã´ÊÇ¾ºÌ¬Ìõ¼þ£¿ ¾Ù¸öÀý×ÓËµÃ÷¡£
-¾ºÌ¬Ìõ¼þ»áµ¼ÖÂ³ÌÐòÔÚ²¢·¢Çé¿öÏÂ³öÏÖÒ»Ð©bugs¡£¶àÏß³Ì¶ÔÒ»Ð©×ÊÔ´µÄ¾ºÕùµÄÊ±ºò¾Í»á²úÉú¾ºÌ¬Ìõ¼þ£¬Èç¹ûÊ×ÏÈÒªÖ´ÐÐµÄ³ÌÐò¾ºÕùÊ§°ÜÅÅµ½ºóÃæÖ´ÐÐÁË£¬ ÄÇÃ´Õû¸ö³ÌÐò¾Í»á³öÏÖÒ»Ð©²»È·¶¨µÄbugs¡£ÕâÖÖbugsºÜÄÑ·¢ÏÖ¶øÇÒ»áÖØ¸´³öÏÖ£¬ÒòÎªÏß³Ì¼äµÄËæ»ú¾ºÕù¡£
+¾ºÌ¬Ìõ¼þ»áµ¼ÖÂ³ÌÐòÔÚ²¢·¢Çé¿öÏÂ³öÏÖÒ»Ð©bugs¡£¶àÏß³Ì¶ÔÒ»Ð©×ÊÔ´µÄ¾ºÕùµÄÊ±ºò¾Í»á²úÉú¾ºÌ¬Ìõ¼þ£¬Èç¹ûÊ×ÏÈÒªÖ´ÐÐµÄ³ÌÐò¾ºÕùÊ§°ÜÅÅµ½ºóÃæÖ´ÐÐÁË£¬ ÄÇÃ´Õû¸ö³ÌÐò
+¾Í»á³öÏÖÒ»Ð©²»È·¶¨µÄbugs¡£ÕâÖÖbugsºÜÄÑ·¢ÏÖ¶øÇÒ»áÖØ¸´³öÏÖ£¬ÒòÎªÏß³Ì¼äµÄËæ»ú¾ºÕù¡£
 
 13) JavaÖÐÈçºÎÍ£Ö¹Ò»¸öÏß³Ì£¿
-JavaÌá¹©ÁËºÜ·á¸»µÄAPIµ«Ã»ÓÐÎªÍ£Ö¹Ïß³ÌÌá¹©API¡£JDK 1.0±¾À´ÓÐÒ»Ð©Ïñstop(), suspend() ºÍ resume()µÄ¿ØÖÆ·½·¨µ«ÊÇÓÉÓÚÇ±ÔÚµÄËÀËøÍþÐ²Òò´ËÔÚºóÐøµÄJDK°æ±¾ÖÐËûÃÇ±»ÆúÓÃÁË£¬Ö®ºóJava APIµÄÉè¼ÆÕß¾ÍÃ»ÓÐÌá¹©Ò»¸ö¼æÈÝÇÒÏß³Ì°²È«µÄ·½·¨À´Í£Ö¹Ò»¸öÏß³Ì¡£µ±run() »òÕß call() ·½·¨Ö´ÐÐÍêµÄÊ±ºòÏß³Ì»á×Ô¶¯½áÊø,Èç¹ûÒªÊÖ¶¯½áÊøÒ»¸öÏß³Ì£¬Äã¿ÉÒÔÓÃvolatile ²¼¶û±äÁ¿À´ÍË³örun()·½·¨µÄÑ­»·»òÕßÊÇÈ¡ÏûÈÎÎñÀ´ÖÐ¶ÏÏß³Ì¡£
+JavaÌá¹©ÁËºÜ·á¸»µÄAPIµ«Ã»ÓÐÎªÍ£Ö¹Ïß³ÌÌá¹©API¡£JDK 1.0±¾À´ÓÐÒ»Ð©Ïñstop(), suspend() ºÍ resume()µÄ¿ØÖÆ·½·¨µ«ÊÇÓÉÓÚÇ±ÔÚµÄËÀËøÍþÐ²Òò´ËÔÚºóÐøµÄ
+JDK°æ±¾ÖÐËûÃÇ±»ÆúÓÃÁË£¬Ö®ºóJava APIµÄÉè¼ÆÕß¾ÍÃ»ÓÐÌá¹©Ò»¸ö¼æÈÝÇÒÏß³Ì°²È«µÄ·½·¨À´Í£Ö¹Ò»¸öÏß³Ì¡£µ±run() »òÕß call() ·½·¨Ö´ÐÐÍêµÄÊ±ºòÏß³Ì»á×Ô¶¯½áÊø
+,Èç¹ûÒªÊÖ¶¯½áÊøÒ»¸öÏß³Ì£¬Äã¿ÉÒÔÓÃvolatile ²¼¶û±äÁ¿À´ÍË³örun()·½·¨µÄÑ­»·»òÕßÊÇÈ¡ÏûÈÎÎñÀ´ÖÐ¶ÏÏß³Ì¡£
 
 14) Ò»¸öÏß³ÌÔËÐÐÊ±·¢ÉúÒì³£»áÔõÑù£¿
-ÕâÊÇÎÒÔÚÒ»´ÎÃæÊÔÖÐÓöµ½µÄÒ»¸öºÜµó×êµÄJavaÃæÊÔÌâ, ¼òµ¥µÄËµ£¬Èç¹ûÒì³£Ã»ÓÐ±»²¶»ñ¸ÃÏß³Ì½«»áÍ£Ö¹Ö´ÐÐ¡£Thread.UncaughtExceptionHandlerÊÇÓÃÓÚ´¦ÀíÎ´²¶»ñÒì³£Ôì³ÉÏß³ÌÍ»È»ÖÐ ¶ÏÇé¿öµÄÒ»¸öÄÚÇ¶½Ó¿Ú¡£µ±Ò»¸öÎ´²¶»ñÒì³£½«Ôì³ÉÏß³ÌÖÐ¶ÏµÄÊ±ºòJVM»áÊ¹ÓÃThread.getUncaughtExceptionHandler()À´ ²éÑ¯Ïß³ÌµÄUncaughtExceptionHandler²¢½«Ïß³ÌºÍÒì³£×÷Îª²ÎÊý´«µÝ¸øhandlerµÄuncaughtException()·½·¨ ½øÐÐ´¦Àí¡£
+ÕâÊÇÎÒÔÚÒ»´ÎÃæÊÔÖÐÓöµ½µÄÒ»¸öºÜµó×êµÄJavaÃæÊÔÌâ, ¼òµ¥µÄËµ£¬Èç¹ûÒì³£Ã»ÓÐ±»²¶»ñ¸ÃÏß³Ì½«»áÍ£Ö¹Ö´ÐÐ¡£Thread.UncaughtExceptionHandlerÊÇÓÃÓÚ´¦ÀíÎ´
+²¶»ñÒì³£Ôì³ÉÏß³ÌÍ»È»ÖÐ ¶ÏÇé¿öµÄÒ»¸öÄÚÇ¶½Ó¿Ú¡£µ±Ò»¸öÎ´²¶»ñÒì³£½«Ôì³ÉÏß³ÌÖÐ¶ÏµÄÊ±ºòJVM»áÊ¹ÓÃThread.getUncaughtExceptionHandler()À´ ²éÑ¯Ïß³ÌµÄ
+UncaughtExceptionHandler²¢½«Ïß³ÌºÍÒì³£×÷Îª²ÎÊý´«µÝ¸øhandlerµÄuncaughtException()·½·¨ ½øÐÐ´¦Àí¡£
 
 15£© ÈçºÎÔÚÁ½¸öÏß³Ì¼ä¹²ÏíÊý¾Ý£¿
 Äã¿ÉÒÔÍ¨¹ý¹²Ïí¶ÔÏóÀ´ÊµÏÖÕâ¸öÄ¿µÄ£¬»òÕßÊÇÊ¹ÓÃÏñ×èÈû¶ÓÁÐÕâÑù²¢·¢µÄÊý¾Ý½á¹¹¡£ÕâÆª½Ì³Ì¡¶JavaÏß³Ì¼äÍ¨ÐÅ¡·(Éæ¼°µ½ÔÚÁ½¸öÏß³Ì¼ä¹²Ïí¶ÔÏó)ÓÃwaitºÍnotify·½·¨ÊµÏÖÁËÉú²úÕßÏû·ÑÕßÄ£ÐÍ¡£
 
 16) JavaÖÐnotify ºÍ notifyAllÓÐÊ²Ã´Çø±ð£¿
-ÕâÓÖÊÇÒ»¸öµó×êµÄÎÊÌâ£¬ÒòÎª¶àÏß³Ì¿ÉÒÔµÈ´ýµ¥¼à¿ØËø£¬Java API µÄÉè¼ÆÈËÔ±Ìá¹©ÁËÒ»Ð©·½·¨µ±µÈ´ýÌõ¼þ¸Ä±äµÄÊ±ºòÍ¨ÖªËüÃÇ£¬µ«ÊÇÕâÐ©·½·¨Ã»ÓÐÍêÈ«ÊµÏÖ¡£notify()·½·¨²»ÄÜ»½ÐÑÄ³¸ö¾ßÌåµÄÏß³Ì£¬ËùÒÔÖ»ÓÐÒ»¸öÏß³ÌÔÚµÈ ´ýµÄÊ±ºòËü²ÅÓÐÓÃÎäÖ®µØ¡£¶ønotifyAll()»½ÐÑËùÓÐÏß³Ì²¢ÔÊÐíËûÃÇÕù¶áËøÈ·±£ÁËÖÁÉÙÓÐÒ»¸öÏß³ÌÄÜ¼ÌÐøÔËÐÐ¡£
+ÕâÓÖÊÇÒ»¸öµó×êµÄÎÊÌâ£¬ÒòÎª¶àÏß³Ì¿ÉÒÔµÈ´ýµ¥¼à¿ØËø£¬Java API µÄÉè¼ÆÈËÔ±Ìá¹©ÁËÒ»Ð©·½·¨µ±µÈ´ýÌõ¼þ¸Ä±äµÄÊ±ºòÍ¨ÖªËüÃÇ£¬µ«ÊÇÕâÐ©·½·¨Ã»ÓÐÍêÈ«ÊµÏÖ¡£
+notify()·½·¨²»ÄÜ»½ÐÑÄ³¸ö¾ßÌåµÄÏß³Ì£¬ËùÒÔÖ»ÓÐÒ»¸öÏß³ÌÔÚµÈ ´ýµÄÊ±ºòËü²ÅÓÐÓÃÎäÖ®µØ¡£¶ønotifyAll()»½ÐÑËùÓÐÏß³Ì²¢ÔÊÐíËûÃÇÕù¶áËøÈ·±£ÁËÖÁÉÙÓÐÒ»¸öÏß³ÌÄÜ¼ÌÐøÔËÐÐ¡£
 
 17) ÎªÊ²Ã´wait, notify ºÍ notifyAllÕâÐ©·½·¨²»ÔÚthreadÀàÀïÃæ£¿
-ÕâÊÇ¸öÉè¼ÆÏà¹ØµÄÎÊÌâ£¬Ëü¿¼²ìµÄÊÇÃæÊÔÕß¶ÔÏÖÓÐÏµÍ³ºÍÒ»Ð©ÆÕ±é´æÔÚµ«¿´ÆðÀ´²»ºÏÀíµÄÊÂÎïµÄ¿´·¨¡£»Ø´ðÕâÐ©ÎÊÌâµÄÊ±ºò£¬ÄãÒªËµÃ÷ÎªÊ²Ã´°ÑÕâÐ©·½·¨·ÅÔÚ ObjectÀàÀïÊÇÓÐÒâÒåµÄ£¬»¹ÓÐ²»°ÑËü·ÅÔÚThreadÀàÀïµÄÔ­Òò¡£Ò»¸öºÜÃ÷ÏÔµÄÔ­ÒòÊÇJAVAÌá¹©µÄËøÊÇ¶ÔÏó¼¶µÄ¶ø²»ÊÇÏß³Ì¼¶µÄ£¬Ã¿¸ö¶ÔÏó¶¼ÓÐËø£¬Í¨ ¹ýÏß³Ì»ñµÃ¡£Èç¹ûÏß³ÌÐèÒªµÈ´ýÄ³Ð©ËøÄÇÃ´µ÷ÓÃ¶ÔÏóÖÐµÄwait()·½·¨¾ÍÓÐÒâÒåÁË¡£Èç¹ûwait()·½·¨¶¨ÒåÔÚThreadÀàÖÐ£¬Ïß³ÌÕýÔÚµÈ´ýµÄÊÇÄÄ¸öËø ¾Í²»Ã÷ÏÔÁË¡£¼òµ¥µÄËµ£¬ÓÉÓÚwait£¬notifyºÍnotifyAll¶¼ÊÇËø¼¶±ðµÄ²Ù×÷£¬ËùÒÔ°ÑËûÃÇ¶¨ÒåÔÚObjectÀàÖÐÒòÎªËøÊôÓÚ¶ÔÏó¡£
+ÕâÊÇ¸öÉè¼ÆÏà¹ØµÄÎÊÌâ£¬Ëü¿¼²ìµÄÊÇÃæÊÔÕß¶ÔÏÖÓÐÏµÍ³ºÍÒ»Ð©ÆÕ±é´æÔÚµ«¿´ÆðÀ´²»ºÏÀíµÄÊÂÎïµÄ¿´·¨¡£»Ø´ðÕâÐ©ÎÊÌâµÄÊ±ºò£¬ÄãÒªËµÃ÷ÎªÊ²Ã´°ÑÕâÐ©·½·¨·ÅÔÚ ObjectÀà
+ÀïÊÇÓÐÒâÒåµÄ£¬»¹ÓÐ²»°ÑËü·ÅÔÚThreadÀàÀïµÄÔ­Òò¡£Ò»¸öºÜÃ÷ÏÔµÄÔ­ÒòÊÇJAVAÌá¹©µÄËøÊÇ¶ÔÏó¼¶µÄ¶ø²»ÊÇÏß³Ì¼¶µÄ£¬Ã¿¸ö¶ÔÏó¶¼ÓÐËø£¬Í¨ ¹ýÏß³Ì»ñµÃ¡£Èç¹ûÏß³ÌÐèÒª
+µÈ´ýÄ³Ð©ËøÄÇÃ´µ÷ÓÃ¶ÔÏóÖÐµÄwait()·½·¨¾ÍÓÐÒâÒåÁË¡£Èç¹ûwait()·½·¨¶¨ÒåÔÚThreadÀàÖÐ£¬Ïß³ÌÕýÔÚµÈ´ýµÄÊÇÄÄ¸öËø ¾Í²»Ã÷ÏÔÁË¡£¼òµ¥µÄËµ£¬ÓÉÓÚwait£¬notify
+ºÍnotifyAll¶¼ÊÇËø¼¶±ðµÄ²Ù×÷£¬ËùÒÔ°ÑËûÃÇ¶¨ÒåÔÚObjectÀàÖÐÒòÎªËøÊôÓÚ¶ÔÏó¡£
 
 18) Ê²Ã´ÊÇThreadLocal±äÁ¿£¿
-ThreadLocalÊÇJavaÀïÒ»ÖÖÌØÊâµÄ±äÁ¿¡£Ã¿¸öÏß³Ì¶¼ÓÐÒ»¸öThreadLocal¾ÍÊÇÃ¿¸öÏß³Ì¶¼ÓµÓÐÁË×Ô¼º¶ÀÁ¢µÄÒ»¸ö±äÁ¿£¬¾ºÕùÌõ¼þ±» ³¹µ×Ïû³ýÁË¡£ËüÊÇÎª´´½¨´ú¼Û¸ß°ºµÄ¶ÔÏó»ñÈ¡Ïß³Ì°²È«µÄºÃ·½·¨£¬±ÈÈçÄã¿ÉÒÔÓÃThreadLocalÈÃSimpleDateFormat±ä³ÉÏß³Ì°²È«µÄ£¬Òò ÎªÄÇ¸öÀà´´½¨´ú¼Û¸ß°ºÇÒÃ¿´Îµ÷ÓÃ¶¼ÐèÒª´´½¨²»Í¬µÄÊµÀýËùÒÔ²»ÖµµÃÔÚ¾Ö²¿·¶Î§Ê¹ÓÃËü£¬Èç¹ûÎªÃ¿¸öÏß³ÌÌá¹©Ò»¸ö×Ô¼º¶ÀÓÐµÄ±äÁ¿¿½±´£¬½«´ó´óÌá¸ßÐ§ÂÊ¡£Ê×ÏÈ£¬Í¨ ¹ý¸´ÓÃ¼õÉÙÁË´ú¼Û¸ß°ºµÄ¶ÔÏóµÄ´´½¨¸öÊý¡£Æä´Î£¬ÄãÔÚÃ»ÓÐÊ¹ÓÃ¸ß´ú¼ÛµÄÍ¬²½»òÕß²»±äÐÔµÄÇé¿öÏÂ»ñµÃÁËÏß³Ì°²È«¡£Ïß³Ì¾Ö²¿±äÁ¿µÄÁíÒ»¸ö²»´íµÄÀý×ÓÊÇ ThreadLocalRandomÀà£¬ËüÔÚ¶àÏß³Ì»·¾³ÖÐ¼õÉÙÁË´´½¨´ú¼Û¸ß°ºµÄRandom¶ÔÏóµÄ¸öÊý¡£
+ThreadLocalÊÇJavaÀïÒ»ÖÖÌØÊâµÄ±äÁ¿¡£Ã¿¸öÏß³Ì¶¼ÓÐÒ»¸öThreadLocal¾ÍÊÇÃ¿¸öÏß³Ì¶¼ÓµÓÐÁË×Ô¼º¶ÀÁ¢µÄÒ»¸ö±äÁ¿£¬¾ºÕùÌõ¼þ±» ³¹µ×Ïû³ýÁË¡£ËüÊÇÎª´´½¨´ú¼Û¸ß
+°ºµÄ¶ÔÏó»ñÈ¡Ïß³Ì°²È«µÄºÃ·½·¨£¬±ÈÈçÄã¿ÉÒÔÓÃThreadLocalÈÃSimpleDateFormat±ä³ÉÏß³Ì°²È«µÄ£¬Òò ÎªÄÇ¸öÀà´´½¨´ú¼Û¸ß°ºÇÒÃ¿´Îµ÷ÓÃ¶¼ÐèÒª´´½¨²»Í¬µÄÊµÀýËù
+ÒÔ²»ÖµµÃÔÚ¾Ö²¿·¶Î§Ê¹ÓÃËü£¬Èç¹ûÎªÃ¿¸öÏß³ÌÌá¹©Ò»¸ö×Ô¼º¶ÀÓÐµÄ±äÁ¿¿½±´£¬½«´ó´óÌá¸ßÐ§ÂÊ¡£Ê×ÏÈ£¬Í¨ ¹ý¸´ÓÃ¼õÉÙÁË´ú¼Û¸ß°ºµÄ¶ÔÏóµÄ´´½¨¸öÊý¡£Æä´Î£¬ÄãÔÚÃ»ÓÐÊ¹
+ÓÃ¸ß´ú¼ÛµÄÍ¬²½»òÕß²»±äÐÔµÄÇé¿öÏÂ»ñµÃÁËÏß³Ì°²È«¡£Ïß³Ì¾Ö²¿±äÁ¿µÄÁíÒ»¸ö²»´íµÄÀý×ÓÊÇ ThreadLocalRandomÀà£¬ËüÔÚ¶àÏß³Ì»·¾³ÖÐ¼õÉÙÁË´´½¨´ú¼Û¸ß°ºµÄ
+Random¶ÔÏóµÄ¸öÊý¡£
 
 19) Ê²Ã´ÊÇFutureTask£¿
-ÔÚJava²¢·¢³ÌÐòÖÐFutureTask±íÊ¾Ò»¸ö¿ÉÒÔÈ¡ÏûµÄÒì²½ÔËËã¡£ËüÓÐÆô¶¯ºÍÈ¡ÏûÔËËã¡¢²éÑ¯ÔËËãÊÇ·ñÍê³ÉºÍÈ¡»ØÔËËã½á¹ûµÈ·½·¨¡£Ö»ÓÐµ±ÔËËãÍê ³ÉµÄÊ±ºò½á¹û²ÅÄÜÈ¡»Ø£¬Èç¹ûÔËËãÉÐÎ´Íê³Éget·½·¨½«»á×èÈû¡£Ò»¸öFutureTask¶ÔÏó¿ÉÒÔ¶Ôµ÷ÓÃÁËCallableºÍRunnableµÄ¶ÔÏó½øÐÐ°ü ×°£¬ÓÉÓÚFutureTaskÒ²ÊÇµ÷ÓÃÁËRunnable½Ó¿ÚËùÒÔËü¿ÉÒÔÌá½»¸øExecutorÀ´Ö´ÐÐ¡£
+ÔÚJava²¢·¢³ÌÐòÖÐFutureTask±íÊ¾Ò»¸ö¿ÉÒÔÈ¡ÏûµÄÒì²½ÔËËã¡£ËüÓÐÆô¶¯ºÍÈ¡ÏûÔËËã¡¢²éÑ¯ÔËËãÊÇ·ñÍê³ÉºÍÈ¡»ØÔËËã½á¹ûµÈ·½·¨¡£Ö»ÓÐµ±ÔËËãÍê ³ÉµÄÊ±ºò½á¹û²ÅÄÜÈ¡»Ø
+£¬Èç¹ûÔËËãÉÐÎ´Íê³Éget·½·¨½«»á×èÈû¡£Ò»¸öFutureTask¶ÔÏó¿ÉÒÔ¶Ôµ÷ÓÃÁËCallableºÍRunnableµÄ¶ÔÏó½øÐÐ°ü ×°£¬ÓÉÓÚFutureTaskÒ²ÊÇµ÷ÓÃÁËRunnable
+½Ó¿ÚËùÒÔËü¿ÉÒÔÌá½»¸øExecutorÀ´Ö´ÐÐ¡£
 
 20) JavaÖÐinterrupted ºÍ isInterruptedd·½·¨µÄÇø±ð£¿
-interrupted() ºÍ isInterrupted()µÄÖ÷ÒªÇø±ðÊÇÇ°Õß»á½«ÖÐ¶Ï×´Ì¬Çå³ý¶øºóÕß²»»á¡£Java¶àÏß³ÌµÄÖÐ¶Ï»úÖÆÊÇÓÃÄÚ²¿±êÊ¶À´ÊµÏÖµÄ£¬µ÷ÓÃThread.interrupt()À´ÖÐ¶ÏÒ»¸öÏß³Ì¾Í»áÉèÖÃÖÐ¶Ï±êÊ¶Îªtrue¡£µ±ÖÐ¶ÏÏß³Ìµ÷ÓÃ¾²Ì¬·½·¨Thread.interrupted()À´ ¼ì²éÖÐ¶Ï×´Ì¬Ê±£¬ÖÐ¶Ï×´Ì¬»á±»ÇåÁã¡£¶ø·Ç¾²Ì¬·½·¨isInterrupted()ÓÃÀ´²éÑ¯ÆäËüÏß³ÌµÄÖÐ¶Ï×´Ì¬ÇÒ²»»á¸Ä±äÖÐ¶Ï×´Ì¬±êÊ¶¡£¼òµ¥µÄËµ¾ÍÊÇÈÎºÎÅ× ³öInterruptedExceptionÒì³£µÄ·½·¨¶¼»á½«ÖÐ¶Ï×´Ì¬ÇåÁã¡£ÎÞÂÛÈçºÎ£¬Ò»¸öÏß³ÌµÄÖÐ¶Ï×´Ì¬ÓÐÓÐ¿ÉÄÜ±»ÆäËüÏß³Ìµ÷ÓÃÖÐ¶ÏÀ´¸Ä±ä¡£
+interrupted() ºÍ isInterrupted()µÄÖ÷ÒªÇø±ðÊÇÇ°Õß»á½«ÖÐ¶Ï×´Ì¬Çå³ý¶øºóÕß²»»á¡£Java¶àÏß³ÌµÄÖÐ¶Ï»úÖÆÊÇÓÃÄÚ²¿±êÊ¶À´ÊµÏÖµÄ£¬µ÷ÓÃThread.interrupt
+()À´ÖÐ¶ÏÒ»¸öÏß³Ì¾Í»áÉèÖÃÖÐ¶Ï±êÊ¶Îªtrue¡£µ±ÖÐ¶ÏÏß³Ìµ÷ÓÃ¾²Ì¬·½·¨Thread.interrupted()À´ ¼ì²éÖÐ¶Ï×´Ì¬Ê±£¬ÖÐ¶Ï×´Ì¬»á±»ÇåÁã¡£¶ø·Ç¾²Ì¬·½·¨
+isInterrupted()ÓÃÀ´²éÑ¯ÆäËüÏß³ÌµÄÖÐ¶Ï×´Ì¬ÇÒ²»»á¸Ä±äÖÐ¶Ï×´Ì¬±êÊ¶¡£¼òµ¥µÄËµ¾ÍÊÇÈÎºÎÅ× ³öInterruptedExceptionÒì³£µÄ·½·¨¶¼»á½«ÖÐ¶Ï×´Ì¬ÇåÁã¡£
+ÎÞÂÛÈçºÎ£¬Ò»¸öÏß³ÌµÄÖÐ¶Ï×´Ì¬ÓÐÓÐ¿ÉÄÜ±»ÆäËüÏß³Ìµ÷ÓÃÖÐ¶ÏÀ´¸Ä±ä¡£
 
 21) ÎªÊ²Ã´waitºÍnotify·½·¨ÒªÔÚÍ¬²½¿éÖÐµ÷ÓÃ£¿
-Ö÷ÒªÊÇÒòÎªJava APIÇ¿ÖÆÒªÇóÕâÑù×ö£¬Èç¹ûÄã²»ÕâÃ´×ö£¬ÄãµÄ´úÂë»áÅ×³öIllegalMonitorStateExceptionÒì³£¡£»¹ÓÐÒ»¸öÔ­ÒòÊÇÎªÁË±ÜÃâwaitºÍnotifyÖ®¼ä²úÉú¾ºÌ¬Ìõ¼þ¡£
+Ö÷ÒªÊÇÒòÎªJava APIÇ¿ÖÆÒªÇóÕâÑù×ö£¬Èç¹ûÄã²»ÕâÃ´×ö£¬ÄãµÄ´úÂë»áÅ×³öIllegalMonitorStateExceptionÒì³£¡£»¹ÓÐÒ»¸öÔ­ÒòÊÇÎªÁË±ÜÃâwaitºÍnotifyÖ®¼ä
+²úÉú¾ºÌ¬Ìõ¼þ¡£
 
 22) ÎªÊ²Ã´ÄãÓ¦¸ÃÔÚÑ­»·ÖÐ¼ì²éµÈ´ýÌõ¼þ?
-´¦ÓÚµÈ´ý×´Ì¬µÄÏß³Ì¿ÉÄÜ»áÊÕµ½´íÎó¾¯±¨ºÍÎ±»½ÐÑ£¬Èç¹û²»ÔÚÑ­»·ÖÐ¼ì²éµÈ´ýÌõ¼þ£¬³ÌÐò¾Í»áÔÚÃ»ÓÐÂú×ã½áÊøÌõ¼þµÄÇé¿öÏÂÍË³ö¡£Òò´Ë£¬µ±Ò»¸öµÈ´ýÏß³ÌÐÑÀ´ Ê±£¬²»ÄÜÈÏÎªËüÔ­À´µÄµÈ´ý×´Ì¬ÈÔÈ»ÊÇÓÐÐ§µÄ£¬ÔÚnotify()·½·¨µ÷ÓÃÖ®ºóºÍµÈ´ýÏß³ÌÐÑÀ´Ö®Ç°Õâ¶ÎÊ±¼äËü¿ÉÄÜ»á¸Ä±ä¡£Õâ¾ÍÊÇÔÚÑ­»·ÖÐÊ¹ÓÃwait()·½ ·¨Ð§¹û¸üºÃµÄÔ­Òò£¬Äã¿ÉÒÔÔÚEclipseÖÐ´´½¨Ä£°åµ÷ÓÃwaitºÍnotifyÊÔÒ»ÊÔ¡£Èç¹ûÄãÏëÁË½â¸ü¶à¹ØÓÚÕâ¸öÎÊÌâµÄÄÚÈÝ£¬ÎÒÍÆ¼öÄãÔÄ¶Á¡¶Effective Java¡·Õâ±¾ÊéÖÐµÄÏß³ÌºÍÍ¬²½ÕÂ½Ú¡£
+´¦ÓÚµÈ´ý×´Ì¬µÄÏß³Ì¿ÉÄÜ»áÊÕµ½´íÎó¾¯±¨ºÍÎ±»½ÐÑ£¬Èç¹û²»ÔÚÑ­»·ÖÐ¼ì²éµÈ´ýÌõ¼þ£¬³ÌÐò¾Í»áÔÚÃ»ÓÐÂú×ã½áÊøÌõ¼þµÄÇé¿öÏÂÍË³ö¡£Òò´Ë£¬µ±Ò»¸öµÈ´ýÏß³ÌÐÑÀ´ Ê±£¬²»ÄÜ
+ÈÏÎªËüÔ­À´µÄµÈ´ý×´Ì¬ÈÔÈ»ÊÇÓÐÐ§µÄ£¬ÔÚnotify()·½·¨µ÷ÓÃÖ®ºóºÍµÈ´ýÏß³ÌÐÑÀ´Ö®Ç°Õâ¶ÎÊ±¼äËü¿ÉÄÜ»á¸Ä±ä¡£Õâ¾ÍÊÇÔÚÑ­»·ÖÐÊ¹ÓÃwait()·½ ·¨Ð§¹û¸üºÃµÄÔ­Òò£¬Äã¿É
+ÒÔÔÚEclipseÖÐ´´½¨Ä£°åµ÷ÓÃwaitºÍnotifyÊÔÒ»ÊÔ¡£Èç¹ûÄãÏëÁË½â¸ü¶à¹ØÓÚÕâ¸öÎÊÌâµÄÄÚÈÝ£¬ÎÒÍÆ¼öÄãÔÄ¶Á¡¶Effective Java¡·Õâ±¾ÊéÖÐµÄÏß³ÌºÍÍ¬²½ÕÂ½Ú¡£
 
 23) JavaÖÐµÄÍ¬²½¼¯ºÏÓë²¢·¢¼¯ºÏÓÐÊ²Ã´Çø±ð£¿
-Í¬²½¼¯ºÏÓë²¢·¢¼¯ºÏ¶¼Îª¶àÏß³ÌºÍ²¢·¢Ìá¹©ÁËºÏÊÊµÄÏß³Ì°²È«µÄ¼¯ºÏ£¬²»¹ý²¢·¢¼¯ºÏµÄ¿ÉÀ©Õ¹ÐÔ¸ü¸ß¡£ÔÚJava1.5Ö®Ç°³ÌÐòÔ±ÃÇÖ»ÓÐÍ¬²½¼¯ºÏÀ´ÓÃÇÒÔÚ ¶àÏß³Ì²¢·¢µÄÊ±ºò»áµ¼ÖÂÕùÓÃ£¬×è°­ÁËÏµÍ³µÄÀ©Õ¹ÐÔ¡£Java5½éÉÜÁË²¢·¢¼¯ºÏÏñConcurrentHashMap£¬²»½öÌá¹©Ïß³Ì°²È«»¹ÓÃËø·ÖÀëºÍÄÚ²¿·Ö ÇøµÈÏÖ´ú¼¼ÊõÌá¸ßÁË¿ÉÀ©Õ¹ÐÔ¡£
+Í¬²½¼¯ºÏÓë²¢·¢¼¯ºÏ¶¼Îª¶àÏß³ÌºÍ²¢·¢Ìá¹©ÁËºÏÊÊµÄÏß³Ì°²È«µÄ¼¯ºÏ£¬²»¹ý²¢·¢¼¯ºÏµÄ¿ÉÀ©Õ¹ÐÔ¸ü¸ß¡£ÔÚJava1.5Ö®Ç°³ÌÐòÔ±ÃÇÖ»ÓÐÍ¬²½¼¯ºÏÀ´ÓÃÇÒÔÚ ¶àÏß³Ì²¢·¢µÄÊ±
+ºò»áµ¼ÖÂÕùÓÃ£¬×è°­ÁËÏµÍ³µÄÀ©Õ¹ÐÔ¡£Java5½éÉÜÁË²¢·¢¼¯ºÏÏñConcurrentHashMap£¬²»½öÌá¹©Ïß³Ì°²È«»¹ÓÃËø·ÖÀëºÍÄÚ²¿·Ö ÇøµÈÏÖ´ú¼¼ÊõÌá¸ßÁË¿ÉÀ©Õ¹ÐÔ¡£
 
 24£© JavaÖÐ¶ÑºÍÕ»ÓÐÊ²Ã´²»Í¬£¿
-ÎªÊ²Ã´°ÑÕâ¸öÎÊÌâ¹éÀàÔÚ¶àÏß³ÌºÍ²¢·¢ÃæÊÔÌâÀï£¿ÒòÎªÕ»ÊÇÒ»¿éºÍÏß³Ì½ôÃÜÏà¹ØµÄÄÚ´æÇøÓò¡£Ã¿¸öÏß³Ì¶¼ÓÐ×Ô¼ºµÄÕ»ÄÚ´æ£¬ÓÃÓÚ´æ´¢±¾µØ±äÁ¿£¬·½·¨²ÎÊýºÍÕ» µ÷ÓÃ£¬Ò»¸öÏß³ÌÖÐ´æ´¢µÄ±äÁ¿¶ÔÆäËüÏß³ÌÊÇ²»¿É¼ûµÄ¡£¶ø¶ÑÊÇËùÓÐÏß³Ì¹²ÏíµÄÒ»Æ¬¹«ÓÃÄÚ´æÇøÓò¡£¶ÔÏó¶¼ÔÚ¶ÑÀï´´½¨£¬ÎªÁËÌáÉýÐ§ÂÊÏß³Ì»á´Ó¶ÑÖÐÅªÒ»¸ö»º´æµ½×Ô¼º µÄÕ»£¬Èç¹û¶à¸öÏß³ÌÊ¹ÓÃ¸Ã±äÁ¿¾Í¿ÉÄÜÒý·¢ÎÊÌâ£¬ÕâÊ±volatile ±äÁ¿¾Í¿ÉÒÔ·¢»Ó×÷ÓÃÁË£¬ËüÒªÇóÏß³Ì´ÓÖ÷´æÖÐ¶ÁÈ¡±äÁ¿µÄÖµ¡£
+ÎªÊ²Ã´°ÑÕâ¸öÎÊÌâ¹éÀàÔÚ¶àÏß³ÌºÍ²¢·¢ÃæÊÔÌâÀï£¿ÒòÎªÕ»ÊÇÒ»¿éºÍÏß³Ì½ôÃÜÏà¹ØµÄÄÚ´æÇøÓò¡£Ã¿¸öÏß³Ì¶¼ÓÐ×Ô¼ºµÄÕ»ÄÚ´æ£¬ÓÃÓÚ´æ´¢±¾µØ±äÁ¿£¬·½·¨²ÎÊýºÍÕ» µ÷ÓÃ£¬
+Ò»¸öÏß³ÌÖÐ´æ´¢µÄ±äÁ¿¶ÔÆäËüÏß³ÌÊÇ²»¿É¼ûµÄ¡£¶ø¶ÑÊÇËùÓÐÏß³Ì¹²ÏíµÄÒ»Æ¬¹«ÓÃÄÚ´æÇøÓò¡£¶ÔÏó¶¼ÔÚ¶ÑÀï´´½¨£¬ÎªÁËÌáÉýÐ§ÂÊÏß³Ì»á´Ó¶ÑÖÐÅªÒ»¸ö»º´æµ½×Ô¼º µÄÕ»£¬
+Èç¹û¶à¸öÏß³ÌÊ¹ÓÃ¸Ã±äÁ¿¾Í¿ÉÄÜÒý·¢ÎÊÌâ£¬ÕâÊ±volatile ±äÁ¿¾Í¿ÉÒÔ·¢»Ó×÷ÓÃÁË£¬ËüÒªÇóÏß³Ì´ÓÖ÷´æÖÐ¶ÁÈ¡±äÁ¿µÄÖµ¡£
 
 25£© Ê²Ã´ÊÇÏß³Ì³Ø£¿ ÎªÊ²Ã´ÒªÊ¹ÓÃËü£¿
-´´½¨Ïß³ÌÒª»¨·Ñ°º¹óµÄ×ÊÔ´ºÍÊ±¼ä£¬Èç¹ûÈÎÎñÀ´ÁË²Å´´½¨Ïß³ÌÄÇÃ´ÏìÓ¦Ê±¼ä»á±ä³¤£¬¶øÇÒÒ»¸ö½ø³ÌÄÜ´´½¨µÄÏß³ÌÊýÓÐÏÞ¡£ÎªÁË±ÜÃâÕâÐ©ÎÊÌâ£¬ÔÚ³ÌÐòÆô¶¯µÄÊ± ºò¾Í´´½¨Èô¸ÉÏß³ÌÀ´ÏìÓ¦´¦Àí£¬ËüÃÇ±»³ÆÎªÏß³Ì³Ø£¬ÀïÃæµÄÏß³Ì½Ð¹¤×÷Ïß³Ì¡£´ÓJDK1.5¿ªÊ¼£¬Java APIÌá¹©ÁËExecutor¿ò¼ÜÈÃÄã¿ÉÒÔ´´½¨²»Í¬µÄÏß³Ì³Ø¡£±ÈÈçµ¥Ïß³Ì³Ø£¬Ã¿´Î´¦ÀíÒ»¸öÈÎÎñ£»ÊýÄ¿¹Ì¶¨µÄÏß³Ì³Ø»òÕßÊÇ»º´æÏß³Ì³Ø£¨Ò»¸öÊÊºÏºÜ¶àÉú´æÆÚ¶Ì µÄÈÎÎñµÄ³ÌÐòµÄ¿ÉÀ©Õ¹Ïß³Ì³Ø£©¡£
+´´½¨Ïß³ÌÒª»¨·Ñ°º¹óµÄ×ÊÔ´ºÍÊ±¼ä£¬Èç¹ûÈÎÎñÀ´ÁË²Å´´½¨Ïß³ÌÄÇÃ´ÏìÓ¦Ê±¼ä»á±ä³¤£¬¶øÇÒÒ»¸ö½ø³ÌÄÜ´´½¨µÄÏß³ÌÊýÓÐÏÞ¡£ÎªÁË±ÜÃâÕâÐ©ÎÊÌâ£¬ÔÚ³ÌÐòÆô¶¯µÄÊ± ºò¾Í´´½¨
+Èô¸ÉÏß³ÌÀ´ÏìÓ¦´¦Àí£¬ËüÃÇ±»³ÆÎªÏß³Ì³Ø£¬ÀïÃæµÄÏß³Ì½Ð¹¤×÷Ïß³Ì¡£´ÓJDK1.5¿ªÊ¼£¬Java APIÌá¹©ÁËExecutor¿ò¼ÜÈÃÄã¿ÉÒÔ´´½¨²»Í¬µÄÏß³Ì³Ø¡£±ÈÈçµ¥Ïß³Ì³Ø£¬
+Ã¿´Î´¦ÀíÒ»¸öÈÎÎñ£»ÊýÄ¿¹Ì¶¨µÄÏß³Ì³Ø»òÕßÊÇ»º´æÏß³Ì³Ø£¨Ò»¸öÊÊºÏºÜ¶àÉú´æÆÚ¶Ì µÄÈÎÎñµÄ³ÌÐòµÄ¿ÉÀ©Õ¹Ïß³Ì³Ø£©¡£
 
 26£© ÈçºÎÐ´´úÂëÀ´½â¾öÉú²úÕßÏû·ÑÕßÎÊÌâ£¿
-ÔÚÏÖÊµÖÐÄã½â¾öµÄÐí¶àÏß³ÌÎÊÌâ¶¼ÊôÓÚÉú²úÕßÏû·ÑÕßÄ£ÐÍ£¬¾ÍÊÇÒ»¸öÏß³ÌÉú²úÈÎÎñ¹©ÆäËüÏß³Ì½øÐÐÏû·Ñ£¬Äã±ØÐëÖªµÀÔõÃ´½øÐÐÏß³Ì¼äÍ¨ÐÅÀ´½â¾öÕâ¸öÎÊÌâ¡£±È ½ÏµÍ¼¶µÄ°ì·¨ÊÇÓÃwaitºÍnotifyÀ´½â¾öÕâ¸öÎÊÌâ£¬±È½ÏÔÞµÄ°ì·¨ÊÇÓÃSemaphore »òÕß BlockingQueueÀ´ÊµÏÖÉú²úÕßÏû·ÑÕßÄ£ÐÍ£¬ÕâÆª½Ì³ÌÓÐÊµÏÖËü¡£
+ÔÚÏÖÊµÖÐÄã½â¾öµÄÐí¶àÏß³ÌÎÊÌâ¶¼ÊôÓÚÉú²úÕßÏû·ÑÕßÄ£ÐÍ£¬¾ÍÊÇÒ»¸öÏß³ÌÉú²úÈÎÎñ¹©ÆäËüÏß³Ì½øÐÐÏû·Ñ£¬Äã±ØÐëÖªµÀÔõÃ´½øÐÐÏß³Ì¼äÍ¨ÐÅÀ´½â¾öÕâ¸öÎÊÌâ¡£±È ½ÏµÍ¼¶µÄ°ì
+·¨ÊÇÓÃwaitºÍnotifyÀ´½â¾öÕâ¸öÎÊÌâ£¬±È½ÏÔÞµÄ°ì·¨ÊÇÓÃSemaphore »òÕß BlockingQueueÀ´ÊµÏÖÉú²úÕßÏû·ÑÕßÄ£ÐÍ£¬ÕâÆª½Ì³ÌÓÐÊµÏÖËü¡£
 
 27£© ÈçºÎ±ÜÃâËÀËø£¿
 
 Java¶àÏß³ÌÖÐµÄËÀËø
-ËÀËøÊÇÖ¸Á½¸ö»òÁ½¸öÒÔÉÏµÄ½ø³ÌÔÚÖ´ÐÐ¹ý³ÌÖÐ£¬ÒòÕù¶á×ÊÔ´¶øÔì³ÉµÄÒ»ÖÖ»¥ÏàµÈ´ýµÄÏÖÏó£¬ÈôÎÞÍâÁ¦×÷ÓÃ£¬ËüÃÇ¶¼½«ÎÞ·¨ÍÆ½øÏÂÈ¥¡£ÕâÊÇÒ»¸öÑÏÖØµÄÎÊÌâ£¬ÒòÎªËÀËø»áÈÃÄãµÄ³ÌÐò¹ÒÆðÎÞ·¨Íê³ÉÈÎÎñ£¬ËÀËøµÄ·¢Éú±ØÐëÂú×ãÒÔÏÂËÄ¸öÌõ¼þ£º
+ËÀËøÊÇÖ¸Á½¸ö»òÁ½¸öÒÔÉÏµÄ½ø³ÌÔÚÖ´ÐÐ¹ý³ÌÖÐ£¬ÒòÕù¶á×ÊÔ´¶øÔì³ÉµÄÒ»ÖÖ»¥ÏàµÈ´ýµÄÏÖÏó£¬ÈôÎÞÍâÁ¦×÷ÓÃ£¬ËüÃÇ¶¼½«ÎÞ·¨ÍÆ½øÏÂÈ¥¡£ÕâÊÇÒ»¸öÑÏÖØµÄÎÊÌâ£¬ÒòÎªËÀËø»áÈÃ
+ÄãµÄ³ÌÐò¹ÒÆðÎÞ·¨Íê³ÉÈÎÎñ£¬ËÀËøµÄ·¢Éú±ØÐëÂú×ãÒÔÏÂËÄ¸öÌõ¼þ£º
 
 »¥³âÌõ¼þ£ºÒ»¸ö×ÊÔ´Ã¿´ÎÖ»ÄÜ±»Ò»¸ö½ø³ÌÊ¹ÓÃ¡£
 
@@ -108,92 +156,127 @@ Java¶àÏß³ÌÖÐµÄËÀËø
 ±ÜÃâËÀËø×î¼òµ¥µÄ·½·¨¾ÍÊÇ×èÖ¹Ñ­»·µÈ´ýÌõ¼þ£¬½«ÏµÍ³ÖÐËùÓÐµÄ×ÊÔ´ÉèÖÃ±êÖ¾Î»¡¢ÅÅÐò£¬¹æ¶¨ËùÓÐµÄ½ø³ÌÉêÇë×ÊÔ´±ØÐëÒÔÒ»¶¨µÄË³Ðò£¨ÉýÐò»ò½µÐò£©×ö²Ù×÷À´±ÜÃâËÀËø¡£
 
 28) JavaÖÐ»îËøºÍËÀËøÓÐÊ²Ã´Çø±ð£¿
-ÕâÊÇÉÏÌâµÄÀ©Õ¹£¬»îËøºÍËÀËøÀàËÆ£¬²»Í¬Ö®´¦ÔÚÓÚ´¦ÓÚ»îËøµÄÏß³Ì»ò½ø³ÌµÄ×´Ì¬ÊÇ²»¶Ï¸Ä±äµÄ£¬»îËø¿ÉÒÔÈÏÎªÊÇÒ»ÖÖÌØÊâµÄ¼¢¶ö¡£Ò»¸öÏÖÊµµÄ»îËøÀý×ÓÊÇÁ½¸ö ÈËÔÚÏÁÐ¡µÄ×ßÀÈÅöµ½£¬Á½¸öÈË¶¼ÊÔ×Å±ÜÈÃ¶Ô·½ºÃÈÃ±Ë´ËÍ¨¹ý£¬µ«ÊÇÒòÎª±ÜÈÃµÄ·½Ïò¶¼Ò»Ñùµ¼ÖÂ×îºóË­¶¼²»ÄÜÍ¨¹ý×ßÀÈ¡£¼òµ¥µÄËµ¾ÍÊÇ£¬»îËøºÍËÀËøµÄÖ÷ÒªÇø±ðÊÇÇ°Õß ½ø³ÌµÄ×´Ì¬¿ÉÒÔ¸Ä±äµ«ÊÇÈ´²»ÄÜ¼ÌÐøÖ´ÐÐ¡£
+ÕâÊÇÉÏÌâµÄÀ©Õ¹£¬»îËøºÍËÀËøÀàËÆ£¬²»Í¬Ö®´¦ÔÚÓÚ´¦ÓÚ»îËøµÄÏß³Ì»ò½ø³ÌµÄ×´Ì¬ÊÇ²»¶Ï¸Ä±äµÄ£¬»îËø¿ÉÒÔÈÏÎªÊÇÒ»ÖÖÌØÊâµÄ¼¢¶ö¡£Ò»¸öÏÖÊµµÄ»îËøÀý×ÓÊÇÁ½¸ö ÈËÔÚÏÁÐ¡µÄ
+×ßÀÈÅöµ½£¬Á½¸öÈË¶¼ÊÔ×Å±ÜÈÃ¶Ô·½ºÃÈÃ±Ë´ËÍ¨¹ý£¬µ«ÊÇÒòÎª±ÜÈÃµÄ·½Ïò¶¼Ò»Ñùµ¼ÖÂ×îºóË­¶¼²»ÄÜÍ¨¹ý×ßÀÈ¡£¼òµ¥µÄËµ¾ÍÊÇ£¬»îËøºÍËÀËøµÄÖ÷ÒªÇø±ðÊÇÇ°Õß ½ø³ÌµÄ×´Ì¬¿ÉÒÔ¸Ä±äµ«ÊÇÈ´²»ÄÜ¼ÌÐøÖ´ÐÐ¡£
 
 29£© ÔõÃ´¼ì²âÒ»¸öÏß³ÌÊÇ·ñÓµÓÐËø£¿
 ÎÒÒ»Ö±²»ÖªµÀÎÒÃÇ¾¹È»¿ÉÒÔ¼ì²âÒ»¸öÏß³ÌÊÇ·ñÓµÓÐËø£¬Ö±µ½ÎÒ²Î¼ÓÁËÒ»´Îµç»°ÃæÊÔ¡£ÔÚjava.lang.ThreadÖÐÓÐÒ»¸ö·½·¨½ÐholdsLock()£¬Ëü·µ»ØtrueÈç¹ûµ±ÇÒ½öµ±µ±Ç°Ïß³ÌÓµÓÐÄ³¸ö¾ßÌå¶ÔÏóµÄËø¡£
 
 30) ÄãÈçºÎÔÚJavaÖÐ»ñÈ¡Ïß³Ì¶ÑÕ»£¿
-¶ÔÓÚ²»Í¬µÄ²Ù×÷ÏµÍ³£¬ÓÐ¶àÖÖ·½·¨À´»ñµÃJava½ø³ÌµÄÏß³Ì¶ÑÕ»¡£µ±Äã»ñÈ¡Ïß³Ì¶ÑÕ»Ê±£¬JVM»á°ÑËùÓÐÏß³ÌµÄ×´Ì¬´æµ½ÈÕÖ¾ÎÄ¼þ»òÕßÊä³öµ½¿ØÖÆÌ¨¡£ÔÚ WindowsÄã¿ÉÒÔÊ¹ÓÃCtrl + Break×éºÏ¼üÀ´»ñÈ¡Ïß³Ì¶ÑÕ»£¬LinuxÏÂÓÃkill -3ÃüÁî¡£ÄãÒ²¿ÉÒÔÓÃjstackÕâ¸ö¹¤¾ßÀ´»ñÈ¡£¬Ëü¶ÔÏß³Ìid½øÐÐ²Ù×÷£¬Äã¿ÉÒÔÓÃjpsÕâ¸ö¹¤¾ßÕÒµ½id¡£
+¶ÔÓÚ²»Í¬µÄ²Ù×÷ÏµÍ³£¬ÓÐ¶àÖÖ·½·¨À´»ñµÃJava½ø³ÌµÄÏß³Ì¶ÑÕ»¡£µ±Äã»ñÈ¡Ïß³Ì¶ÑÕ»Ê±£¬JVM»á°ÑËùÓÐÏß³ÌµÄ×´Ì¬´æµ½ÈÕÖ¾ÎÄ¼þ»òÕßÊä³öµ½¿ØÖÆÌ¨¡£ÔÚ WindowsÄã¿ÉÒÔ
+Ê¹ÓÃCtrl + Break×éºÏ¼üÀ´»ñÈ¡Ïß³Ì¶ÑÕ»£¬LinuxÏÂÓÃkill -3ÃüÁî¡£ÄãÒ²¿ÉÒÔÓÃjstackÕâ¸ö¹¤¾ßÀ´»ñÈ¡£¬Ëü¶ÔÏß³Ìid½øÐÐ²Ù×÷£¬Äã¿ÉÒÔÓÃjpsÕâ¸ö¹¤¾ßÕÒµ½id¡£
 
 31) JVMÖÐÄÄ¸ö²ÎÊýÊÇÓÃÀ´¿ØÖÆÏß³ÌµÄÕ»¶ÑÕ»Ð¡µÄ
 Õâ¸öÎÊÌâºÜ¼òµ¥£¬ -Xss²ÎÊýÓÃÀ´¿ØÖÆÏß³ÌµÄ¶ÑÕ»´óÐ¡¡£
 
 32£© JavaÖÐsynchronized ºÍ ReentrantLock ÓÐÊ²Ã´²»Í¬£¿
-JavaÔÚ¹ýÈ¥ºÜ³¤Ò»¶ÎÊ±¼äÖ»ÄÜÍ¨¹ýsynchronized¹Ø¼ü×ÖÀ´ÊµÏÖ»¥³â£¬ËüÓÐÒ»Ð©È±µã¡£±ÈÈçÄã²»ÄÜÀ©Õ¹ËøÖ®ÍâµÄ·½·¨»òÕß¿é±ß½ç£¬³¢ÊÔ»ñÈ¡Ëø Ê±²»ÄÜÖÐÍ¾È¡ÏûµÈ¡£Java 5 Í¨¹ýLock½Ó¿ÚÌá¹©ÁË¸ü¸´ÔÓµÄ¿ØÖÆÀ´½â¾öÕâÐ©ÎÊÌâ¡£ ReentrantLock ÀàÊµÏÖÁË Lock£¬ËüÓµÓÐÓë synchronized ÏàÍ¬µÄ²¢·¢ÐÔºÍÄÚ´æÓïÒåÇÒËü»¹¾ßÓÐ¿ÉÀ©Õ¹ÐÔ¡£
+JavaÔÚ¹ýÈ¥ºÜ³¤Ò»¶ÎÊ±¼äÖ»ÄÜÍ¨¹ýsynchronized¹Ø¼ü×ÖÀ´ÊµÏÖ»¥³â£¬ËüÓÐÒ»Ð©È±µã¡£±ÈÈçÄã²»ÄÜÀ©Õ¹ËøÖ®ÍâµÄ·½·¨»òÕß¿é±ß½ç£¬³¢ÊÔ»ñÈ¡Ëø Ê±²»ÄÜÖÐÍ¾È¡ÏûµÈ¡£
+Java 5 Í¨¹ýLock½Ó¿ÚÌá¹©ÁË¸ü¸´ÔÓµÄ¿ØÖÆÀ´½â¾öÕâÐ©ÎÊÌâ¡£ ReentrantLock ÀàÊµÏÖÁË Lock£¬ËüÓµÓÐÓë synchronized ÏàÍ¬µÄ²¢·¢ÐÔºÍÄÚ´æÓïÒåÇÒËü»¹¾ßÓÐ¿ÉÀ©Õ¹ÐÔ¡£
 
 33£© ÓÐÈý¸öÏß³ÌT1£¬T2£¬T3£¬ÔõÃ´È·±£ËüÃÇ°´Ë³ÐòÖ´ÐÐ£¿
-ÔÚ¶àÏß³ÌÖÐÓÐ¶àÖÖ·½·¨ÈÃÏß³Ì°´ÌØ¶¨Ë³ÐòÖ´ÐÐ£¬Äã¿ÉÒÔÓÃÏß³ÌÀàµÄjoin()·½·¨ÔÚÒ»¸öÏß³ÌÖÐÆô¶¯ÁíÒ»¸öÏß³Ì£¬ÁíÍâÒ»¸öÏß³ÌÍê³É¸ÃÏß³Ì¼ÌÐøÖ´ÐÐ¡£ÎªÁËÈ·±£Èý¸öÏß³ÌµÄË³ÐòÄãÓ¦¸ÃÏÈÆô¶¯×îºóÒ»¸ö(T3µ÷ÓÃT2£¬T2µ÷ÓÃT1)£¬ÕâÑùT1¾Í»áÏÈÍê³É¶øT3×îºóÍê³É¡£
+ÔÚ¶àÏß³ÌÖÐÓÐ¶àÖÖ·½·¨ÈÃÏß³Ì°´ÌØ¶¨Ë³ÐòÖ´ÐÐ£¬Äã¿ÉÒÔÓÃÏß³ÌÀàµÄjoin()·½·¨ÔÚÒ»¸öÏß³ÌÖÐÆô¶¯ÁíÒ»¸öÏß³Ì£¬ÁíÍâÒ»¸öÏß³ÌÍê³É¸ÃÏß³Ì¼ÌÐøÖ´ÐÐ¡£ÎªÁËÈ·±£Èý¸ö
+Ïß³ÌµÄË³ÐòÄãÓ¦¸ÃÏÈÆô¶¯×îºóÒ»¸ö(T3µ÷ÓÃT2£¬T2µ÷ÓÃT1)£¬ÕâÑùT1¾Í»áÏÈÍê³É¶øT3×îºóÍê³É¡£
 
 34) ThreadÀàÖÐµÄyield·½·¨ÓÐÊ²Ã´×÷ÓÃ£¿
-Yield·½·¨¿ÉÒÔÔÝÍ£µ±Ç°ÕýÔÚÖ´ÐÐµÄÏß³Ì¶ÔÏó£¬ÈÃÆäËüÓÐÏàÍ¬ÓÅÏÈ¼¶µÄÏß³ÌÖ´ÐÐ¡£ËüÊÇÒ»¸ö¾²Ì¬·½·¨¶øÇÒÖ»±£Ö¤µ±Ç°Ïß³Ì·ÅÆúCPUÕ¼ÓÃ¶ø²»ÄÜ±£Ö¤Ê¹ÆäËüÏß³ÌÒ»¶¨ÄÜÕ¼ÓÃCPU£¬Ö´ÐÐyield()µÄÏß³ÌÓÐ¿ÉÄÜÔÚ½øÈëµ½ÔÝÍ£×´Ì¬ºóÂíÉÏÓÖ±»Ö´ÐÐ¡£
+Yield·½·¨¿ÉÒÔÔÝÍ£µ±Ç°ÕýÔÚÖ´ÐÐµÄÏß³Ì¶ÔÏó£¬ÈÃÆäËüÓÐÏàÍ¬ÓÅÏÈ¼¶µÄÏß³ÌÖ´ÐÐ¡£ËüÊÇÒ»¸ö¾²Ì¬·½·¨¶øÇÒÖ»±£Ö¤µ±Ç°Ïß³Ì·ÅÆúCPUÕ¼ÓÃ¶ø²»ÄÜ±£Ö¤Ê¹ÆäËüÏß³ÌÒ»¶¨ÄÜÕ¼ÓÃ
+CPU£¬Ö´ÐÐyield()µÄÏß³ÌÓÐ¿ÉÄÜÔÚ½øÈëµ½ÔÝÍ£×´Ì¬ºóÂíÉÏÓÖ±»Ö´ÐÐ¡£
 
 35£© JavaÖÐConcurrentHashMapµÄ²¢·¢¶ÈÊÇÊ²Ã´£¿
-ConcurrentHashMap°ÑÊµ¼Êmap»®·Ö³ÉÈô¸É²¿·ÖÀ´ÊµÏÖËüµÄ¿ÉÀ©Õ¹ÐÔºÍÏß³Ì°²È«¡£ÕâÖÖ»®·ÖÊÇÊ¹ÓÃ²¢·¢¶È»ñµÃµÄ£¬ËüÊÇ ConcurrentHashMapÀà¹¹Ôìº¯ÊýµÄÒ»¸ö¿ÉÑ¡²ÎÊý£¬Ä¬ÈÏÖµÎª16£¬ÕâÑùÔÚ¶àÏß³ÌÇé¿öÏÂ¾ÍÄÜ±ÜÃâÕùÓÃ¡£
+ConcurrentHashMap°ÑÊµ¼Êmap»®·Ö³ÉÈô¸É²¿·ÖÀ´ÊµÏÖËüµÄ¿ÉÀ©Õ¹ÐÔºÍÏß³Ì°²È«¡£ÕâÖÖ»®·ÖÊÇÊ¹ÓÃ²¢·¢¶È»ñµÃµÄ£¬ËüÊÇ ConcurrentHashMapÀà¹¹Ôìº¯ÊýµÄÒ»¸ö¿É
+Ñ¡²ÎÊý£¬Ä¬ÈÏÖµÎª16£¬ÕâÑùÔÚ¶àÏß³ÌÇé¿öÏÂ¾ÍÄÜ±ÜÃâÕùÓÃ¡£
 
 36£© JavaÖÐSemaphoreÊÇÊ²Ã´£¿
-JavaÖÐµÄSemaphoreÊÇÒ»ÖÖÐÂµÄÍ¬²½Àà£¬ËüÊÇÒ»¸ö¼ÆÊýÐÅºÅ¡£´Ó¸ÅÄîÉÏ½²£¬´Ó¸ÅÄîÉÏ½²£¬ÐÅºÅÁ¿Î¬»¤ÁËÒ»¸öÐí¿É¼¯ºÏ¡£ÈçÓÐ±ØÒª£¬ÔÚÐí¿É¿ÉÓÃÇ° »á×èÈûÃ¿Ò»¸ö acquire()£¬È»ºóÔÙ»ñÈ¡¸ÃÐí¿É¡£Ã¿¸ö release()Ìí¼ÓÒ»¸öÐí¿É£¬´Ó¶ø¿ÉÄÜÊÍ·ÅÒ»¸öÕýÔÚ×èÈûµÄ»ñÈ¡Õß¡£µ«ÊÇ£¬²»Ê¹ÓÃÊµ¼ÊµÄÐí¿É¶ÔÏó£¬SemaphoreÖ»¶Ô¿ÉÓÃÐí¿ÉµÄºÅÂë½øÐÐ¼ÆÊý£¬²¢²É È¡ÏàÓ¦µÄÐÐ¶¯¡£ÐÅºÅÁ¿³£³£ÓÃÓÚ¶àÏß³ÌµÄ´úÂëÖÐ£¬±ÈÈçÊý¾Ý¿âÁ¬½Ó³Ø¡£
+JavaÖÐµÄSemaphoreÊÇÒ»ÖÖÐÂµÄÍ¬²½Àà£¬ËüÊÇÒ»¸ö¼ÆÊýÐÅºÅ¡£´Ó¸ÅÄîÉÏ½²£¬´Ó¸ÅÄîÉÏ½²£¬ÐÅºÅÁ¿Î¬»¤ÁËÒ»¸öÐí¿É¼¯ºÏ¡£ÈçÓÐ±ØÒª£¬ÔÚÐí¿É¿ÉÓÃÇ° »á×èÈûÃ¿Ò»¸ö
+acquire()£¬È»ºóÔÙ»ñÈ¡¸ÃÐí¿É¡£Ã¿¸ö release()Ìí¼ÓÒ»¸öÐí¿É£¬´Ó¶ø¿ÉÄÜÊÍ·ÅÒ»¸öÕýÔÚ×èÈûµÄ»ñÈ¡Õß¡£µ«ÊÇ£¬²»Ê¹ÓÃÊµ¼ÊµÄÐí¿É¶ÔÏó£¬SemaphoreÖ»¶Ô¿ÉÓÃÐí
+¿ÉµÄºÅÂë½øÐÐ¼ÆÊý£¬²¢²É È¡ÏàÓ¦µÄÐÐ¶¯¡£ÐÅºÅÁ¿³£³£ÓÃÓÚ¶àÏß³ÌµÄ´úÂëÖÐ£¬±ÈÈçÊý¾Ý¿âÁ¬½Ó³Ø¡£
 
 37£©Èç¹ûÄãÌá½»ÈÎÎñÊ±£¬Ïß³Ì³Ø¶ÓÁÐÒÑÂú¡£»áÊ±·¢»áÉúÊ²Ã´£¿
-Õâ¸öÎÊÌâÎÊµÃºÜ½Æ»«£¬Ðí¶à³ÌÐòÔ±»áÈÏÎª¸ÃÈÎÎñ»á×èÈûÖ±µ½Ïß³Ì³Ø¶ÓÁÐÓÐ¿ÕÎ»¡£ÊÂÊµÉÏÈç¹ûÒ»¸öÈÎÎñ²»ÄÜ±»µ÷¶ÈÖ´ÐÐÄÇÃ´ThreadPoolExecutor¡¯s submit()·½·¨½«»áÅ×³öÒ»¸öRejectedExecutionExceptionÒì³£¡£
+Õâ¸öÎÊÌâÎÊµÃºÜ½Æ»«£¬Ðí¶à³ÌÐòÔ±»áÈÏÎª¸ÃÈÎÎñ»á×èÈûÖ±µ½Ïß³Ì³Ø¶ÓÁÐÓÐ¿ÕÎ»¡£ÊÂÊµÉÏÈç¹ûÒ»¸öÈÎÎñ²»ÄÜ±»µ÷¶ÈÖ´ÐÐÄÇÃ´ThreadPoolExecutor¡¯s submit()·½·¨
+½«»áÅ×³öÒ»¸öRejectedExecutionExceptionÒì³£¡£
 
 38) JavaÏß³Ì³ØÖÐsubmit() ºÍ execute()·½·¨ÓÐÊ²Ã´Çø±ð£¿
-Á½¸ö·½·¨¶¼¿ÉÒÔÏòÏß³Ì³ØÌá½»ÈÎÎñ£¬execute()·½·¨µÄ·µ»ØÀàÐÍÊÇvoid£¬Ëü¶¨ÒåÔÚExecutor½Ó¿ÚÖÐ, ¶øsubmit()·½·¨¿ÉÒÔ·µ»Ø³ÖÓÐ¼ÆËã½á¹ûµÄFuture¶ÔÏó£¬Ëü¶¨ÒåÔÚExecutorService½Ó¿ÚÖÐ£¬ËüÀ©Õ¹ÁËExecutor½Ó¿Ú£¬ÆäËüÏß ³Ì³ØÀàÏñThreadPoolExecutorºÍScheduledThreadPoolExecutor¶¼ÓÐÕâÐ©·½·¨¡£
+Á½¸ö·½·¨¶¼¿ÉÒÔÏòÏß³Ì³ØÌá½»ÈÎÎñ£¬execute()·½·¨µÄ·µ»ØÀàÐÍÊÇvoid£¬Ëü¶¨ÒåÔÚExecutor½Ó¿ÚÖÐ, ¶øsubmit()·½·¨¿ÉÒÔ·µ»Ø³ÖÓÐ¼ÆËã½á¹ûµÄFuture¶ÔÏó£¬Ëü¶¨
+ÒåÔÚExecutorService½Ó¿ÚÖÐ£¬ËüÀ©Õ¹ÁËExecutor½Ó¿Ú£¬ÆäËüÏß ³Ì³ØÀàÏñThreadPoolExecutorºÍScheduledThreadPoolExecutor¶¼ÓÐÕâÐ©·½·¨¡£
 
 39) Ê²Ã´ÊÇ×èÈûÊ½·½·¨£¿
-×èÈûÊ½·½·¨ÊÇÖ¸³ÌÐò»áÒ»Ö±µÈ´ý¸Ã·½·¨Íê³ÉÆÚ¼ä²»×öÆäËûÊÂÇé£¬ServerSocketµÄaccept()·½·¨¾ÍÊÇÒ»Ö±µÈ´ý¿Í»§¶ËÁ¬½Ó¡£ÕâÀïµÄ×èÈûÊÇ Ö¸µ÷ÓÃ½á¹û·µ»ØÖ®Ç°£¬µ±Ç°Ïß³Ì»á±»¹ÒÆð£¬Ö±µ½µÃµ½½á¹ûÖ®ºó²Å»á·µ»Ø¡£´ËÍâ£¬»¹ÓÐÒì²½ºÍ·Ç×èÈûÊ½·½·¨ÔÚÈÎÎñÍê³ÉÇ°¾Í·µ»Ø¡£
+×èÈûÊ½·½·¨ÊÇÖ¸³ÌÐò»áÒ»Ö±µÈ´ý¸Ã·½·¨Íê³ÉÆÚ¼ä²»×öÆäËûÊÂÇé£¬ServerSocketµÄaccept()·½·¨¾ÍÊÇÒ»Ö±µÈ´ý¿Í»§¶ËÁ¬½Ó¡£ÕâÀïµÄ×èÈûÊÇ Ö¸µ÷ÓÃ½á¹û·µ»ØÖ®Ç°£¬µ±Ç°
+Ïß³Ì»á±»¹ÒÆð£¬Ö±µ½µÃµ½½á¹ûÖ®ºó²Å»á·µ»Ø¡£´ËÍâ£¬»¹ÓÐÒì²½ºÍ·Ç×èÈûÊ½·½·¨ÔÚÈÎÎñÍê³ÉÇ°¾Í·µ»Ø¡£
 
 40) SwingÊÇÏß³Ì°²È«µÄÂð£¿ ÎªÊ²Ã´£¿
-Äã¿ÉÒÔºÜ¿Ï¶¨µÄ¸ø³ö»Ø´ð£¬Swing²»ÊÇÏß³Ì°²È«µÄ£¬µ«ÊÇÄãÓ¦¸Ã½âÊÍÕâÃ´»Ø´ðµÄÔ­Òò¼´±ãÃæÊÔ¹ÙÃ»ÓÐÎÊÄãÎªÊ²Ã´¡£µ±ÎÒÃÇËµswing²»ÊÇÏß³Ì°²È«µÄ³£ ³£Ìáµ½ËüµÄ×é¼þ£¬ÕâÐ©×é¼þ²»ÄÜÔÚ¶àÏß³ÌÖÐ½øÐÐÐÞ¸Ä£¬ËùÓÐ¶ÔGUI×é¼þµÄ¸üÐÂ¶¼ÒªÔÚAWTÏß³ÌÖÐÍê³É£¬¶øSwingÌá¹©ÁËÍ¬²½ºÍÒì²½Á½ÖÖ»Øµ÷·½·¨À´½øÐÐ¸ü ÐÂ¡£
+Äã¿ÉÒÔºÜ¿Ï¶¨µÄ¸ø³ö»Ø´ð£¬Swing²»ÊÇÏß³Ì°²È«µÄ£¬µ«ÊÇÄãÓ¦¸Ã½âÊÍÕâÃ´»Ø´ðµÄÔ­Òò¼´±ãÃæÊÔ¹ÙÃ»ÓÐÎÊÄãÎªÊ²Ã´¡£µ±ÎÒÃÇËµswing²»ÊÇÏß³Ì°²È«µÄ³£ ³£Ìáµ½ËüµÄ×é¼þ£¬
+ÕâÐ©×é¼þ²»ÄÜÔÚ¶àÏß³ÌÖÐ½øÐÐÐÞ¸Ä£¬ËùÓÐ¶ÔGUI×é¼þµÄ¸üÐÂ¶¼ÒªÔÚAWTÏß³ÌÖÐÍê³É£¬¶øSwingÌá¹©ÁËÍ¬²½ºÍÒì²½Á½ÖÖ»Øµ÷·½·¨À´½øÐÐ¸ü ÐÂ¡£
 
 41£© JavaÖÐinvokeAndWait ºÍ invokeLaterÓÐÊ²Ã´Çø±ð£¿
-ÕâÁ½¸ö·½·¨ÊÇSwing API Ìá¹©¸øJava¿ª·¢ÕßÓÃÀ´´Óµ±Ç°Ïß³Ì¶ø²»ÊÇÊÂ¼þÅÉ·¢Ïß³Ì¸üÐÂGUI×é¼þÓÃµÄ¡£InvokeAndWait()Í¬²½¸üÐÂGUI×é¼þ£¬±ÈÈçÒ»¸ö½ø¶ÈÌõ£¬Ò»µ©½ø ¶È¸üÐÂÁË£¬½ø¶ÈÌõÒ²Òª×ö³öÏàÓ¦¸Ä±ä¡£Èç¹û½ø¶È±»¶à¸öÏß³Ì¸ú×Ù£¬ÄÇÃ´¾Íµ÷ÓÃinvokeAndWait()·½·¨ÇëÇóÊÂ¼þÅÉ·¢Ïß³Ì¶Ô×é¼þ½øÐÐÏàÓ¦¸üÐÂ¡£¶ø invokeLater()·½·¨ÊÇÒì²½µ÷ÓÃ¸üÐÂ×é¼þµÄ¡£
+ÕâÁ½¸ö·½·¨ÊÇSwing API Ìá¹©¸øJava¿ª·¢ÕßÓÃÀ´´Óµ±Ç°Ïß³Ì¶ø²»ÊÇÊÂ¼þÅÉ·¢Ïß³Ì¸üÐÂGUI×é¼þÓÃµÄ¡£InvokeAndWait()Í¬²½¸üÐÂGUI×é¼þ£¬±ÈÈçÒ»¸ö½ø¶ÈÌõ£¬Ò»µ©½ø
+ ¶È¸üÐÂÁË£¬½ø¶ÈÌõÒ²Òª×ö³öÏàÓ¦¸Ä±ä¡£Èç¹û½ø¶È±»¶à¸öÏß³Ì¸ú×Ù£¬ÄÇÃ´¾Íµ÷ÓÃinvokeAndWait()·½·¨ÇëÇóÊÂ¼þÅÉ·¢Ïß³Ì¶Ô×é¼þ½øÐÐÏàÓ¦¸üÐÂ¡£¶ø invokeLater()
+ ·½·¨ÊÇÒì²½µ÷ÓÃ¸üÐÂ×é¼þµÄ¡£
 
 42) Swing APIÖÐÄÇÐ©·½·¨ÊÇÏß³Ì°²È«µÄ£¿
-Õâ¸öÎÊÌâÓÖÌáµ½ÁËswingºÍÏß³Ì°²È«£¬ËäÈ»×é¼þ²»ÊÇÏß³Ì°²È«µÄµ«ÊÇÓÐÒ»Ð©·½·¨ÊÇ¿ÉÒÔ±»¶àÏß³Ì°²È«µ÷ÓÃµÄ£¬±ÈÈçrepaint(), revalidate()¡£ JTextComponentµÄsetText()·½·¨ºÍJTextAreaµÄinsert() ºÍ append() ·½·¨Ò²ÊÇÏß³Ì°²È«µÄ¡£
+Õâ¸öÎÊÌâÓÖÌáµ½ÁËswingºÍÏß³Ì°²È«£¬ËäÈ»×é¼þ²»ÊÇÏß³Ì°²È«µÄµ«ÊÇÓÐÒ»Ð©·½·¨ÊÇ¿ÉÒÔ±»¶àÏß³Ì°²È«µ÷ÓÃµÄ£¬±ÈÈçrepaint(), revalidate()¡£ JTextComponent
+µÄsetText()·½·¨ºÍJTextAreaµÄinsert() ºÍ append() ·½·¨Ò²ÊÇÏß³Ì°²È«µÄ¡£
 
 43) ÈçºÎÔÚJavaÖÐ´´½¨Immutable¶ÔÏó£¿
-Õâ¸öÎÊÌâ¿´ÆðÀ´ºÍ¶àÏß³ÌÃ»Ê²Ã´¹ØÏµ£¬ µ«²»±äÐÔÓÐÖúÓÚ¼ò»¯ÒÑ¾­ºÜ¸´ÔÓµÄ²¢·¢³ÌÐò¡£Immutable¶ÔÏó¿ÉÒÔÔÚÃ»ÓÐÍ¬²½µÄÇé¿öÏÂ¹²Ïí£¬½µµÍÁË¶Ô¸Ã¶ÔÏó½øÐÐ²¢·¢·ÃÎÊÊ±µÄÍ¬²½»¯¿ªÏú¡£¿ÉÊÇJava Ã»ÓÐ@ImmutableÕâ¸ö×¢½â·û£¬Òª´´½¨²»¿É±äÀà£¬ÒªÊµÏÖÏÂÃæ¼¸¸ö²½Öè£ºÍ¨¹ý¹¹Ôì·½·¨³õÊ¼»¯ËùÓÐ³ÉÔ±¡¢¶Ô±äÁ¿²»ÒªÌá¹©setter·½·¨¡¢½«ËùÓÐµÄ³ÉÔ± ÉùÃ÷ÎªË½ÓÐµÄ£¬ÕâÑù¾Í²»ÔÊÐíÖ±½Ó·ÃÎÊÕâÐ©³ÉÔ±¡¢ÔÚgetter·½·¨ÖÐ£¬²»ÒªÖ±½Ó·µ»Ø¶ÔÏó±¾Éí£¬¶øÊÇ¿ËÂ¡¶ÔÏó£¬²¢·µ»Ø¶ÔÏóµÄ¿½±´¡£ÎÒµÄÎÄÕÂhow to make an object Immutable in JavaÓÐÏêÏ¸µÄ½Ì³Ì£¬¿´ÍêÄã¿ÉÒÔ³äÂú×ÔÐÅ¡£
+Õâ¸öÎÊÌâ¿´ÆðÀ´ºÍ¶àÏß³ÌÃ»Ê²Ã´¹ØÏµ£¬ µ«²»±äÐÔÓÐÖúÓÚ¼ò»¯ÒÑ¾­ºÜ¸´ÔÓµÄ²¢·¢³ÌÐò¡£Immutable¶ÔÏó¿ÉÒÔÔÚÃ»ÓÐÍ¬²½µÄÇé¿öÏÂ¹²Ïí£¬½µµÍÁË¶Ô¸Ã¶ÔÏó½øÐÐ²¢·¢·ÃÎÊÊ±µÄ
+Í¬²½»¯¿ªÏú¡£¿ÉÊÇJava Ã»ÓÐ@ImmutableÕâ¸ö×¢½â·û£¬Òª´´½¨²»¿É±äÀà£¬ÒªÊµÏÖÏÂÃæ¼¸¸ö²½Öè£ºÍ¨¹ý¹¹Ôì·½·¨³õÊ¼»¯ËùÓÐ³ÉÔ±¡¢¶Ô±äÁ¿²»ÒªÌá¹©setter·½·¨¡¢½«ËùÓÐ
+µÄ³ÉÔ± ÉùÃ÷ÎªË½ÓÐµÄ£¬ÕâÑù¾Í²»ÔÊÐíÖ±½Ó·ÃÎÊÕâÐ©³ÉÔ±¡¢ÔÚgetter·½·¨ÖÐ£¬²»ÒªÖ±½Ó·µ»Ø¶ÔÏó±¾Éí£¬¶øÊÇ¿ËÂ¡¶ÔÏó£¬²¢·µ»Ø¶ÔÏóµÄ¿½±´¡£ÎÒµÄÎÄÕÂhow to make an
+ object Immutable in JavaÓÐÏêÏ¸µÄ½Ì³Ì£¬¿´ÍêÄã¿ÉÒÔ³äÂú×ÔÐÅ¡£
 
 44£© JavaÖÐµÄReadWriteLockÊÇÊ²Ã´£¿
-Ò»°ã¶øÑÔ£¬¶ÁÐ´ËøÊÇÓÃÀ´ÌáÉý²¢·¢³ÌÐòÐÔÄÜµÄËø·ÖÀë¼¼ÊõµÄ³É¹û¡£JavaÖÐµÄReadWriteLockÊÇJava 5 ÖÐÐÂÔöµÄÒ»¸ö½Ó¿Ú£¬Ò»¸öReadWriteLockÎ¬»¤Ò»¶Ô¹ØÁªµÄËø£¬Ò»¸öÓÃÓÚÖ»¶Á²Ù×÷Ò»¸öÓÃÓÚÐ´¡£ÔÚÃ»ÓÐÐ´Ïß³ÌµÄÇé¿öÏÂÒ»¸ö¶ÁËø¿ÉÄÜ»áÍ¬Ê±±»¶à¸ö¶ÁÏß³Ì ³ÖÓÐ¡£Ð´ËøÊÇ¶ÀÕ¼µÄ£¬Äã¿ÉÒÔÊ¹ÓÃJDKÖÐµÄReentrantReadWriteLockÀ´ÊµÏÖÕâ¸ö¹æÔò£¬Ëü×î¶àÖ§³Ö65535¸öÐ´ËøºÍ65535¸ö¶Á Ëø¡£
+Ò»°ã¶øÑÔ£¬¶ÁÐ´ËøÊÇÓÃÀ´ÌáÉý²¢·¢³ÌÐòÐÔÄÜµÄËø·ÖÀë¼¼ÊõµÄ³É¹û¡£JavaÖÐµÄReadWriteLockÊÇJava 5 ÖÐÐÂÔöµÄÒ»¸ö½Ó¿Ú£¬Ò»¸öReadWriteLockÎ¬»¤Ò»¶Ô¹ØÁªµÄËø
+£¬Ò»¸öÓÃÓÚÖ»¶Á²Ù×÷Ò»¸öÓÃÓÚÐ´¡£ÔÚÃ»ÓÐÐ´Ïß³ÌµÄÇé¿öÏÂÒ»¸ö¶ÁËø¿ÉÄÜ»áÍ¬Ê±±»¶à¸ö¶ÁÏß³Ì ³ÖÓÐ¡£Ð´ËøÊÇ¶ÀÕ¼µÄ£¬Äã¿ÉÒÔÊ¹ÓÃJDKÖÐµÄReentrantReadWriteLock
+À´ÊµÏÖÕâ¸ö¹æÔò£¬Ëü×î¶àÖ§³Ö65535¸öÐ´ËøºÍ65535¸ö¶Á Ëø¡£
 
 45) ¶àÏß³ÌÖÐµÄÃ¦Ñ­»·ÊÇÊ²Ã´?
-Ã¦Ñ­»·¾ÍÊÇ³ÌÐòÔ±ÓÃÑ­»·ÈÃÒ»¸öÏß³ÌµÈ´ý£¬²»Ïñ´«Í³·½·¨wait(), sleep() »ò yield() ËüÃÇ¶¼·ÅÆúÁËCPU¿ØÖÆ£¬¶øÃ¦Ñ­»·²»»á·ÅÆúCPU£¬Ëü¾ÍÊÇÔÚÔËÐÐÒ»¸ö¿ÕÑ­»·¡£ÕâÃ´×öµÄÄ¿µÄÊÇÎªÁË±£ÁôCPU»º´æ£¬ÔÚ¶àºËÏµÍ³ÖÐ£¬Ò»¸öµÈ´ýÏß³ÌÐÑÀ´µÄÊ±ºò¿É ÄÜ»áÔÚÁíÒ»¸öÄÚºËÔËÐÐ£¬ÕâÑù»áÖØ½¨»º´æ¡£ÎªÁË±ÜÃâÖØ½¨»º´æºÍ¼õÉÙµÈ´ýÖØ½¨µÄÊ±¼ä¾Í¿ÉÒÔÊ¹ÓÃËüÁË¡£
+Ã¦Ñ­»·¾ÍÊÇ³ÌÐòÔ±ÓÃÑ­»·ÈÃÒ»¸öÏß³ÌµÈ´ý£¬²»Ïñ´«Í³·½·¨wait(), sleep() »ò yield() ËüÃÇ¶¼·ÅÆúÁËCPU¿ØÖÆ£¬¶øÃ¦Ñ­»·²»»á·ÅÆúCPU£¬Ëü¾ÍÊÇÔÚÔËÐÐÒ»¸ö¿ÕÑ­»·
+¡£ÕâÃ´×öµÄÄ¿µÄÊÇÎªÁË±£ÁôCPU»º´æ£¬ÔÚ¶àºËÏµÍ³ÖÐ£¬Ò»¸öµÈ´ýÏß³ÌÐÑÀ´µÄÊ±ºò¿É ÄÜ»áÔÚÁíÒ»¸öÄÚºËÔËÐÐ£¬ÕâÑù»áÖØ½¨»º´æ¡£ÎªÁË±ÜÃâÖØ½¨»º´æºÍ¼õÉÙµÈ´ýÖØ½¨µÄÊ±¼ä
+¾Í¿ÉÒÔÊ¹ÓÃËüÁË¡£
 
 46£©volatile ±äÁ¿ºÍ atomic ±äÁ¿ÓÐÊ²Ã´²»Í¬£¿
-ÕâÊÇ¸öÓÐÈ¤µÄÎÊÌâ¡£Ê×ÏÈ£¬volatile ±äÁ¿ºÍ atomic ±äÁ¿¿´ÆðÀ´ºÜÏñ£¬µ«¹¦ÄÜÈ´²»Ò»Ñù¡£Volatile±äÁ¿¿ÉÒÔÈ·±£ÏÈÐÐ¹ØÏµ£¬¼´Ð´²Ù×÷»á·¢ÉúÔÚºóÐøµÄ¶Á²Ù×÷Ö®Ç°, µ«Ëü²¢²»ÄÜ±£Ö¤Ô­×ÓÐÔ¡£ÀýÈçÓÃvolatileÐÞÊÎcount±äÁ¿ÄÇÃ´ count++ ²Ù×÷¾Í²»ÊÇÔ­×ÓÐÔµÄ¡£¶øAtomicIntegerÀàÌá¹©µÄatomic·½·¨¿ÉÒÔÈÃÕâÖÖ²Ù×÷¾ßÓÐÔ­×ÓÐÔÈçgetAndIncrement()·½·¨»áÔ­×ÓÐÔ µÄ½øÐÐÔöÁ¿²Ù×÷°Ñµ±Ç°Öµ¼ÓÒ»£¬ÆäËüÊý¾ÝÀàÐÍºÍÒýÓÃ±äÁ¿Ò²¿ÉÒÔ½øÐÐÏàËÆ²Ù×÷¡£
+ÕâÊÇ¸öÓÐÈ¤µÄÎÊÌâ¡£Ê×ÏÈ£¬volatile ±äÁ¿ºÍ atomic ±äÁ¿¿´ÆðÀ´ºÜÏñ£¬µ«¹¦ÄÜÈ´²»Ò»Ñù¡£Volatile±äÁ¿¿ÉÒÔÈ·±£ÏÈÐÐ¹ØÏµ£¬¼´Ð´²Ù×÷»á·¢ÉúÔÚºóÐøµÄ¶Á²Ù×÷Ö®Ç°,
+ µ«Ëü²¢²»ÄÜ±£Ö¤Ô­×ÓÐÔ¡£ÀýÈçÓÃvolatileÐÞÊÎcount±äÁ¿ÄÇÃ´ count++ ²Ù×÷¾Í²»ÊÇÔ­×ÓÐÔµÄ¡£¶øAtomicIntegerÀàÌá¹©µÄatomic·½·¨¿ÉÒÔÈÃÕâÖÖ²Ù×÷¾ßÓÐÔ­×Ó
+ ÐÔÈçgetAndIncrement()·½·¨»áÔ­×ÓÐÔ µÄ½øÐÐÔöÁ¿²Ù×÷°Ñµ±Ç°Öµ¼ÓÒ»£¬ÆäËüÊý¾ÝÀàÐÍºÍÒýÓÃ±äÁ¿Ò²¿ÉÒÔ½øÐÐÏàËÆ²Ù×÷¡£
 
 47) Èç¹ûÍ¬²½¿éÄÚµÄÏß³ÌÅ×³öÒì³£»á·¢ÉúÊ²Ã´£¿
-Õâ¸öÎÊÌâ¿ÓÁËºÜ¶àJava³ÌÐòÔ±£¬ÈôÄãÄÜÏëµ½ËøÊÇ·ñÊÍ·ÅÕâÌõÏßË÷À´»Ø´ð»¹ÓÐµãÏ£Íû´ð¶Ô¡£ÎÞÂÛÄãµÄÍ¬²½¿éÊÇÕý³£»¹ÊÇÒì³£ÍË³öµÄ£¬ÀïÃæµÄÏß³Ì¶¼»áÊÍ·ÅËø£¬ËùÒÔ¶Ô±ÈËø½Ó¿ÚÎÒ¸üÏ²»¶Í¬²½¿é£¬ÒòÎªËü²»ÓÃÎÒ»¨·Ñ¾«Á¦È¥ÊÍ·ÅËø£¬¸Ã¹¦ÄÜ¿ÉÒÔÔÚfinally blockÀïÊÍ·ÅËøÊµÏÖ¡£
+Õâ¸öÎÊÌâ¿ÓÁËºÜ¶àJava³ÌÐòÔ±£¬ÈôÄãÄÜÏëµ½ËøÊÇ·ñÊÍ·ÅÕâÌõÏßË÷À´»Ø´ð»¹ÓÐµãÏ£Íû´ð¶Ô¡£ÎÞÂÛÄãµÄÍ¬²½¿éÊÇÕý³£»¹ÊÇÒì³£ÍË³öµÄ£¬ÀïÃæµÄÏß³Ì¶¼»áÊÍ·ÅËø£¬ËùÒÔ¶Ô±ÈËø
+½Ó¿ÚÎÒ¸üÏ²»¶Í¬²½¿é£¬ÒòÎªËü²»ÓÃÎÒ»¨·Ñ¾«Á¦È¥ÊÍ·ÅËø£¬¸Ã¹¦ÄÜ¿ÉÒÔÔÚfinally blockÀïÊÍ·ÅËøÊµÏÖ¡£
 
 48£© µ¥ÀýÄ£Ê½µÄË«¼ìËøÊÇÊ²Ã´£¿
-Õâ¸öÎÊÌâÔÚJavaÃæÊÔÖÐ¾­³£±»ÎÊµ½£¬µ«ÊÇÃæÊÔ¹Ù¶Ô»Ø´ð´ËÎÊÌâµÄÂúÒâ¶È½öÎª50%¡£Ò»°ëµÄÈËÐ´²»³öË«¼ìËø»¹ÓÐÒ»°ëµÄÈËËµ²»³öËüµÄÒþ»¼ºÍ Java1.5ÊÇÈçºÎ¶ÔËüÐÞÕýµÄ¡£ËüÆäÊµÊÇÒ»¸öÓÃÀ´´´½¨Ïß³Ì°²È«µÄµ¥ÀýµÄÀÏ·½·¨£¬µ±µ¥ÀýÊµÀýµÚÒ»´Î±»´´½¨Ê±ËüÊÔÍ¼ÓÃµ¥¸öËø½øÐÐÐÔÄÜÓÅ»¯£¬µ«ÊÇÓÉÓÚÌ«¹ýÓÚ¸´ ÔÓÔÚJDK1.4ÖÐËüÊÇÊ§°ÜµÄ£¬ÎÒ¸öÈËÒ²²»Ï²»¶Ëü¡£ÎÞÂÛÈçºÎ£¬¼´±ãÄãÒ²²»Ï²»¶Ëüµ«ÊÇ»¹ÊÇÒªÁË½âÒ»ÏÂ£¬ÒòÎªËü¾­³£±»ÎÊµ½¡£
+Õâ¸öÎÊÌâÔÚJavaÃæÊÔÖÐ¾­³£±»ÎÊµ½£¬µ«ÊÇÃæÊÔ¹Ù¶Ô»Ø´ð´ËÎÊÌâµÄÂúÒâ¶È½öÎª50%¡£Ò»°ëµÄÈËÐ´²»³öË«¼ìËø»¹ÓÐÒ»°ëµÄÈËËµ²»³öËüµÄÒþ»¼ºÍ Java1.5ÊÇÈçºÎ¶ÔËüÐÞÕýµÄ¡£
+ËüÆäÊµÊÇÒ»¸öÓÃÀ´´´½¨Ïß³Ì°²È«µÄµ¥ÀýµÄÀÏ·½·¨£¬µ±µ¥ÀýÊµÀýµÚÒ»´Î±»´´½¨Ê±ËüÊÔÍ¼ÓÃµ¥¸öËø½øÐÐÐÔÄÜÓÅ»¯£¬µ«ÊÇÓÉÓÚÌ«¹ýÓÚ¸´ ÔÓÔÚJDK1.4ÖÐËüÊÇÊ§°ÜµÄ£¬ÎÒ¸öÈËÒ²
+²»Ï²»¶Ëü¡£ÎÞÂÛÈçºÎ£¬¼´±ãÄãÒ²²»Ï²»¶Ëüµ«ÊÇ»¹ÊÇÒªÁË½âÒ»ÏÂ£¬ÒòÎªËü¾­³£±»ÎÊµ½¡£
 
 49£© ÈçºÎÔÚJavaÖÐ´´½¨Ïß³Ì°²È«µÄSingleton£¿
-ÕâÊÇÉÏÃæÄÇ¸öÎÊÌâµÄºóÐø£¬Èç¹ûÄã²»Ï²»¶Ë«¼ìËø¶øÃæÊÔ¹ÙÎÊÁË´´½¨SingletonÀàµÄÌæ´ú·½·¨£¬Äã¿ÉÒÔÀûÓÃJVMµÄÀà¼ÓÔØºÍ¾²Ì¬±äÁ¿³õÊ¼»¯ÌØÕ÷À´´´½¨SingletonÊµÀý£¬»òÕßÊÇÀûÓÃÃ¶¾ÙÀàÐÍÀ´´´½¨Singleton£¬ÎÒºÜÏ²»¶ÓÃÕâÖÖ·½·¨¡£
+ÕâÊÇÉÏÃæÄÇ¸öÎÊÌâµÄºóÐø£¬Èç¹ûÄã²»Ï²»¶Ë«¼ìËø¶øÃæÊÔ¹ÙÎÊÁË´´½¨SingletonÀàµÄÌæ´ú·½·¨£¬Äã¿ÉÒÔÀûÓÃJVMµÄÀà¼ÓÔØºÍ¾²Ì¬±äÁ¿³õÊ¼»¯ÌØÕ÷À´´´½¨SingletonÊµÀý£¬
+»òÕßÊÇÀûÓÃÃ¶¾ÙÀàÐÍÀ´´´½¨Singleton£¬ÎÒºÜÏ²»¶ÓÃÕâÖÖ·½·¨¡£
 
 50) Ð´³ö3ÌõÄã×ñÑ­µÄ¶àÏß³Ì×î¼ÑÊµ¼ù
 ÕâÖÖÎÊÌâÎÒ×îÏ²»¶ÁË£¬ÎÒÏàÐÅÄãÔÚÐ´²¢·¢´úÂëÀ´ÌáÉýÐÔÄÜµÄÊ±ºòÒ²»á×ñÑ­Ä³Ð©×î¼ÑÊµ¼ù¡£ÒÔÏÂÈýÌõ×î¼ÑÊµ¼ùÎÒ¾õµÃ´ó¶àÊýJava³ÌÐòÔ±¶¼Ó¦¸Ã×ñÑ­£º
 
 ¸øÄãµÄÏß³ÌÆð¸öÓÐÒâÒåµÄÃû×Ö¡£
-ÕâÑù¿ÉÒÔ·½±ãÕÒbug»ò×·×Ù¡£OrderProcessor, QuoteProcessor or TradeProcessor ÕâÖÖÃû×Ö±È Thread-1. Thread-2 and Thread-3 ºÃ¶àÁË£¬¸øÏß³ÌÆðÒ»¸öºÍËüÒªÍê³ÉµÄÈÎÎñÏà¹ØµÄÃû×Ö£¬ËùÓÐµÄÖ÷Òª¿ò¼ÜÉõÖÁJDK¶¼×ñÑ­Õâ¸ö×î¼ÑÊµ¼ù¡£
+ÕâÑù¿ÉÒÔ·½±ãÕÒbug»ò×·×Ù¡£OrderProcessor, QuoteProcessor or TradeProcessor ÕâÖÖÃû×Ö±È Thread-1. Thread-2 and Thread-3 ºÃ¶àÁË£¬
+¸øÏß³ÌÆðÒ»¸öºÍËüÒªÍê³ÉµÄÈÎÎñÏà¹ØµÄÃû×Ö£¬ËùÓÐµÄÖ÷Òª¿ò¼ÜÉõÖÁJDK¶¼×ñÑ­Õâ¸ö×î¼ÑÊµ¼ù¡£
 
 ±ÜÃâËø¶¨ºÍËõÐ¡Í¬²½µÄ·¶Î§
 Ëø»¨·ÑµÄ´ú¼Û¸ß°ºÇÒÉÏÏÂÎÄÇÐ»»¸üºÄ·ÑÊ±¼ä¿Õ¼ä£¬ÊÔÊÔ×îµÍÏÞ¶ÈµÄÊ¹ÓÃÍ¬²½ºÍËø£¬ËõÐ¡ÁÙ½çÇø¡£Òò´ËÏà¶ÔÓÚÍ¬²½·½·¨ÎÒ¸üÏ²»¶Í¬²½¿é£¬Ëü¸øÎÒÓµÓÐ¶ÔËøµÄ¾ø¶Ô¿ØÖÆÈ¨¡£
 
 ¶àÓÃÍ¬²½ÀàÉÙÓÃwait ºÍ notify
-Ê×ÏÈ£¬CountDownLatch, Semaphore, CyclicBarrier ºÍ Exchanger ÕâÐ©Í¬²½Àà¼ò»¯ÁË±àÂë²Ù×÷£¬¶øÓÃwaitºÍnotifyºÜÄÑÊµÏÖ¶Ô¸´ÔÓ¿ØÖÆÁ÷µÄ¿ØÖÆ¡£Æä´Î£¬ÕâÐ©ÀàÊÇÓÉ×îºÃµÄÆóÒµ±àÐ´ºÍÎ¬»¤ÔÚºóÐøµÄJDKÖÐËüÃÇ»¹»á²»¶Ï ÓÅ»¯ºÍÍêÉÆ£¬Ê¹ÓÃÕâÐ©¸ü¸ßµÈ¼¶µÄÍ¬²½¹¤¾ßÄãµÄ³ÌÐò¿ÉÒÔ²»·Ñ´µ»ÒÖ®Á¦»ñµÃÓÅ»¯¡£
+Ê×ÏÈ£¬CountDownLatch, Semaphore, CyclicBarrier ºÍ Exchanger ÕâÐ©Í¬²½Àà¼ò»¯ÁË±àÂë²Ù×÷£¬¶øÓÃwaitºÍnotifyºÜÄÑÊµÏÖ¶Ô¸´ÔÓ¿ØÖÆÁ÷µÄ¿ØÖÆ¡£
+Æä´Î£¬ÕâÐ©ÀàÊÇÓÉ×îºÃµÄÆóÒµ±àÐ´ºÍÎ¬»¤ÔÚºóÐøµÄJDKÖÐËüÃÇ»¹»á²»¶Ï ÓÅ»¯ºÍÍêÉÆ£¬Ê¹ÓÃÕâÐ©¸ü¸ßµÈ¼¶µÄÍ¬²½¹¤¾ßÄãµÄ³ÌÐò¿ÉÒÔ²»·Ñ´µ»ÒÖ®Á¦»ñµÃÓÅ»¯¡£
 
 ¶àÓÃ²¢·¢¼¯ºÏÉÙÓÃÍ¬²½¼¯ºÏ
-ÕâÊÇÁíÍâÒ»¸öÈÝÒ××ñÑ­ÇÒÊÜÒæ¾Þ´óµÄ×î¼ÑÊµ¼ù£¬²¢·¢¼¯ºÏ±ÈÍ¬²½¼¯ºÏµÄ¿ÉÀ©Õ¹ÐÔ¸üºÃ£¬ËùÒÔÔÚ²¢·¢±à³ÌÊ±Ê¹ÓÃ²¢·¢¼¯ºÏÐ§¹û¸üºÃ¡£Èç¹ûÏÂÒ»´ÎÄãÐèÒªÓÃµ½map£¬ÄãÓ¦¸ÃÊ×ÏÈÏëµ½ÓÃConcurrentHashMap¡£
+ÕâÊÇÁíÍâÒ»¸öÈÝÒ××ñÑ­ÇÒÊÜÒæ¾Þ´óµÄ×î¼ÑÊµ¼ù£¬²¢·¢¼¯ºÏ±ÈÍ¬²½¼¯ºÏµÄ¿ÉÀ©Õ¹ÐÔ¸üºÃ£¬ËùÒÔÔÚ²¢·¢±à³ÌÊ±Ê¹ÓÃ²¢·¢¼¯ºÏÐ§¹û¸üºÃ¡£Èç¹ûÏÂÒ»´ÎÄãÐèÒªÓÃµ½map£¬
+ÄãÓ¦¸ÃÊ×ÏÈÏëµ½ÓÃConcurrentHashMap¡£
 
 51) ÈçºÎÇ¿ÖÆÆô¶¯Ò»¸öÏß³Ì£¿
-Õâ¸öÎÊÌâ¾ÍÏñÊÇÈçºÎÇ¿ÖÆ½øÐÐJavaÀ¬»ø»ØÊÕ£¬Ä¿Ç°»¹Ã»ÓÐ¾õµÃ·½·¨£¬ËäÈ»Äã¿ÉÒÔÊ¹ÓÃSystem.gc()À´½øÐÐÀ¬»ø»ØÊÕ£¬µ«ÊÇ²»±£Ö¤ÄÜ³É¹¦¡£ÔÚJavaÀïÃæÃ»ÓÐ°ì·¨Ç¿ÖÆÆô¶¯Ò»¸öÏß³Ì£¬ËüÊÇ±»Ïß³Ìµ÷¶ÈÆ÷¿ØÖÆ×ÅÇÒJavaÃ»ÓÐ¹«²¼Ïà¹ØµÄAPI¡£
+Õâ¸öÎÊÌâ¾ÍÏñÊÇÈçºÎÇ¿ÖÆ½øÐÐJavaÀ¬»ø»ØÊÕ£¬Ä¿Ç°»¹Ã»ÓÐ¾õµÃ·½·¨£¬ËäÈ»Äã¿ÉÒÔÊ¹ÓÃSystem.gc()À´½øÐÐÀ¬»ø»ØÊÕ£¬µ«ÊÇ²»±£Ö¤ÄÜ³É¹¦¡£ÔÚJavaÀïÃæÃ»ÓÐ°ì·¨Ç¿ÖÆ
+Æô¶¯Ò»¸öÏß³Ì£¬ËüÊÇ±»Ïß³Ìµ÷¶ÈÆ÷¿ØÖÆ×ÅÇÒJavaÃ»ÓÐ¹«²¼Ïà¹ØµÄAPI¡£
 
 52) JavaÖÐµÄfork join¿ò¼ÜÊÇÊ²Ã´£¿
-fork join¿ò¼ÜÊÇJDK7ÖÐ³öÏÖµÄÒ»¿î¸ßÐ§µÄ¹¤¾ß£¬Java¿ª·¢ÈËÔ±¿ÉÒÔÍ¨¹ýËü³ä·ÖÀûÓÃÏÖ´ú·þÎñÆ÷ÉÏµÄ¶à´¦ÀíÆ÷¡£ËüÊÇ×¨ÃÅÎªÁËÄÇÐ©¿ÉÒÔµÝ¹é»®·Ö³ÉÐí¶à×ÓÄ£¿é Éè¼ÆµÄ£¬Ä¿µÄÊÇ½«ËùÓÐ¿ÉÓÃµÄ´¦ÀíÄÜÁ¦ÓÃÀ´ÌáÉý³ÌÐòµÄÐÔÄÜ¡£fork join¿ò¼ÜÒ»¸ö¾Þ´óµÄÓÅÊÆÊÇËüÊ¹ÓÃÁË¹¤×÷ÇÔÈ¡Ëã·¨£¬¿ÉÒÔÍê³É¸ü¶àÈÎÎñµÄ¹¤×÷Ïß³Ì¿ÉÒÔ´ÓÆäËüÏß³ÌÖÐÇÔÈ¡ÈÎÎñÀ´Ö´ÐÐ¡£
+fork join¿ò¼ÜÊÇJDK7ÖÐ³öÏÖµÄÒ»¿î¸ßÐ§µÄ¹¤¾ß£¬Java¿ª·¢ÈËÔ±¿ÉÒÔÍ¨¹ýËü³ä·ÖÀûÓÃÏÖ´ú·þÎñÆ÷ÉÏµÄ¶à´¦ÀíÆ÷¡£ËüÊÇ×¨ÃÅÎªÁËÄÇÐ©¿ÉÒÔµÝ¹é»®·Ö³ÉÐí¶à×ÓÄ£¿é
+Éè¼ÆµÄ£¬Ä¿µÄÊÇ½«ËùÓÐ¿ÉÓÃµÄ´¦ÀíÄÜÁ¦ÓÃÀ´ÌáÉý³ÌÐòµÄÐÔÄÜ¡£fork join¿ò¼ÜÒ»¸ö¾Þ´óµÄÓÅÊÆÊÇËüÊ¹ÓÃÁË¹¤×÷ÇÔÈ¡Ëã·¨£¬¿ÉÒÔÍê³É¸ü¶àÈÎÎñµÄ¹¤×÷Ïß³Ì¿ÉÒÔ´ÓÆäËüÏß³Ì
+ÖÐÇÔÈ¡ÈÎÎñÀ´Ö´ÐÐ¡£
 
 53£© Java¶àÏß³ÌÖÐµ÷ÓÃwait() ºÍ sleep()·½·¨ÓÐÊ²Ã´²»Í¬£¿
-Java³ÌÐòÖÐwait ºÍ sleep¶¼»áÔì³ÉÄ³ÖÖÐÎÊ½µÄÔÝÍ££¬ËüÃÇ¿ÉÒÔÂú×ã²»Í¬µÄÐèÒª¡£wait()·½·¨ÓÃÓÚÏß³Ì¼äÍ¨ÐÅ£¬Èç¹ûµÈ´ýÌõ¼þÎªÕæÇÒÆäËüÏß³Ì±»»½ÐÑÊ±Ëü»áÊÍ·ÅËø£¬¶ø sleep()·½·¨½ö½öÊÍ·ÅCPU×ÊÔ´»òÕßÈÃµ±Ç°Ïß³ÌÍ£Ö¹Ö´ÐÐÒ»¶ÎÊ±¼ä£¬µ«²»»áÊÍ·ÅËø¡£
+Java³ÌÐòÖÐwait ºÍ sleep¶¼»áÔì³ÉÄ³ÖÖÐÎÊ½µÄÔÝÍ££¬ËüÃÇ¿ÉÒÔÂú×ã²»Í¬µÄÐèÒª¡£wait()·½·¨ÓÃÓÚÏß³Ì¼äÍ¨ÐÅ£¬Èç¹ûµÈ´ýÌõ¼þÎªÕæÇÒÆäËüÏß³Ì±»»½ÐÑÊ±Ëü»áÊÍ·ÅËø£¬
+¶ø sleep()·½·¨½ö½öÊÍ·ÅCPU×ÊÔ´»òÕßÈÃµ±Ç°Ïß³ÌÍ£Ö¹Ö´ÐÐÒ»¶ÎÊ±¼ä£¬µ«²»»áÊÍ·ÅËø¡£
 
